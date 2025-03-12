@@ -3,20 +3,21 @@ import daisyui from "daisyui";
 import type { Config } from "tailwindcss";
 
 const GENERAL_CONFIG = {
-  secondary: "#FFB600",
-  "secondary-content": "#FDFEFE",
+  secondary: "#F8B6C2",
+  "secondary-content": "#FFFFFF",
 
-  info: "#3abff8",
-  "info-content": "#ffffff",
-  error: "#ef4444",
-  "error-content": "#ffffff",
-  success: "#22c55e",
-  "success-content": "#ffffff",
-  warning: "#fbbd23",
-  "warning-content": "#ffffff",
+  info: "#F9A8D4",
+  "info-content": "#610e3b",
+  error: "#F43F5E",
+  "error-content": "#FFFFFF",
+  success: "#14b850",
+  "success-content": "#FFFFFF",
+  warning: "#FB923C",
+  "warning-content": "#FFFFFF",
 
   "--tab-radius": ".5rem",
 };
+
 
 export default {
   content: [
@@ -33,9 +34,9 @@ export default {
     },
     extend: {
       colors: {
-        "dark-purple": "#280B3D",
-        "light-yellow": "#F6C565",
-        "light-violet": "#F2EAF8",
+        "rose-light": "#FFC0CB",
+        "rose-dark": "#D81B60",
+        "rose-muted": "#FADADD",
       },
       width: {
         88: "22rem",
@@ -149,29 +150,35 @@ export default {
       {
         light: {
           ...GENERAL_CONFIG,
-          accent: "hsl(0, 0%, 0%)",
-          primary: "hsl(274, 65%, 32%)",
-          "primary-content": "hsl(0, 0%, 100%)",
-          "base-100": "hsl(220, 33%, 97%)",
-          "base-200": "hsl(0, 0%, 100%)",
-          "base-300": "hsl(220, 33%, 93%)",
-          "base-content": "hsl(220, 33%, 15%)",
-          neutral: "hsl(0, 0%, 95%)",
-          "neutral-content": "hsl(0, 0%, 30%)",
-          "neutral-focus": "hsl(0, 0%, 80%)",
+          accent: "#FF007F",
+          "accent-content": "#FFFFFF",
+          primary: "#FF66B2",
+          "primary-content": "#5E003E",
+          secondary: "#FFD1E3",
+          "secondary-content": "#5E003E",
+          neutral: "#FCEEF3",
+          "neutral-content": "#5E003E",
+          "base-100": "#FFF5FA",
+          "base-200": "#FCEEF3",
+          "base-300": "#FAD1DC",
+          "base-content": "#5E003E",
         },
       },
       {
         dark: {
           ...GENERAL_CONFIG,
-          accent: "hsl(180, 0%, 100%)",
-          primary: "hsl(258, 100%, 87%)",
-          "primary-content": "hsl(0, 0%, 0%)",
-          "base-100": "hsl(0, 0%, 3%)",
-          "base-200": "hsl(0, 0%, 7%)",
-          "base-300": "hsl(0, 0%, 11%)",
-          "base-content": "hsl(220, 15%, 90%)",
-          neutral: "hsl(0, 1%, 15%)",
+          accent: "#FFFFFF",
+          "accent-content": "#94004A",
+          primary: "#FF007F",
+          "primary-content": "#1E1E1E",
+          secondary: "#FF66B2",
+          "secondary-content": "#1E1E1E",
+          neutral: "#2A2A2A",
+          "neutral-content": "#FFCCE5",
+          "base-100": "#1E1E1E",
+          "base-200": "#2A2A2A",
+          "base-300": "#3A3A3A",
+          "base-content": "#FFCCE5",
         },
       },
     ],

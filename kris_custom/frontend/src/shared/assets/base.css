@@ -68,17 +68,7 @@
   --base-300: theme("colors.base-300");
   --alpha: 0.2;
 
-  --z-cookie-consent: 32;
-  --z-marketplace-cart: 64;
-  --z-telegram-notification: 64;
-  --z-datepicker-desktop: 128;
   --z-header: 256;
-  --z-datepicker-mobile: 512;
-  --z-drawer: 512;
-  --z-modal: 1024;
-  --z-notifications: 2048;
-  --z-tooltip: 4096;
-  --z-nprogress: 8192;
 }
 
 html {
