@@ -18,7 +18,6 @@ const GENERAL_CONFIG = {
   "--tab-radius": ".5rem",
 };
 
-
 export default {
   content: [
     "./src/**/*.{js,vue,ts,tsx}",

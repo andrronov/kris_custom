@@ -19,7 +19,11 @@ const appStore = useAppStore();
       <!-- <RouterNav /> -->
       <div class="ml-auto inline-flex min-w-fit items-center justify-end">
         <div class="flex items-center gap-4">
-          <Button color="primary" variant="outline" @click="appStore.toggleTheme()">
+          <Button
+            color="primary"
+            variant="outline"
+            @click="appStore.toggleTheme()"
+          >
             <Icon :name="ICONS.user" class="w-8 h-8" />
           </Button>
         </div>

@@ -16,7 +16,7 @@ export const useAppStore = defineStore("app", () => {
 
   const toggleTheme = () => {
     storedTheme.value = storedTheme.value === "light" ? "dark" : "light";
-  }
+  };
 
   const showDrawer = ref(false);
   const openDrawer = () => {
@@ -40,6 +40,6 @@ export const useAppStore = defineStore("app", () => {
     showDrawer,
     openDrawer,
     closeDrawer,
-    toggleDrawer
-  }
+    toggleDrawer,
+  };
 });
