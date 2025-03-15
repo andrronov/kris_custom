@@ -8,7 +8,8 @@ const appStore = useAppStore();
 
 <template>
   <header
-    class="flex h-16 items-center justify-between px-2 text-base-content shadow-sm shadow-primary"
+    style="box-shadow: 0 -1px 0 0 var(--primary) inset"
+    class="flex h-16 items-center justify-between px-2 text-base-content"
   >
     <div class="container flex items-center h-full w-full">
       <div class="inline-flex w-fit items-center justify-start">

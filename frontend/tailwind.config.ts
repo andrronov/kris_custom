@@ -169,7 +169,7 @@ export default {
           accent: "#FFFFFF",
           "accent-content": "#94004A",
           primary: "#FF007F",
-          "primary-content": "#1E1E1E",
+          "primary-content": "#FFCCE5",
           secondary: "#FF66B2",
           "secondary-content": "#1E1E1E",
           neutral: "#2A2A2A",
