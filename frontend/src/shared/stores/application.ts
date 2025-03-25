@@ -1,6 +1,8 @@
-import { useColorMode } from "@vueuse/core";
+import { useColorMode, useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
+import { i18n } from "@/shared/services/i18n";
+import type { Language } from "@/shared/types";
 
 export const useAppStore = defineStore("app", () => {
   const { system: systemTheme, store: storedTheme } = useColorMode({
@@ -33,6 +35,22 @@ export const useAppStore = defineStore("app", () => {
     }
   };
 
+  const lang = useStorage<Language>("kc-lang", i18n.locale.value);
+
+  const changeLocale = (value: Language) => {
+    lang.value = value;
+  };
+
+  watchEffect(() => {
+    const value = lang.value;
+
+    i18n.locale.value = value;
+
+    if(!import.meta.env.SSR) {
+      document.documentElement.lang = value;
+    }
+  })
+
   return {
     systemTheme,
     storedTheme,
@@ -41,5 +59,7 @@ export const useAppStore = defineStore("app", () => {
     openDrawer,
     closeDrawer,
     toggleDrawer,
+    lang,
+    changeLocale,
   };
 });

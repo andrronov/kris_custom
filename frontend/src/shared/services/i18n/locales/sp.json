@@ -1,0 +1,45 @@
+{
+    "main_landing": {
+        "wear": "Usar",
+        "art": "Arte",
+        "define": "Definir",
+        "beauty": "Belleza",
+        "description": "Las mejores uñas hechas a mano solo para",
+        "slides_about": [
+            "Fácil de usar",
+            "Personalizable",
+            "Reutilizable",
+            "Asequible",
+            "Duradero",
+            "100% Hecho a mano",
+            "Variedad de diseños",
+            "Elegante",
+            "Único"
+          ],
+        "discounts": {
+          "buy_two": {
+            "title": "Compra 2 y Lleva 1 Gratis",
+            "description": "Compra 2 juegos de uñas y obtén 1 juego gratis"
+          },
+          "first_time": {
+            "title": "Cliente por Primera Vez",
+            "description": "Obtén un 10% de descuento en tu primer pedido"
+          },
+          "refer": {
+            "title": "Recomienda a un Amigo",
+            "description": "Recomienda a un amigo y obtén un 25% de descuento en tu próximo pedido"
+          },
+          "birthday": {
+            "title": "Descuento de Cumpleaños",
+            "description": "Celebra tu cumpleaños con un 20% de descuento"
+          }
+        }
+    },
+    "common": {
+        "you": "Tú",
+        "buttons": {
+            "discover": "Descubrir",
+            "learn_more": "Aprender Más"
+        }
+    }
+}

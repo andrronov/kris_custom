@@ -1,0 +1,45 @@
+{
+    "main_landing": {
+        "wear": "Wear",
+        "art": "Art",
+        "define": "Define",
+        "beauty": "Beauty",
+        "description": "Best handmade nails only for",
+        "slides_about": [
+            "Easy to use",
+            "Customizable",
+            "Reusable",
+            "Affordable",
+            "Long-lasting",
+            "100% Handmade",
+            "Variety of designs",
+            "Stylish",
+            "Unique"
+          ],
+        "discounts": {
+          "buy_two": {
+            "title": "Buy 2 Get 1 Free",
+            "description": "Buy 2 sets of nails and get 1 set free"
+          },
+          "first_time": {
+            "title": "First Time Customer",
+            "description": "Get 10% off your first order"
+          },
+          "refer": {
+            "title": "Refer a Friend",
+            "description": "Refer a friend and get 25% off your next order"
+          },
+          "birthday": {
+            "title": "Birthday Discount",
+            "description": "Celebrate your birthday with 20% off"
+          }
+        }
+    },
+    "common": {
+        "you": "You",
+        "buttons": {
+            "discover": "Discover",
+            "learn_more": "Learn More"
+        }
+    }
+}

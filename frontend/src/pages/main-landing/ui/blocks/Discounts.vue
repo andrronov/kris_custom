@@ -1,28 +1,34 @@
 <script setup lang="ts">
 import { Image, Button } from "@/shared/ui";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
-const discounts = [
-  {
-    title: "Buy 2 Get 1 Free",
-    description: "Buy 2 sets of nails and get 1 set free",
-    image: "first-time-customer.jpg",
-  },
-  {
-    title: "First Time Customer",
-    description: "Get 10% off your first order",
-    image: "first-time-customer.jpg",
-  },
-  {
-    title: "Refer a Friend",
-    description: "Refer a friend and get 25% off your next order",
-    image: "refer-a-friend.jpg",
-  },
-  {
-    title: "Birthday Discount",
-    description: "Celebrate your birthday with 20% off",
-    image: "birthday-discount.jpg",
-  },
-];
+const { t } = useI18n();
+
+const discounts = computed(() => {
+  return [
+    {
+      title: t("main_landing.discounts.buy_two.title"),
+      description: t("main_landing.discounts.buy_two.description"),
+      image: "first-time-customer.jpg"
+    },
+    {
+      title: t("main_landing.discounts.first_time.title"),
+      description: t("main_landing.discounts.first_time.description"),
+      image: "first-time-customer.jpg"
+    },
+    {
+      title: t("main_landing.discounts.refer.title"),
+      description: t("main_landing.discounts.refer.description"),
+      image: "refer-a-friend.jpg"
+    },
+    {
+      title: t("main_landing.discounts.birthday.title"),
+      description: t("main_landing.discounts.birthday.description"),
+      image: "birthday-discount.jpg"
+    }
+  ]
+})
 </script>
 
 <template>
@@ -35,7 +41,7 @@ const discounts = [
       class="relative h-48 min-w-[300px] w-full rounded-3xl bg-base-100 border border-secondary flex flex-col justify-between items-center p-4"
     >
       <Image
-        src="/hero.jpg"
+        src="/images/hero.jpg"
         layout="fullWidth"
         class="absolute w-full h-full object-cover rounded-3xl top-0 left-0 opacity-50"
       />
@@ -48,8 +54,9 @@ const discounts = [
         size="md"
         color="secondary"
         variant="outline"
-        >Learn More</Button
-      >
+        >
+        {{ t("common.buttons.learn_more") }}
+      </Button>
     </div>
   </section>
 </template>

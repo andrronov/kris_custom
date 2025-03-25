@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { LanguageDropdown } from "@/features/settings";
 import { ICONS } from "@/shared/assets";
-import { Icon, Button, Logo } from "@/shared/ui";
+import { Icon, Button, Logo, Image } from "@/shared/ui";
 import { useAppStore } from "@/shared/stores/application";
 
 const appStore = useAppStore();
@@ -27,6 +28,7 @@ const appStore = useAppStore();
           >
             <Icon :name="ICONS.user" class="w-8 h-8" />
           </Button>
+          <LanguageDropdown alignment="right" />
         </div>
       </div>
     </div>
