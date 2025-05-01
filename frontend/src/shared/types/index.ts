@@ -1,6 +1,7 @@
 import { SUPPORTED_LANGUAGES } from "@/shared/config";
 
 export type AppTheme = "dark" | "light";
+export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
 export type ComponentSize = "lg" | "md" | "sm" | "xs";
 export type ComponentStatus = "info" | "success" | "warning" | "error";
@@ -24,4 +25,12 @@ export enum Keys {
   Tab = "Tab",
 }
 
-export type Language = (typeof SUPPORTED_LANGUAGES)[number];
+export type ProductPrice = number | [number, number]
+export type ProductImage = string | [string, string]
+
+export type Product = {
+  id: string,
+  name: string,
+  price: ProductPrice,
+  image: ProductImage
+}

@@ -33,6 +33,10 @@
             "title": "Descuento de Cumpleaños",
             "description": "Celebra tu cumpleaños con un 20% de descuento"
           }
+        },
+        "best_sellers": {
+            "title": "Más Vendidos",
+            "description": "Descubre nuestros diseños más populares"
         }
     },
     "common": {

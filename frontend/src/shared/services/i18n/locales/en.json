@@ -33,6 +33,10 @@
             "title": "Birthday Discount",
             "description": "Celebrate your birthday with 20% off"
           }
+        },
+        "best_sellers": {
+            "title": "Best Sellers",
+            "description": "Discover our most popular designs"
         }
     },
     "common": {

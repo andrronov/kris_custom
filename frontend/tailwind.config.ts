@@ -153,7 +153,7 @@ export default {
           "accent-content": "#FFFFFF",
           primary: "#FF66B2",
           "primary-content": "#5E003E",
-          secondary: "#FFD1E3",
+          secondary: "#FF9AC2",
           "secondary-content": "#5E003E",
           neutral: "#FCEEF3",
           "neutral-content": "#5E003E",

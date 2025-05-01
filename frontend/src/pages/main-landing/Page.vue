@@ -3,6 +3,7 @@ import { useHead } from "@unhead/vue";
 import Hero from "./ui/blocks/Hero.vue";
 import SlidesAbout from "./ui/blocks/SlidesAbout.vue";
 import Discounts from "./ui/blocks/Discounts.vue";
+import BestSellers from "./ui/blocks/BestSellers.vue";
 
 useHead({
   title: "Custom Press-on-Nails by Kris",
@@ -30,5 +31,6 @@ useHead({
     <Hero />
     <SlidesAbout />
     <Discounts />
+    <BestSellers />
   </div>
 </template>
