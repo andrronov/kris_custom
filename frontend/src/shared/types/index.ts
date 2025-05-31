@@ -25,12 +25,12 @@ export enum Keys {
   Tab = "Tab",
 }
 
-export type ProductPrice = number | [number, number]
-export type ProductImage = string | [string, string]
+export type ProductPrice = number | [number, number];
+export type ProductImage = string | [string, string];
 
 export type Product = {
-  id: string,
-  name: string,
-  price: ProductPrice,
-  image: ProductImage
-}
+  id: string;
+  name: string;
+  price: ProductPrice;
+  decor: ProductImage;
+};
