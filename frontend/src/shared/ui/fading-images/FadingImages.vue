@@ -1,22 +1,37 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, useAttrs, onMounted, onBeforeUnmount } from "vue";
 import { Image } from "@/shared/ui";
 import type { ProductImage } from "@/shared/types";
 
 type Options = {
   changeInterval?: number;
-  autoChange?: boolean;
 };
 
-defineProps<{
+const props = defineProps<{
   images: Omit<ProductImage, string>;
   imgStyles?: string;
   options?: Options;
 }>();
 
-const imageStyles = "w-full z-100 object-cover";
+const attrs = useAttrs();
 
+const imageStyles = "z-100 object-cover";
 const isHovering = ref(false);
+
+let intervalId: ReturnType<typeof setInterval>;
+
+onMounted(() => {
+  if (props.options?.changeInterval) {
+    intervalId = setInterval(
+      () => (isHovering.value = !isHovering.value),
+      props.options?.changeInterval,
+    );
+  }
+});
+
+onBeforeUnmount(() => {
+  clearInterval(intervalId);
+});
 </script>
 
 <template>
@@ -26,7 +41,7 @@ const isHovering = ref(false);
     @touchstart="isHovering = true"
     @touchend="isHovering = false"
     @touchcancel="isHovering = false"
-    class="relative"
+    v-bind="attrs"
     :class="[imageStyles, imgStyles]"
   >
     <Image

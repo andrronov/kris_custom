@@ -98,6 +98,14 @@ export default {
             opacity: "0",
           },
         },
+        float: {
+          "0%, 100%": { transform: "translateX(0) translateY(0)" },
+          "50%": { transform: "translateX(2px) translateY(10px)" },
+        },
+        float1: {
+          "0%, 100%": { transform: "translateX(0) translateY(5px)" },
+          "50%": { transform: "translateX(-8px) translateY(-14px)" },
+        },
         shine: {
           "0%": {
             "background-position": "0% 50%",
@@ -130,6 +138,8 @@ export default {
         fade: "fade 0.3s ease-in-out",
         fadeIn: "fadeIn 0.2s ease-in-out",
         fadeOut: "fadeOut 0.2s ease-in-out",
+        float: "float 6s ease-in-out infinite",
+        float1: "float 8s ease-in-out infinite",
         shine: "shine 6s linear infinite",
         marquee: "marquee 70s linear infinite",
         "marquee-right": "marquee-right 70s linear infinite",

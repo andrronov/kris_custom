@@ -29,8 +29,9 @@ const props = withDefaults(
     <LikeProduct />
 
     <FadingImages
+      class="relative"
       :images="product.decor"
-      img-styles="h-[270px] md:h-[300px] lg:h-[400px]"
+      img-styles="h-[270px] md:h-[300px] lg:h-[400px] w-full"
     />
 
     <div class="w-full h-16 flex justify-center flex-col items-center">
