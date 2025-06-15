@@ -1,4 +1,10 @@
 {
+  "navigation": {
+    "discounts": "Descuentos",
+    "best_sellers": "Más vendidos",
+    "catalog": "Catálogo",
+    "about": "Acerca de"
+  },
   "main_landing": {
     "wear": "Usar",
     "art": "Arte",
@@ -14,7 +20,23 @@
       "100% Hecho a mano",
       "Variedad de diseños",
       "Elegante",
-      "Único"
+      "Único",
+      "Estético",
+      "Encantador",
+      "Hermoso",
+      "Chic",
+      "Moderna",
+      "Glamorosa",
+      "Sofisticada",
+      "Deslumbrante",
+      "Encantadora",
+      "Exquisita",
+      "Impecable",
+      "Hipnotizante",
+      "Impresionante",
+      "Cautivadora",
+      "Atractiva",
+      "Radiante"
     ],
     "discounts": {
       "buy_two": {

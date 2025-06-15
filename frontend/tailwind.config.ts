@@ -141,9 +141,9 @@ export default {
         float: "float 6s ease-in-out infinite",
         float1: "float 8s ease-in-out infinite",
         shine: "shine 6s linear infinite",
-        marquee: "marquee 70s linear infinite",
+        marquee: "marquee 85s linear infinite",
         "marquee-right": "marquee-right 70s linear infinite",
-        marquee2: "marquee2 70s linear infinite",
+        marquee2: "marquee2 85s linear infinite",
         "marquee2-right": "marquee2-right 70s linear infinite",
       },
       borderRadius: {

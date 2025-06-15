@@ -6,18 +6,18 @@ export const FALLBACK_THEME = "dark";
 export const LANGUAGES = {
   en: {
     label: "English",
-    icon: "/images/flags/gb.svg"
+    icon: "/images/flags/gb.svg",
   },
   sp: {
     label: "Español",
-    icon: "/images/flags/es.svg"
+    icon: "/images/flags/es.svg",
   },
 } as const;
 export const LANGUAGES_LIST = objectEntries(LANGUAGES).map(
   ([value, { label, icon }]) => ({
     value,
     label,
-    icon
+    icon,
   }),
 );
 export const SUPPORTED_LANGUAGES = LANGUAGES_LIST.map(({ value }) => value);

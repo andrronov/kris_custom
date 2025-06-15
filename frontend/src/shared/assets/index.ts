@@ -4,5 +4,8 @@ export const ICONS = {
   language: "ix:earth-filled",
   instagram: "carbon:logo-instagram",
   likeHeart: "system-uicons:heart",
-  removeLikeHeart: "system-uicons:heart-remove"
+  removeLikeHeart: "system-uicons:heart-remove",
+  moon: "material-symbols:dark-mode",
+  sun: "material-symbols:sunny-rounded",
+  cart: "material-symbols:remove-shopping-cart",
 } as const;

@@ -7,7 +7,11 @@ const isLiked = ref(false);
 </script>
 
 <template>
-  <Button @click="isLiked = !isLiked" color="secondary" class="absolute right-4 top-3 z-50">
+  <Button
+    @click="isLiked = !isLiked"
+    color="secondary"
+    class="absolute right-4 top-3 z-50"
+  >
     <Icon :name="ICONS.likeHeart" class="text-2xl" :filled="isLiked" />
   </Button>
 </template>

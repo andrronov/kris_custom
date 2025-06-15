@@ -10,25 +10,25 @@ const discounts = computed(() => {
     {
       title: t("main_landing.discounts.buy_two.title"),
       description: t("main_landing.discounts.buy_two.description"),
-      image: "first-time-customer.jpg"
+      image: "first-time-customer.jpg",
     },
     {
       title: t("main_landing.discounts.first_time.title"),
       description: t("main_landing.discounts.first_time.description"),
-      image: "first-time-customer.jpg"
+      image: "first-time-customer.jpg",
     },
     {
       title: t("main_landing.discounts.refer.title"),
       description: t("main_landing.discounts.refer.description"),
-      image: "refer-a-friend.jpg"
+      image: "refer-a-friend.jpg",
     },
     {
       title: t("main_landing.discounts.birthday.title"),
       description: t("main_landing.discounts.birthday.description"),
-      image: "birthday-discount.jpg"
-    }
-  ]
-})
+      image: "birthday-discount.jpg",
+    },
+  ];
+});
 </script>
 
 <template>
@@ -54,7 +54,7 @@ const discounts = computed(() => {
         size="md"
         color="secondary"
         variant="outline"
-        >
+      >
         {{ t("common.buttons.learn_more") }}
       </Button>
     </div>

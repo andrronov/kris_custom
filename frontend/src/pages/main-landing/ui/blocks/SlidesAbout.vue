@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t, tm } = useI18n();
+const { tm } = useI18n();
 </script>
 
 <template>
   <div
     class="flex flex-col gap-y-4 bg-primary text-primary-content py-3 font-medium"
   >
-    <div class="relative flex overflow-x-hidden container">
+    <div class="relative flex overflow-x-hidden">
       <div class="absolute top-0 flex animate-marquee whitespace-nowrap">
         <p
           v-for="(about, index) in tm('main_landing.slides_about')"

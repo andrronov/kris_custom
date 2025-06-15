@@ -1,4 +1,10 @@
 {
+  "navigation": {
+    "discounts": "Discounts",
+    "best_sellers": "Best sellers",
+    "catalog": "Catalog",
+    "about": "About"
+  },
   "main_landing": {
     "wear": "Wear",
     "art": "Art",
@@ -14,7 +20,25 @@
       "100% Handmade",
       "Variety of designs",
       "Stylish",
-      "Unique"
+      "Unique",
+      "Aesthetic",
+      "Lovely",
+      "Beautiful",
+      "Gorgeous",
+      "Elegant",
+      "Chic",
+      "Trendy",
+      "Glamorous",
+      "Sophisticated",
+      "Dazzling",
+      "Enchanting",
+      "Exquisite",
+      "Flawless",
+      "Mesmerizing",
+      "Stunning",
+      "Captivating",
+      "Alluring",
+      "Radiant"
     ],
     "discounts": {
       "buy_two": {

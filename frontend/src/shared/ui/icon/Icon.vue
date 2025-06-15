@@ -22,7 +22,7 @@ const classes = computed(() => [
 <style scoped lang="scss">
 .icon-filled {
   :deep(path) {
-    @apply fill-inherit
+    @apply fill-inherit;
   }
 }
 </style>

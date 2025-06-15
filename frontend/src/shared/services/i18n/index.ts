@@ -32,7 +32,6 @@ const instance = createI18n({
   globalInjection: true,
 });
 
-
 const locale = computed({
   get: () => instance.global.locale.value,
   set: (value: Language) => (instance.global.locale.value = value),
@@ -42,7 +41,7 @@ const i18n = {
   instance,
   locale,
   messages,
-}
+};
 
 export { i18n };
 export default instance;

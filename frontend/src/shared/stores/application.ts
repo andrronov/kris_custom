@@ -46,10 +46,10 @@ export const useAppStore = defineStore("app", () => {
 
     i18n.locale.value = value;
 
-    if(!import.meta.env.SSR) {
+    if (!import.meta.env.SSR) {
       document.documentElement.lang = value;
     }
-  })
+  });
 
   return {
     systemTheme,

@@ -18,13 +18,8 @@ const onChange = (cb: () => void) => {
 <template>
   <template v-for="item in LANGUAGES_LIST" :key="item.lang">
     <DropdownItem @click="onChange(() => appStore.changeLocale(item.value))">
-      <div
-        class="flex w-full items-center justify-between text-base-content"
-      >
-        <Image
-          :src="item.icon"
-          class="w-8 h-6"
-        />
+      <div class="flex w-full items-center justify-between text-base-content">
+        <Image :src="item.icon" class="w-8 h-6" />
         <span>
           {{ item.label }}
         </span>

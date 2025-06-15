@@ -15,9 +15,9 @@ const { theme } = usePlatform();
     v-model="appStore.showDrawer"
     sidebar-class="w-80"
     name="sidebar"
-    class="bg-base-100 text-base-content"
+    class="bg-base-100 text-base-content relative"
   >
-    <div style="z-index: var(--z-header)" class="top-0">
+    <div style="z-index: var(--z-header)" class="sticky top-0 left-0">
       <Header />
     </div>
     <div class="my-10 min-h-screen">
