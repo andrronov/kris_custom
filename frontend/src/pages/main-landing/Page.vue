@@ -29,7 +29,7 @@ useHead({
 </script>
 
 <template>
-  <div class="-mt-10">
+  <div class="-mt-20">
     <Hero />
     <SlidesAbout />
     <Discounts :id="anchor.get('discounts')" />

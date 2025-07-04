@@ -19,11 +19,13 @@ const props = withDefaults(
       | "center";
     hover?: boolean;
     disabled?: boolean;
+    margin?: "default" | "big";
   }>(),
   {
     placement: "bottom-end",
     hover: false,
     disabled: false,
+    margin: "default",
   },
 );
 
@@ -97,7 +99,8 @@ watchThrottled(
     </label>
     <div
       v-show="active"
-      class="menu dropdown-content z-[2] mt-2 animate-fadeIn overflow-y-auto rounded-default border border-base-300 bg-base-200 p-1.5 shadow"
+      class="menu dropdown-content z-[2] animate-fadeIn overflow-y-auto rounded-default border border-base-300 bg-base-200 p-1.5 shadow"
+      :class="props.margin === 'default' ? 'mt-2' : 'mt-4'"
       @keydown="onKeyDown"
       :style="{
         visibility: active ? 'visible' : 'hidden',

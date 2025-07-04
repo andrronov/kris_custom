@@ -8,4 +8,5 @@ export const ICONS = {
   moon: "material-symbols:dark-mode",
   sun: "material-symbols:sunny-rounded",
   cart: "material-symbols:remove-shopping-cart",
+  arrowRight: "mdi:arrow-right-thin",
 } as const;

@@ -17,10 +17,10 @@ const { theme } = usePlatform();
     name="sidebar"
     class="bg-base-100 text-base-content relative"
   >
-    <div style="z-index: var(--z-header)" class="sticky top-0 left-0">
+    <div style="z-index: var(--z-header)" class="sticky top-4 mx-4">
       <Header />
     </div>
-    <div class="my-10 min-h-screen">
+    <div class="min-h-screen">
       <slot />
     </div>
     <Footer />

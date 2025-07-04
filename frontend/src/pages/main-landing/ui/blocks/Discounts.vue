@@ -2,30 +2,36 @@
 import { Image, Button } from "@/shared/ui";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import type { DiscountCard } from "@/shared/types";
+import Card from "./DiscountCard.vue";
 
 const { t } = useI18n();
 
-const discounts = computed(() => {
+const discounts = computed<DiscountCard[]>(() => {
   return [
     {
       title: t("main_landing.discounts.buy_two.title"),
       description: t("main_landing.discounts.buy_two.description"),
-      image: "first-time-customer.jpg",
+      link: "",
+      image: "/images/mock/discount/nail-hand-1.jpg",
     },
     {
       title: t("main_landing.discounts.first_time.title"),
       description: t("main_landing.discounts.first_time.description"),
-      image: "first-time-customer.jpg",
+      link: "",
+      image: "/images/mock/discount/nail-hand-2.jpg",
     },
     {
       title: t("main_landing.discounts.refer.title"),
       description: t("main_landing.discounts.refer.description"),
-      image: "refer-a-friend.jpg",
+      link: "",
+      image: "/images/mock/discount/nail-hand-3.jpg",
     },
     {
       title: t("main_landing.discounts.birthday.title"),
       description: t("main_landing.discounts.birthday.description"),
-      image: "birthday-discount.jpg",
+      link: "",
+      image: "/images/mock/discount/nail-hand-4.jpg",
     },
   ];
 });
@@ -33,35 +39,17 @@ const discounts = computed(() => {
 
 <template>
   <section
-    class="container py-12 flex items-center justify-between gap-4 overflow-x-auto overflow-y-hidden w-full"
+    class="container cards py-12 flex items-center justify-between gap-4 overflow-x-auto overflow-y-hidden w-full"
   >
-    <div
-      v-for="(discount, index) in discounts"
-      :key="index"
-      class="relative h-48 min-w-[300px] w-full rounded-3xl bg-base-100 border border-secondary flex flex-col justify-between items-center p-4"
-    >
-      <Image
-        src="/images/hero.jpg"
-        layout="fullWidth"
-        class="absolute w-full h-full object-cover rounded-3xl top-0 left-0 opacity-50"
-      />
-      <div class="w-full z-50">
-        <h3 class="text-2xl font-bold text-secondary">{{ discount.title }}</h3>
-        <p class="text-lg">{{ discount.description }}</p>
-      </div>
-      <Button
-        class="mt-3 z-50 self-start"
-        size="md"
-        color="secondary"
-        variant="outline"
-      >
-        {{ t("common.buttons.learn_more") }}
-      </Button>
-    </div>
+    <Card
+      v-for="discount in discounts"
+      :key="discount.title"
+      :discount="discount"
+    />
   </section>
 </template>
 
-<style scoped>
+<style>
 .container {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -70,5 +58,31 @@ const discounts = computed(() => {
 
 .container::-webkit-scrollbar {
   display: none;
+}
+
+/* .cards:hover .discount-card {
+  opacity: 0.65;
+  filter: grayscale(30%);
+  transition: all 0.3s;
+}
+
+.cards .discount-card:hover {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: scale(1.05);
+  box-shadow: 8px 8px 20px var(--secondary);
+} */
+
+.cards:has(.discount-card:hover) .discount-card {
+  opacity: 0.5;
+  filter: grayscale(30%);
+  transition: all 0.3s;
+}
+
+.cards:has(.discount-card:hover) .discount-card:hover {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: scale(1.05);
+  box-shadow: 8px 8px 20px var(--secondary);
 }
 </style>

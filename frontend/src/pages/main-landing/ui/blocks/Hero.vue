@@ -6,7 +6,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <section class="relative flex h-[720px] bg-base-100">
+  <section class="relative flex h-[790px] bg-base-100">
     <Image
       src="/images/hero.jpg"
       layout="fullWidth"
@@ -30,8 +30,13 @@ const { t } = useI18n();
         <span class="font-bold text-primary">{{ t("common.you") }}</span
         >.
       </p>
-      <Button class="mt-16" variant="outline" size="lg" color="primary">
-        {{ t("common.buttons.discover") }}
+      <Button
+        class="mt-16 !rounded-full"
+        shadow="success"
+        size="lg"
+        color="primary"
+      >
+        {{ t("common.buttons.shop_now") }}
       </Button>
     </div>
   </section>

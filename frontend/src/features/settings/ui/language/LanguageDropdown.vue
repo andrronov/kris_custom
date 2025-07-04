@@ -9,9 +9,12 @@ defineProps<{
 </script>
 
 <template>
-  <Dropdown :placement="alignment === 'right' ? 'bottom-end' : 'bottom-start'">
+  <Dropdown
+    :placement="alignment === 'right' ? 'bottom-end' : 'bottom-start'"
+    margin="big"
+  >
     <template #toggler>
-      <LanguageIcon class="text-primary" />
+      <LanguageIcon class="text-primary-content" />
     </template>
     <template #default="{ close }">
       <div class="w-32">

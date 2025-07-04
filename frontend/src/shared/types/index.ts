@@ -34,3 +34,10 @@ export type Product = {
   price: ProductPrice;
   decor: ProductImage;
 };
+
+export type DiscountCard = {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+};
