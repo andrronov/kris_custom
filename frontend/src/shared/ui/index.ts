@@ -9,3 +9,4 @@ export { default as Icon } from "./icon/Icon.vue";
 export { default as Link } from "./link/Link.vue";
 export { default as Logo } from "./logo/Logo.vue";
 export { default as RouterNav } from "./router-nav/RouterNav.vue";
+export { default as Slider } from "./slider/Slider.vue";

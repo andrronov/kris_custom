@@ -5,7 +5,7 @@ import Hero from "./ui/blocks/Hero.vue";
 import SlidesAbout from "./ui/blocks/SlidesAbout.vue";
 import Discounts from "./ui/blocks/Discounts.vue";
 import BestSellers from "./ui/blocks/BestSellers.vue";
-import NailsAesthetic from "./ui/blocks/NailsAesthetic.vue";
+import Mission from "./ui/blocks/Mission.vue";
 
 useHead({
   title: "Custom Press-on-Nails by Kris",
@@ -34,6 +34,7 @@ useHead({
     <SlidesAbout />
     <Discounts :id="anchor.get('discounts')" />
     <BestSellers :id="anchor.get('best-sellers')" />
-    <NailsAesthetic />
+    <Mission :id="anchor.get('mission')" />
+    <!-- <NailsAesthetic /> -->
   </div>
 </template>
