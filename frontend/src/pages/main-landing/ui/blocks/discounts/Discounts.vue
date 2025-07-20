@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { Image, Button } from "@/shared/ui";
-import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { computed } from "vue";
 import type { DiscountCard } from "@/shared/types";
 import Card from "./DiscountCard.vue";
 

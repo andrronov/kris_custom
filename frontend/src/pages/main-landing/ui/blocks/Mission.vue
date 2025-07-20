@@ -18,7 +18,7 @@ const { t } = useI18n();
       </p>
     </div>
     <Slider
-      #default="{ defaultClass }"
+      #default="{ defaultClass, currentSlide }"
       :options="{ loop: true }"
       :auto-play="{ delay: 3500, stopOnInteraction: false }"
     >
@@ -26,7 +26,12 @@ const { t } = useI18n();
         v-for="(img, idx) in 5"
         :key="idx"
         src="/images/hero.jpg"
-        :class="defaultClass"
+        :class="[
+          defaultClass,
+          {
+            'animate-pulse': currentSlide === idx,
+          },
+        ]"
         class="mx-6 md:max-w-[450px] max-w-[400px] md:max-h-[450px] max-h-[400px] object-cover"
       />
     </Slider>

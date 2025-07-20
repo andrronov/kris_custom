@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HowStep } from "@/shared/types";
+import type { HowStep } from "./types";
 import { ICONS } from "@/shared/assets";
 import { Icon } from "@/shared/ui";
 

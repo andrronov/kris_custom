@@ -3,9 +3,9 @@ import { useHead } from "@unhead/vue";
 import { anchor } from "@/shared/lib/utils";
 import Hero from "./ui/blocks/Hero.vue";
 import SlidesAbout from "./ui/blocks/SlidesAbout.vue";
-import Discounts from "./ui/blocks/Discounts.vue";
+import Discounts from "./ui/blocks/discounts/Discounts.vue";
 import BestSellers from "./ui/blocks/BestSellers.vue";
-import HowWorks from "./ui/blocks/HowWorks.vue";
+import HowGet from "./ui/blocks/how-get/HowGet.vue";
 import Mission from "./ui/blocks/Mission.vue";
 
 useHead({
@@ -35,7 +35,7 @@ useHead({
     <SlidesAbout />
     <Discounts :id="anchor.get('discounts')" />
     <BestSellers :id="anchor.get('best-sellers')" />
-    <HowWorks />
+    <HowGet />
     <Mission />
     <!-- <NailsAesthetic /> -->
   </div>

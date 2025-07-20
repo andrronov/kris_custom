@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
 import { Slider, Image } from "@/shared/ui";
-import type { HowStep } from "@/shared/types";
+import type { HowStep } from "./types";
 import Steps from "./HowSteps.vue";
 
 const { t, tm } = useI18n();
