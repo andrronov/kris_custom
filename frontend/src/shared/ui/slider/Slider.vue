@@ -19,13 +19,15 @@ const plugins = computed(() => {
   return plugins;
 });
 
-const [emblaRef] = emblaCarouselVue(props?.options, plugins.value);
+const [emblaRef, emblaApi] = emblaCarouselVue(props?.options, plugins.value);
+
+const getDefaultClass = () => "min-w-0 flex-shrink-0 flex-grow-0 basis-full";
 </script>
 
 <template>
   <div class="overflow-hidden" ref="emblaRef">
     <div class="flex">
-      <slot />
+      <slot :default-class="getDefaultClass()" />
     </div>
   </div>
 </template>

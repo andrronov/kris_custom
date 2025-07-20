@@ -60,6 +60,46 @@
       "title": "Más Vendidos",
       "description": "Descubre nuestros diseños más populares"
     },
+    "how_works": {
+      "title": "¿Cómo conseguir uñas nuevas?",
+      "steps": [
+        {
+          "title": "ELIGE TU ESTILO",
+          "icon": "colorPalette",
+          "description": "¡Elige cualquier diseño que quieras basado en tu estilo!"
+        },
+        {
+          "title": "SELECCIONA TU TALLA",
+          "icon": "cursorClick",
+          "description": "¡Selecciona o mide el tamaño de tus uñas! *Ver instrucciones*"
+        },
+        {
+          "title": "APRUEBA TU DISEÑO",
+          "icon": "heartsFace",
+          "description": "¡Asegúrate de haber elegido el color y diseño correctos! ¿Tal vez quieras agregar algunos encantos extra a tus uñas...?"
+        },
+        {
+          "title": "INFORMACIÓN DE ENVÍO",
+          "icon": "deliveryTruckSpeed",
+          "description": "¡Completa y verifica tu dirección de envío!"
+        },
+        {
+          "title": "PAGO",
+          "icon": "creditScore",
+          "description": "¡Elige tu método de pago y disfruta!"
+        },
+        {
+          "title": "RESEÑAS",
+          "icon": "thumbnailPreview",
+          "description": "¡Ve las reseñas y comparte tu experiencia con nosotros!"
+        },
+        {
+          "title": "DISFRUTA",
+          "icon": "heartHand",
+          "description": "¡Ponte tus nuevas uñas y disfruta! <3"
+        }
+      ]
+    },
     "mission": {
       "title": "Nuestra Misión",
       "description": "hacer la belleza accesible y dejar que tu singularidad brille"
@@ -75,7 +115,8 @@
       "discover": "Descubrir",
       "shop_now": "Comprar Ahora",
       "learn_more": "Aprender Más",
-      "view_catalog": "Ver el catálogo"
+      "view_catalog": "Ver el catálogo",
+      "get_your_beauty": "Obtén tu belleza"
     }
   }
 }

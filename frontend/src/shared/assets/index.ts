@@ -9,4 +9,11 @@ export const ICONS = {
   sun: "material-symbols:sunny-rounded",
   cart: "material-symbols:remove-shopping-cart",
   arrowRight: "mdi:arrow-right-thin",
+  colorPalette: "eva:color-palette-outline",
+  cursorClick: "heroicons-outline:cursor-click",
+  heartsFace: "fa-regular:grin-hearts",
+  deliveryTruckSpeed: "material-symbols:delivery-truck-speed-outline-rounded",
+  creditScore: "material-symbols:credit-score-outline-rounded",
+  thumbnailPreview: "carbon:thumbnail-preview",
+  heartHand: "mingcute:hand-heart-line",
 } as const;

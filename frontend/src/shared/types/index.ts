@@ -41,3 +41,9 @@ export type DiscountCard = {
   image: string;
   link: string;
 };
+
+export type HowStep = {
+  title: string;
+  description: string;
+  icon: string;
+};

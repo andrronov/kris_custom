@@ -5,6 +5,7 @@ import Hero from "./ui/blocks/Hero.vue";
 import SlidesAbout from "./ui/blocks/SlidesAbout.vue";
 import Discounts from "./ui/blocks/Discounts.vue";
 import BestSellers from "./ui/blocks/BestSellers.vue";
+import HowWorks from "./ui/blocks/HowWorks.vue";
 import Mission from "./ui/blocks/Mission.vue";
 
 useHead({
@@ -34,7 +35,8 @@ useHead({
     <SlidesAbout />
     <Discounts :id="anchor.get('discounts')" />
     <BestSellers :id="anchor.get('best-sellers')" />
-    <Mission :id="anchor.get('mission')" />
+    <HowWorks />
+    <Mission />
     <!-- <NailsAesthetic /> -->
   </div>
 </template>

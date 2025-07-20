@@ -7,11 +7,11 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <section class="container py-6 pb-16 flex flex-col w-full">
-    <h2 class="text-4xl text-primary font-semibold mb-3">
+  <section class="py-6 pb-16 flex flex-col w-full">
+    <h2 class="container text-4xl text-primary font-semibold mb-3">
       {{ t("main_landing.best_sellers.title") }}
     </h2>
-    <p class="text-lg text-secondary">
+    <p class="container text-lg text-secondary">
       {{ t("main_landing.best_sellers.description") }}
     </p>
     <div class="flex items-center gap-4 overflow-x-auto mt-6 py-4 no-scrollbar">

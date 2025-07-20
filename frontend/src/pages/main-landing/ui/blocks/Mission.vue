@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { Slider, Image } from "@/shared/ui";
+import { Slider, Image, Button } from "@/shared/ui";
 
 const { t } = useI18n();
 </script>
@@ -18,6 +18,7 @@ const { t } = useI18n();
       </p>
     </div>
     <Slider
+      #default="{ defaultClass }"
       :options="{ loop: true }"
       :auto-play="{ delay: 3500, stopOnInteraction: false }"
     >
@@ -25,8 +26,12 @@ const { t } = useI18n();
         v-for="(img, idx) in 5"
         :key="idx"
         src="/images/hero.jpg"
-        class="min-w-0 flex-shrink-0 flex-grow-0 basis-full mx-8 max-w-[400px] max-h-[400px] object-cover"
+        :class="defaultClass"
+        class="mx-6 md:max-w-[450px] max-w-[400px] md:max-h-[450px] max-h-[400px] object-cover"
       />
     </Slider>
+    <Button class="mx-auto" color="primary" variant="outline">
+      {{ t("common.buttons.get_your_beauty") }}
+    </Button>
   </section>
 </template>

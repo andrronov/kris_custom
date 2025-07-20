@@ -62,6 +62,46 @@
       "title": "Best Sellers",
       "description": "Discover our most popular designs"
     },
+    "how_works": {
+      "title": "How to get new nails?",
+      "steps": [
+        {
+          "title": "CHOOSE YOUR STYLE",
+          "icon": "colorPalette",
+          "description": "Choose any design you want based on your style!"
+        },
+        {
+          "title": "SELECT YOUR SIZE",
+          "icon": "cursorClick",
+          "description": "Select or measure the size of your nails! *See instructions*"
+        },
+        {
+          "title": "APPROVE YOUR DESIGN",
+          "icon": "heartsFace",
+          "description": "Make sure you chose the right color and design! Maybe you want to add some extra charms to your nails…?"
+        },
+        {
+          "title": "SHIPPING INFO",
+          "icon": "deliveryTruckSpeed",
+          "description": "Fill out and check your shipping address!"
+        },
+        {
+          "title": "PAYMENT",
+          "icon": "creditScore",
+          "description": "Choose your payment method and enjoy!"
+        },
+        {
+          "title": "REVIEWS",
+          "icon": "thumbnailPreview",
+          "description": "See reviews and share your experience with us!"
+        },
+        {
+          "title": "ENJOY",
+          "icon": "heartHand",
+          "description": "Put your new nails on and enjoy! <3"
+        }
+      ]
+    },
     "mission": {
       "title": "Our Mission",
       "description": "make beauty accessible and let your uniqueness shine"
@@ -77,7 +117,8 @@
       "discover": "Discover",
       "shop_now": "Shop Now",
       "learn_more": "Learn More",
-      "view_catalog": "View the catalog"
+      "view_catalog": "View the catalog",
+      "get_your_beauty": "Get your beauty"
     }
   }
 }

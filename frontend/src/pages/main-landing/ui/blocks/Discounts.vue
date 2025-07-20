@@ -60,19 +60,6 @@ const discounts = computed<DiscountCard[]>(() => {
   display: none;
 }
 
-/* .cards:hover .discount-card {
-  opacity: 0.65;
-  filter: grayscale(30%);
-  transition: all 0.3s;
-}
-
-.cards .discount-card:hover {
-  opacity: 1 !important;
-  filter: none !important;
-  transform: scale(1.05);
-  box-shadow: 8px 8px 20px var(--secondary);
-} */
-
 .cards:has(.discount-card:hover) .discount-card {
   opacity: 0.5;
   filter: grayscale(30%);
