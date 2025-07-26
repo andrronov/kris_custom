@@ -20,19 +20,20 @@ const { t } = useI18n();
     <Slider
       #default="{ defaultClass, currentSlide }"
       :options="{ loop: true }"
-      :auto-play="{ delay: 3500, stopOnInteraction: false }"
+      :auto-play="{ delay: 4500, stopOnInteraction: false }"
+      class="p-4"
     >
       <Image
-        v-for="(img, idx) in 5"
+        v-for="(img, idx) in 10"
         :key="idx"
         src="/images/hero.jpg"
         :class="[
           defaultClass,
-          {
-            'animate-pulse': currentSlide === idx,
-          },
+          'mx-2 md:mx-6 md:max-w-[450px] transition-shadow duration-500 max-w-[325px] md:max-h-[450px] max-h-[325px] object-cover rounded-lg',
+          currentSlide === idx
+            ? 'shadow-lg shadow-primary'
+            : 'opacity-60 grayscale',
         ]"
-        class="mx-6 md:max-w-[450px] max-w-[400px] md:max-h-[450px] max-h-[400px] object-cover"
       />
     </Slider>
     <Button class="mx-auto" color="primary" variant="outline">
