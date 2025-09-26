@@ -16,4 +16,6 @@ export const ICONS = {
   creditScore: "material-symbols:credit-score-outline-rounded",
   thumbnailPreview: "carbon:thumbnail-preview",
   heartHand: "mingcute:hand-heart-line",
+  successSolid: "icon-park-solid:success",
+  closeOutline: "material-symbols-light:cancel-outline",
 } as const;

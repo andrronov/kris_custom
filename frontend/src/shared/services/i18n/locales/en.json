@@ -106,6 +106,39 @@
       "title": "Our Mission",
       "description": "make beauty accessible and let your uniqueness shine"
     },
+    "comparison": {
+      "title": "Why Nails by Kris?",
+      "table": {
+        "headRows": ["Nails in saloon", "Nails by Kris"],
+        "bodyRows": [
+          {
+            "parameter": "Time to make",
+            "negativeValue": "2 hours",
+            "positiveValue": "5 minutes"
+          },
+          {
+            "parameter": "Price",
+            "negativeValue": "$$$",
+            "positiveValue": "$"
+          },
+          {
+            "parameter": "Reusability",
+            "negativeValue": false,
+            "positiveValue": true
+          },
+          {
+            "parameter": "Make it yourself",
+            "negativeValue": false,
+            "positiveValue": true
+          },
+          {
+            "parameter": "Convenience",
+            "negativeValue": "Poor",
+            "positiveValue": "Excelent"
+          }
+        ]
+      }
+    },
     "nails_aesthetic": {
       "title": "Feel the aesthetic",
       "description": "on your hands"
@@ -113,6 +146,8 @@
   },
   "common": {
     "you": "You",
+    "scroll-to-see": "Scroll to see",
+    "swipe-to-see": "Swipe to see",
     "buttons": {
       "discover": "Discover",
       "shop_now": "Shop Now",

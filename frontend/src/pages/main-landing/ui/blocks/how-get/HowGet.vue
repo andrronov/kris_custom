@@ -12,7 +12,7 @@ const howSteps = computed<HowStep[]>(() => tm("main_landing.how_works.steps"));
 
 <template>
   <section class="container py-6 pb-16 flex flex-col w-full">
-    <h2 class="text-4xl text-primary font-semibold mb-3">
+    <h2 class="text-3xl md:text-4xl text-primary font-semibold mb-3">
       {{ t("main_landing.how_works.title") }}
     </h2>
     <div

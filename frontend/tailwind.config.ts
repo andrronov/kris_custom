@@ -33,7 +33,7 @@ export default {
     },
     extend: {
       colors: {
-        "rose-light": "#FFC0CB",
+        "rose-light": "#FF85A1",
         "rose-dark": "#D81B60",
         "rose-muted": "#FADADD",
       },
