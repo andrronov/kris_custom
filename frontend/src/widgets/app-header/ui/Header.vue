@@ -11,14 +11,13 @@ const { platformRoutes } = usePlatform();
 
 <template>
   <header
-    style="box-shadow: 0 -1px 0 0 var(--primary) inset"
-    class="flex h-16 items-center bg-base-100 justify-between px-2 text-base-content"
+    class="flex h-16 items-center bg-primary/75 backdrop-blur-sm rounded-full justify-between px-2 text-primary-content"
   >
     <div class="container flex items-center h-full w-full justify-between">
       <RouterNav
         :bordered="false"
         :exact-active="false"
-        class="flex-shrink-1 hidden gap-4 w-full justify-start lg:flex"
+        class="flex-shrink-1 hidden gap-4 w-full uppercase font-thin justify-start lg:flex"
       >
         <template v-for="item in platformRoutes" :key="item.id">
           <Link
@@ -33,7 +32,7 @@ const { platformRoutes } = usePlatform();
           </Link>
         </template>
       </RouterNav>
-      <div class="inline-flex w-full items-center justify-start">
+      <div class="inline-flex w-full ml-10 items-center justify-start">
         <Link to="/">
           <Logo class="flex-1" />
         </Link>

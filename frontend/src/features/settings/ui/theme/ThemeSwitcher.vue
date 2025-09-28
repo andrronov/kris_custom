@@ -20,7 +20,7 @@ const { theme } = usePlatform();
     @click="appStore.toggleTheme()"
   >
     <Icon
-      class="w-8 h-8 text-primary"
+      class="w-8 h-8 text-primary-content"
       :name="theme === 'light' ? ICONS.sun : ICONS.moon"
     />
   </button>

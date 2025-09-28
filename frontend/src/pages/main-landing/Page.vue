@@ -3,9 +3,11 @@ import { useHead } from "@unhead/vue";
 import { anchor } from "@/shared/lib/utils";
 import Hero from "./ui/blocks/Hero.vue";
 import SlidesAbout from "./ui/blocks/SlidesAbout.vue";
-import Discounts from "./ui/blocks/Discounts.vue";
+import Discounts from "./ui/blocks/discounts/Discounts.vue";
 import BestSellers from "./ui/blocks/BestSellers.vue";
-import NailsAesthetic from "./ui/blocks/NailsAesthetic.vue";
+import HowGet from "./ui/blocks/how-get/HowGet.vue";
+import Mission from "./ui/blocks/Mission.vue";
+import Comparison from "./ui/blocks/Comparison.vue";
 
 useHead({
   title: "Custom Press-on-Nails by Kris",
@@ -29,11 +31,14 @@ useHead({
 </script>
 
 <template>
-  <div class="-mt-10">
+  <div class="-mt-20">
     <Hero />
     <SlidesAbout />
     <Discounts :id="anchor.get('discounts')" />
     <BestSellers :id="anchor.get('best-sellers')" />
-    <NailsAesthetic />
+    <HowGet />
+    <Mission />
+    <Comparison />
+    <!-- <NailsAesthetic /> -->
   </div>
 </template>
