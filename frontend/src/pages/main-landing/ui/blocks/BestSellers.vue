@@ -2,21 +2,24 @@
 import { useI18n } from "vue-i18n";
 import { ProductCard } from "@/entitites/product-card";
 import { Button, Slider } from "@/shared/ui";
+import SectionHeading from "../components/SectionHeading.vue";
 
 const { t } = useI18n();
 </script>
 
 <template>
   <section class="py-6 pb-16 flex flex-col w-full">
-    <h2 class="container text-4xl text-primary font-semibold mb-3">
-      {{ t("main_landing.best_sellers.title") }}
-    </h2>
-    <p class="container text-lg text-secondary">
-      {{ t("main_landing.best_sellers.description") }}
-    </p>
+    <SectionHeading class="container">
+      <template #default>
+        {{ t("main_landing.best_sellers.title") }}
+      </template>
+      <template #subtitle>
+        {{ t("main_landing.best_sellers.description") }}
+      </template>
+    </SectionHeading>
     <Slider
       #default="{ defaultClass }"
-      class="mt-6 py-4 slider-with-container-padding"
+      class="py-4 slider-with-container-padding"
     >
       <ProductCard
         v-for="item in 6"

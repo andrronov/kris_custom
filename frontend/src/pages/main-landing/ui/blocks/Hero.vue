@@ -25,7 +25,7 @@ const { t } = useI18n();
         }}</span
         >.
       </h1>
-      <p class="mt-2 w-full text-center font-light text-lg md:text-xl">
+      <p class="mt-2 w-full text-center font-normal text-lg md:text-xl">
         {{ t("main_landing.description") }}
         <span class="font-bold text-primary">{{ t("common.you") }}</span
         >.

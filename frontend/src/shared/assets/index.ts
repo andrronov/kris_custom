@@ -8,6 +8,8 @@ export const ICONS = {
   moon: "material-symbols:dark-mode",
   sun: "material-symbols:sunny-rounded",
   cart: "material-symbols:remove-shopping-cart",
+  up: "material-symbols:keyboard-arrow-up-rounded",
+  down: "material-symbols:keyboard-arrow-down-rounded",
   arrowRight: "mdi:arrow-right-thin",
   colorPalette: "eva:color-palette-outline",
   cursorClick: "heroicons-outline:cursor-click",

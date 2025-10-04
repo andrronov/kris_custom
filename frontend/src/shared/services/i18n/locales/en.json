@@ -3,14 +3,16 @@
     "discounts": "Discounts",
     "best_sellers": "Best sellers",
     "catalog": "Catalog",
-    "about": "About"
+    "faq": "FAQ",
+    "why_us": "Why us",
+    "how_get_them": "How get them"
   },
   "main_landing": {
     "wear": "Wear",
     "art": "Art",
     "define": "Define",
     "beauty": "Beauty",
-    "description": "Best handmade nails only for",
+    "description": "Best handmade press-on nails only for",
     "slides_about": [
       "Easy to use",
       "Customizable",
@@ -63,7 +65,7 @@
       "description": "Discover our most popular designs"
     },
     "how_works": {
-      "title": "How to get new nails?",
+      "title": "How to get new press-on nails?",
       "steps": [
         {
           "title": "CHOOSE YOUR STYLE",
@@ -139,6 +141,55 @@
         ]
       }
     },
+    "faq": {
+      "title": "Questions & Answers",
+      "qas": [
+        {
+          "question": "✨ How long do press-on nails last?",
+          "answer": "It depends on how you apply them! With nail tabs, they last about 1–2 days (perfect for an event 💃). With glue, they can stay on up to 1–2 weeks if you take care of them 💕"
+        },
+        {
+          "question": "✨ What comes in the set?",
+          "answer": "Each set includes: \n - 10 nails (depending on your size) \n - Nail glue + sticky tabs \n - Mini file & cuticle stick \n - Everything you need for the perfect at-home manicure ✨"
+        },
+        {
+          "question": "✨ How do I apply and remove them? Is it difficult?",
+          "answer": "Not at all! 🥰 Application takes just a few minutes: prep your nails, apply glue/tabs, and press. Removal is easy too — just soak in warm water + a bit of oil, and they’ll slide off gently 💧🌸"
+        },
+        {
+          "question": "✨ Can I customize the size or shape?",
+          "answer": "Yes of course! 💅 You can choose length (short/medium/long) and shape (coffin, almond, square, stiletto). If you want something extra special, just message me 💖"
+        },
+        {
+          "question": "✨ Can I reuse them?",
+          "answer": "Definitely! If you remove them carefully and clean off the glue, you can wear them multiple times 🫶 Perfect for saving your fave designs."
+        },
+        {
+          "question": "✨ Are they safe for my natural nails?",
+          "answer": "Yes 💕 Press-ons are much gentler than acrylics or gels. As long as you remove them properly, your natural nails stay healthy and strong 🌿✨"
+        },
+        {
+          "question": "✨ How long does shipping take?",
+          "answer": "Shipping usually takes 3–7 business days (US). I always pack and ship orders as quickly as I can 📦💌"
+        },
+        {
+          "question": "✨ Do you take custom design requests?",
+          "answer": "Yes!! 🎨 I love making custom sets. If you have inspo pics, colors, or themes, just let me know and I’ll create something unique just for you 💖"
+        },
+        {
+          "question": "✨ What glue do you recommend?",
+          "answer": "I include glue in every set 💕 But if you want extra-strong hold, I recommend Kiss Nail Glue or Nailene – they’re amazing for long wear!"
+        },
+        {
+          "question": "✨ Do you make different nail lengths?",
+          "answer": "Yes ✨ Short, medium, long, and extra long — you can pick the length that matches your vibe 🔥"
+        },
+        {
+          "question": "✨ What if a nail doesn’t fit me perfectly?",
+          "answer": "Don’t worry! Sets come with extra sizes, so you’ll always find a match. You can also file the edges a little for a perfect custom fit 💕"
+        }
+      ]
+    },
     "nails_aesthetic": {
       "title": "Feel the aesthetic",
       "description": "on your hands"
@@ -153,7 +204,8 @@
       "shop_now": "Shop Now",
       "learn_more": "Learn More",
       "view_catalog": "View the catalog",
-      "get_your_beauty": "Get your beauty"
+      "get_your_beauty": "Get your beauty",
+      "get_new_nails": "Get new nails"
     }
   }
 }

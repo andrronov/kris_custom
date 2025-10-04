@@ -8,6 +8,7 @@ import BestSellers from "./ui/blocks/BestSellers.vue";
 import HowGet from "./ui/blocks/how-get/HowGet.vue";
 import Mission from "./ui/blocks/Mission.vue";
 import Comparison from "./ui/blocks/Comparison.vue";
+import Faq from "./ui/blocks/Faq.vue";
 
 useHead({
   title: "Custom Press-on-Nails by Kris",
@@ -36,9 +37,10 @@ useHead({
     <SlidesAbout />
     <Discounts :id="anchor.get('discounts')" />
     <BestSellers :id="anchor.get('best-sellers')" />
-    <HowGet />
+    <HowGet :id="anchor.get('how-get-new-nails')" />
+    <Comparison :id="anchor.get('why-us')" />
     <Mission />
-    <Comparison />
+    <Faq :id="anchor.get('faq')" />
     <!-- <NailsAesthetic /> -->
   </div>
 </template>

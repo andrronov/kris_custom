@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
-import { Slider, Image } from "@/shared/ui";
+import { Slider, Image, Button } from "@/shared/ui";
+
 import type { HowStep } from "./types";
 import Steps from "./HowSteps.vue";
+
+import SectionHeading from "../../components/SectionHeading.vue";
 
 const { t, tm } = useI18n();
 
@@ -12,9 +15,9 @@ const howSteps = computed<HowStep[]>(() => tm("main_landing.how_works.steps"));
 
 <template>
   <section class="container py-6 pb-16 flex flex-col w-full">
-    <h2 class="text-3xl md:text-4xl text-primary font-semibold mb-3">
+    <SectionHeading>
       {{ t("main_landing.how_works.title") }}
-    </h2>
+    </SectionHeading>
     <div
       class="flex flex-col md:flex-row items-start md:items-end justify-between"
     >

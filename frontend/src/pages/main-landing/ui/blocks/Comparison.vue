@@ -4,6 +4,8 @@ import { useI18n } from "vue-i18n";
 import { Button, Icon } from "@/shared/ui";
 import { ICONS } from "@/shared/assets";
 
+import SectionHeading from "../components/SectionHeading.vue";
+
 type BodyRow = {
   parameter: string;
   negativeValue: string;
@@ -20,12 +22,12 @@ const tableContent = computed(() => ({
 
 <template>
   <section class="py-6 pb-16 flex flex-col w-full">
-    <h2 class="container text-3xl md:text-4xl text-primary font-semibold mb-2">
-      {{ t("main_landing.comparison.title") }}
-    </h2>
-    <p class="container mb-4 md:hidden text-lg">
-      ({{ t("common.swipe-to-see") }})
-    </p>
+    <SectionHeading mobile-only class="container">
+      <template #default>
+        {{ t("main_landing.comparison.title") }}
+      </template>
+      <template #subtitle> ({{ t("common.swipe-to-see") }}) </template>
+    </SectionHeading>
     <div class="overflow-x-auto md:container">
       <table class="table-fixed table-lg w-full mb-3 md:mb-0 min-w-[625px]">
         <colgroup>

@@ -17,7 +17,7 @@ const { platformRoutes } = usePlatform();
       <RouterNav
         :bordered="false"
         :exact-active="false"
-        class="flex-shrink-1 hidden gap-4 w-full uppercase font-thin justify-start lg:flex"
+        class="flex-shrink-1 hidden gap-4 w-full uppercase font-normal text-primary-content justify-start lg:flex"
       >
         <template v-for="item in platformRoutes" :key="item.id">
           <Link
@@ -38,7 +38,7 @@ const { platformRoutes } = usePlatform();
         </Link>
       </div>
       <div class="inline-flex min-w-fit items-center justify-end">
-        <div class="flex items-center divide-x divide-base-300">
+        <div class="flex items-center divide-x-2 divide-secondary">
           <ThemeSwitcher class="pl-1 pr-3" />
           <LanguageDropdown alignment="right" class="pl-3" />
         </div>

@@ -20,7 +20,7 @@ withDefaults(
       :class="[
         exactActive
           ? '[&>.router-link-exact-active]:text-primary'
-          : '[&>.router-link-active]:text-primary',
+          : '[&>.router-link-active]:text-base-100',
       ]"
     >
       <slot></slot>

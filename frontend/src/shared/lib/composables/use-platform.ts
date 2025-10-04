@@ -44,20 +44,30 @@ export const usePlatform = () => {
     },
     {
       id: undefined,
-      name: t("navigation.catalog"),
+      name: t("navigation.how_get_them"),
       to: {
         name: "main-landing",
-        hash: anchor.prepare("best-sellers"),
+        hash: anchor.prepare("how-get-new-nails"),
       } as RouteLocationRaw<"main-landing">,
     },
-    {
-      id: undefined,
-      name: t("navigation.about"),
-      to: {
-        name: "main-landing",
-        hash: anchor.prepare("best-sellers"),
-      } as RouteLocationRaw<"main-landing">,
-    },
+
+    // Show only on mobile
+    // {
+    //   id: undefined,
+    //   name: t("navigation.why_us"),
+    //   to: {
+    //     name: "main-landing",
+    //     hash: anchor.prepare("why-us"),
+    //   } as RouteLocationRaw<"main-landing">,
+    // },
+    // {
+    //   id: undefined,
+    //   name: t("navigation.faq"),
+    //   to: {
+    //     name: "main-landing",
+    //     hash: anchor.prepare("faq"),
+    //   } as RouteLocationRaw<"main-landing">,
+    // },
   ]);
 
   watchEffect(() => {
