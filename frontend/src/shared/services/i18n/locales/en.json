@@ -5,7 +5,22 @@
     "catalog": "Catalog",
     "faq": "FAQ",
     "why_us": "Why us",
-    "how_get_them": "How get them"
+    "how_get_them": "How get"
+  },
+  "common": {
+    "you": "You",
+    "scroll-to-see": "Scroll to see",
+    "swipe-to-see": "Swipe to see",
+    "buttons": {
+      "sign_in": "Sign In",
+      "sign_up": "Sign Up",
+      "discover": "Discover",
+      "shop_now": "Shop Now",
+      "learn_more": "Learn More",
+      "view_catalog": "View the catalog",
+      "get_your_beauty": "Get your beauty",
+      "get_new_nails": "Get new nails"
+    }
   },
   "main_landing": {
     "wear": "Wear",
@@ -195,17 +210,7 @@
       "description": "on your hands"
     }
   },
-  "common": {
-    "you": "You",
-    "scroll-to-see": "Scroll to see",
-    "swipe-to-see": "Swipe to see",
-    "buttons": {
-      "discover": "Discover",
-      "shop_now": "Shop Now",
-      "learn_more": "Learn More",
-      "view_catalog": "View the catalog",
-      "get_your_beauty": "Get your beauty",
-      "get_new_nails": "Get new nails"
-    }
+  "user-sidebar": {
+    "sign_in": "Sign in to use coupons, get rewards, special offers and more"
   }
 }

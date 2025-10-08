@@ -69,7 +69,10 @@ const tableContent = computed(() => ({
                 <span>{{ row.negativeValue }}</span>
               </template>
               <template v-else>
-                <Icon :name="ICONS.closeOutline" class="w-8 h-8 mx-auto" />
+                <Icon
+                  :name="ICONS.closeOutlineRounded"
+                  class="w-8 h-8 mx-auto"
+                />
               </template>
             </td>
             <td

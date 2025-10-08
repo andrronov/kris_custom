@@ -1,8 +1,8 @@
 import { useColorMode, useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, computed } from "vue";
 import { i18n } from "@/shared/services/i18n";
-import type { Language } from "@/shared/types";
+import type { Language, SidebarType } from "@/shared/types";
 
 export const useAppStore = defineStore("app", () => {
   const { system: systemTheme, store: storedTheme } = useColorMode({
@@ -20,19 +20,20 @@ export const useAppStore = defineStore("app", () => {
     storedTheme.value = storedTheme.value === "light" ? "dark" : "light";
   };
 
-  const showDrawer = ref(false);
-  const openDrawer = () => {
-    showDrawer.value = true;
-  };
-  const closeDrawer = () => {
-    showDrawer.value = false;
-  };
-  const toggleDrawer = () => {
-    if (showDrawer.value) {
-      closeDrawer();
-    } else {
-      openDrawer();
-    }
+  const sidebarType = ref<SidebarType>(null);
+
+  const showDrawer = computed({
+    get: () => sidebarType.value !== null,
+    set: (value: boolean) => {
+      sidebarType.value = value ? sidebarType.value : null;
+    },
+  });
+
+  const openUserbar = () => (sidebarType.value = "user");
+  const openCartbar = () => (sidebarType.value = "cart");
+  const closeDrawer = () => (sidebarType.value = null);
+  const toggleDrawer = (type: SidebarType) => {
+    sidebarType.value = sidebarType.value === type ? null : type;
   };
 
   const lang = useStorage<Language>("kc-lang", i18n.locale.value);
@@ -56,7 +57,9 @@ export const useAppStore = defineStore("app", () => {
     storedTheme,
     toggleTheme,
     showDrawer,
-    openDrawer,
+    sidebarType,
+    openUserbar,
+    openCartbar,
     closeDrawer,
     toggleDrawer,
     lang,

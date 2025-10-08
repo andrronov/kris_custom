@@ -1,12 +1,26 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import { LanguageDropdown, ThemeSwitcher } from "@/features/settings";
-import { Logo, Link, RouterNav } from "@/shared/ui";
+import { Search } from "@/features/search";
+import { Logo, Icon, Link, RouterNav, Button } from "@/shared/ui";
 import { usePlatform } from "@/shared/lib/composables/use-platform";
+import { useUserStore } from "@/shared/stores/user";
+import { useCartStore } from "@/shared/stores/cart";
+import { useAppStore } from "@/shared/stores/application";
+import { ICONS } from "@/shared/assets";
 
 const route = useRoute();
 
-const { platformRoutes } = usePlatform();
+const appStore = useAppStore();
+const { currentPlatformRoutes } = usePlatform();
+const userStore = useUserStore();
+const cartStore = useCartStore();
+
+const openCart = () => {
+  appStore.openCartbar();
+};
+const openUserbar = () => {
+  appStore.openUserbar();
+};
 </script>
 
 <template>
@@ -14,34 +28,72 @@ const { platformRoutes } = usePlatform();
     class="flex h-16 items-center bg-primary/75 backdrop-blur-sm rounded-full justify-between px-2 text-primary-content"
   >
     <div class="container flex items-center h-full w-full justify-between">
-      <RouterNav
-        :bordered="false"
-        :exact-active="false"
-        class="flex-shrink-1 hidden gap-4 w-full uppercase font-normal text-primary-content justify-start lg:flex"
-      >
-        <template v-for="item in platformRoutes" :key="item.id">
-          <Link
-            :id="item.id && `${item.id}_header`"
-            :to="item.to"
-            class="text-sm font-medium"
-            :active-class="
-              item.to?.hash === route.hash ? 'router-link-active' : ''
-            "
-          >
-            {{ item.name }}
-          </Link>
-        </template>
-      </RouterNav>
+      <Link to="/">
+        <Logo class="flex-1" />
+      </Link>
       <div class="inline-flex w-full ml-10 items-center justify-start">
-        <Link to="/">
-          <Logo class="flex-1" />
-        </Link>
+        <RouterNav
+          :bordered="false"
+          :exact-active="false"
+          class="flex-shrink hidden gap-4 w-full uppercase font-normal text-primary-content justify-center lg:flex"
+        >
+          <template v-if="currentPlatformRoutes.primary.length">
+            <template
+              v-for="item in currentPlatformRoutes.primary"
+              :key="item.id"
+            >
+              <Link
+                :id="item.id && `${item.id}_header`"
+                :to="item.to"
+                class="text-sm font-medium"
+                :active-class="
+                  item.to?.hash === route.hash ? 'router-link-active' : ''
+                "
+              >
+                {{ item.name }}
+              </Link>
+            </template>
+            <Icon
+              :name="ICONS.verticalDivider"
+              class="w-10 h-full text-secondary -mx-5"
+            />
+          </template>
+          <template
+            v-for="item in currentPlatformRoutes.secondary"
+            :key="item.id"
+          >
+            <Link
+              :id="item.id && `${item.id}_header`"
+              :to="item.to"
+              class="text-sm font-medium"
+              :active-class="
+                item.to?.hash === route.hash ? 'router-link-active' : ''
+              "
+            >
+              {{ item.name }}
+            </Link>
+          </template>
+        </RouterNav>
       </div>
-      <div class="inline-flex min-w-fit items-center justify-end">
-        <div class="flex items-center divide-x-2 divide-secondary">
-          <ThemeSwitcher class="pl-1 pr-3" />
-          <LanguageDropdown alignment="right" class="pl-3" />
-        </div>
+      <div class="inline-flex min-w-fit gap-3 ml-6 items-center justify-end">
+        <Search />
+        <!-- <Button
+          variant="link"
+          @click="appStore.toggleDrawer"
+          class="text-primary-content"
+        >
+          <Icon :name="ICONS.heartOutline" class="w-8 h-8" />
+        </Button> -->
+        <Button
+          variant="link"
+          @click="openUserbar()"
+          class="text-primary-content"
+        >
+          <Icon :name="ICONS.user" class="w-8 h-8" />
+        </Button>
+        <Button variant="link" @click="openCart()" class="text-primary-content">
+          <Icon :name="ICONS.cart" class="w-8 h-8" />
+        </Button>
       </div>
     </div>
   </header>

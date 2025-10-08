@@ -5,6 +5,7 @@ export const ICONS = {
   instagram: "carbon:logo-instagram",
   likeHeart: "system-uicons:heart",
   removeLikeHeart: "system-uicons:heart-remove",
+  heartOutline: "material-symbols:favorite-outline-rounded",
   moon: "material-symbols:dark-mode",
   sun: "material-symbols:sunny-rounded",
   cart: "material-symbols:remove-shopping-cart",
@@ -19,5 +20,8 @@ export const ICONS = {
   thumbnailPreview: "carbon:thumbnail-preview",
   heartHand: "mingcute:hand-heart-line",
   successSolid: "icon-park-solid:success",
-  closeOutline: "material-symbols-light:cancel-outline",
+  closeOutlineRounded: "material-symbols-light:cancel-outline",
+  verticalDivider: "fluent:divider-tall-16-filled",
+  searchLoop: "material-symbols:search-rounded",
+  close: "material-symbols:close-rounded",
 } as const;
