@@ -25,40 +25,80 @@ export const usePlatform = () => {
     return isSupported ? appStore.storedTheme : FALLBACK_THEME;
   });
 
-  const platformRoutes = computed(() => [
-    {
-      id: undefined,
-      name: t("navigation.discounts"),
-      to: {
-        name: "main-landing",
-        hash: anchor.prepare("discounts"),
-      } as RouteLocationRaw<"main-landing">,
-    },
-    {
-      id: undefined,
-      name: t("navigation.best_sellers"),
-      to: {
-        name: "main-landing",
-        hash: anchor.prepare("best-sellers"),
-      } as RouteLocationRaw<"main-landing">,
-    },
-    {
+  const platform = computed(() => {
+    const name = route.meta.platform;
+
+    const isLanding = name === "landing";
+
+    return {
+      name,
+      isLanding,
+    } as const;
+  });
+
+  const mainPlatformLinks = {
+    catalog: {
       id: undefined,
       name: t("navigation.catalog"),
       to: {
+        // TODO: change to catalog link
         name: "main-landing",
-        hash: anchor.prepare("best-sellers"),
+        hash: anchor.prepare("faq"),
       } as RouteLocationRaw<"main-landing">,
     },
-    {
-      id: undefined,
-      name: t("navigation.about"),
-      to: {
-        name: "main-landing",
-        hash: anchor.prepare("best-sellers"),
-      } as RouteLocationRaw<"main-landing">,
+  };
+
+  const platformRoutes = computed(() => ({
+    landing: {
+      primary: [mainPlatformLinks.catalog],
+      secondary: [
+        {
+          id: undefined,
+          name: t("navigation.discounts"),
+          to: {
+            name: "main-landing",
+            hash: anchor.prepare("discounts"),
+          } as RouteLocationRaw<"main-landing">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.best_sellers"),
+          to: {
+            name: "main-landing",
+            hash: anchor.prepare("best-sellers"),
+          } as RouteLocationRaw<"main-landing">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.how_get_them"),
+          to: {
+            name: "main-landing",
+            hash: anchor.prepare("how-get-new-nails"),
+          } as RouteLocationRaw<"main-landing">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.why_us"),
+          to: {
+            name: "main-landing",
+            hash: anchor.prepare("why-us"),
+          } as RouteLocationRaw<"main-landing">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.faq"),
+          to: {
+            name: "main-landing",
+            hash: anchor.prepare("faq"),
+          } as RouteLocationRaw<"main-landing">,
+        },
+      ],
     },
-  ]);
+  }));
+
+  const currentPlatformRoutes = computed(() => {
+    return platformRoutes.value[platform.value.name];
+  });
 
   watchEffect(() => {
     document.documentElement.setAttribute("data-theme", theme.value);
@@ -66,6 +106,8 @@ export const usePlatform = () => {
 
   return {
     theme,
+    platform,
+    currentPlatformRoutes,
     platformRoutes,
   };
 };

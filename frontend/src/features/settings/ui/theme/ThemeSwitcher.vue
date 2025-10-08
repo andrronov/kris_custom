@@ -14,7 +14,6 @@ const { theme } = usePlatform();
 
 <template>
   <button
-    data-testid="theme-switcher"
     v-if="!route.meta.theme"
     class="hover:cursor-pointer hover:brightness-125"
     @click="appStore.toggleTheme()"

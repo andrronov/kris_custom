@@ -18,6 +18,7 @@ const appRoutes: NamedRouteRecord<NamedRoute>[] = [
     name: "main-landing",
     meta: {
       layout: "default",
+      platform: "landing",
     },
     component: () => import("@/pages/main-landing/Page.vue"),
   },
@@ -26,6 +27,7 @@ const appRoutes: NamedRouteRecord<NamedRoute>[] = [
     name: "404",
     meta: {
       layout: "default",
+      platform: "landing",
     },
     component: () => import("@/pages/404/Page.vue"),
   },

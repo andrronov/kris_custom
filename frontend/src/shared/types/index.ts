@@ -3,6 +3,8 @@ import { SUPPORTED_LANGUAGES } from "@/shared/config";
 export type AppTheme = "dark" | "light";
 export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
+export type Platform = "landing";
+
 export type ComponentSize = "lg" | "md" | "sm" | "xs";
 export type ComponentStatus = "info" | "success" | "warning" | "error";
 export type ComponentBrandColors = "primary" | "secondary" | "accent";
@@ -24,6 +26,8 @@ export enum Keys {
   PageDown = "PageDown",
   Tab = "Tab",
 }
+
+export type SidebarType = "user" | "cart" | null;
 
 export type ProductPrice = number | [number, number];
 export type ProductImage = string | [string, string];

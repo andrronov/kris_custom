@@ -1,5 +1,5 @@
 import type { RouteLocationRaw, RouteRecordInfo } from "vue-router";
-import type { AppTheme } from "@/shared/types";
+import type { AppTheme, Platform } from "@/shared/types";
 import type { Layout } from "../layouts";
 
 export interface RouteNamedMap {
@@ -32,6 +32,10 @@ declare module "vue-router" {
      * Route key for parent-child relationship, used for scroll perseverance
      */
     routeKey?: string;
+    /*
+     * Page platform (landing)
+     */
+    platform: Platform;
     /*
      * Auth guard type
      **/
