@@ -1,0 +1,13 @@
+{
+  "name": "serverless",
+  "type": "module",
+  "dependencies": {
+    "@hono/node-server": "^1.19.5",
+    "hono": "^4.8.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@vercel/node": "^5.3.26",
+    "typescript": "^5.8.3"
+  }
+}

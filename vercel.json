@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "serverless/src/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/serverless/src/index.ts"
+    }
+  ]
+}
