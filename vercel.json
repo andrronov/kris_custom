@@ -1,8 +1,9 @@
 {
   "version": 2,
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "serverless/src/index.ts": {
-      "runtime": "@vercel/node@3"
+      "maxDuration": 6
     }
   },
   "rewrites": [
