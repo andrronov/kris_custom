@@ -1,13 +1,13 @@
 {
   "version": 2,
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/serverless/src/index.ts" },
+    { "source": "/(.*)", "destination": "/frontend/$1" }
+  ],
   "functions": {
     "serverless/src/index.ts": {
       "maxDuration": 6
     }
-  },
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/serverless/src/index.ts" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
-  ]
+  }
 }
