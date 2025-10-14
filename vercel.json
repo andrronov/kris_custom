@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "functions": {
+    "serverless/src/index.ts": {
+      "runtime": "@vercel/node@3"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/serverless/src/index.ts" },
+    { "source": "/(.*)", "destination": "/frontend/$1" }
+  ]
+}
