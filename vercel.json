@@ -6,8 +6,5 @@
       "maxDuration": 6
     }
   },
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/serverless/src/index.ts" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/frontend/$1" }]
 }
