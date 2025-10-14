@@ -1,6 +1,10 @@
 {
   "builds": [
     {
+      "src": "frontend/",
+      "use": "@vercel/node"
+    },
+    {
       "src": "serverless/src/index.ts",
       "use": "@vercel/node"
     }
