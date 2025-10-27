@@ -2,7 +2,11 @@ import { Hono } from "hono";
 import { db } from "./db";
 import * as schema from "./db/schemas";
 
-const app = new Hono();
+const app = new Hono<{
+  Bindings: {
+    KC_ASSETS: R2Bucket;
+  };
+}>();
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
