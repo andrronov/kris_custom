@@ -10,12 +10,13 @@
   //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   //   }
   // ],
-  // "r2_buckets": [
-  //   {
-  //     "binding": "MY_BUCKET",
-  //     "bucket_name": "my-bucket"
-  //   }
-  // ],
+  "r2_buckets": [
+    {
+      "binding": "KC_ASSETS",
+      "bucket_name": "kc-assets",
+      "remote": true,
+    },
+  ],
   // "d1_databases": [
   //   {
   //     "binding": "MY_DB",

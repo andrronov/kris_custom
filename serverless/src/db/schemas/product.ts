@@ -2,11 +2,11 @@ import {
   pgTable,
   timestamp,
   uuid,
-  varchar,
   integer,
   decimal,
   jsonb,
   primaryKey,
+  text,
 } from "drizzle-orm/pg-core";
 
 export const products = pgTable("products", {
@@ -17,6 +17,7 @@ export const products = pgTable("products", {
   attributes: jsonb("attributes"),
   viewCount: integer("view_count").default(0).notNull(),
   purchaseCount: integer("purchase_count").default(0).notNull(),
+  previewImageKey: text("preview_image_key"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -26,7 +27,7 @@ export const productVariants = pgTable("product_variants", {
   productId: uuid("product_id")
     .references(() => products.id)
     .notNull(),
-  name: varchar("name", { length: 255 }).notNull(),
+  name: jsonb("name").notNull(),
   priceOffset: decimal("price_offset", { precision: 10, scale: 2 })
     .default("0")
     .notNull(),
@@ -56,3 +57,13 @@ export const productCollections = pgTable(
     };
   },
 );
+
+export const productImages = pgTable("product_images", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  productId: uuid("product_id")
+    .references(() => products.id)
+    .notNull(),
+  imageKey: text("image_key").notNull(),
+  displayOrder: integer("display_order").default(0).notNull(),
+  altText: jsonb("alt_text"),
+});

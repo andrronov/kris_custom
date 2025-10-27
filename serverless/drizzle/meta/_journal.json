@@ -15,6 +15,13 @@
       "when": 1760808175456,
       "tag": "0001_loud_peter_quill",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1761496036104,
+      "tag": "0002_steep_menace",
+      "breakpoints": true
     }
   ]
 }
