@@ -47,9 +47,7 @@ const openUserbar = () => {
                 :to="item.to"
                 class="text-sm font-medium"
                 :active-class="
-                  typeof item.to === 'object' && item.to?.hash === route.hash
-                    ? 'router-link-active'
-                    : ''
+                  item.to?.hash === route.hash ? 'router-link-active' : ''
                 "
               >
                 {{ item.name }}
@@ -69,9 +67,7 @@ const openUserbar = () => {
               :to="item.to"
               class="text-sm font-medium"
               :active-class="
-                typeof item.to === 'object' && item.to?.hash === route.hash
-                  ? 'router-link-active'
-                  : ''
+                item.to?.hash === route.hash ? 'router-link-active' : ''
               "
             >
               {{ item.name }}
