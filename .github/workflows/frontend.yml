@@ -40,6 +40,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+      - name: Postinstall
+        run: pnpm postinstall
 
       - name: Format check
         run: pnpm run format-check
