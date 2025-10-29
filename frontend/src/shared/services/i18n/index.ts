@@ -6,7 +6,7 @@ import en from "./locales/en.json";
 import sp from "./locales/sp.json";
 
 const isSupportedLanguage = (lang: string): lang is Language => {
-  return (SUPPORTED_LANGUAGES ?? []).includes(lang);
+  return ((SUPPORTED_LANGUAGES ?? []) as string[]).includes(lang);
 };
 
 const guessDefaultLocale = (prediction: string) => {

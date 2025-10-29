@@ -24,14 +24,14 @@ const { t } = useI18n();
       <ProductCard
         v-for="item in 6"
         :key="item"
-        :class="
-          (defaultClass,
+        :class="[
+          defaultClass,
           {
             'mx-3': item !== 6 && item !== 1,
             'mr-3': item === 1,
             'ml-3': item === 6,
-          })
-        "
+          },
+        ]"
       />
     </Slider>
     <Button color="primary" variant="outline" class="self-center mt-4">
