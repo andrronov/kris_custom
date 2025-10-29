@@ -20,7 +20,7 @@ defineProps<{
       }"
     >
       <Icon
-        :name="ICONS[step.icon]"
+        :name="ICONS[step.icon as keyof typeof ICONS]"
         class="-translate-x-7 min-w-10 min-h-10 bg-base-100 p-2 border border-primary rounded-xl"
       />
       <div class="-translate-x-7">
