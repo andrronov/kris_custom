@@ -1,4 +1,4 @@
-name: KC/frontend
+name: "[KC/frontend] Build"
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: frontend
+    working-directory: ./frontend
 
 jobs:
   build:
