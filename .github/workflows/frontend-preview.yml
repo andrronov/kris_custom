@@ -59,8 +59,8 @@ jobs:
             ./frontend/dist/
 
   deploy:
-    needs: build
     name: Publish a Preview Deployment
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
