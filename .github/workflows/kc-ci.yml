@@ -1,0 +1,46 @@
+name: "KC-CI"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  kc_ci:
+    name: KC-CI
+    runs-on: ubuntu-latest
+    outputs:
+      require_kc_frontend_checks: ${{ steps.frontend_checks.outputs.require }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: fetch_trunk
+        run: git fetch origin trunk
+      - id: frontend_checks
+        run: echo "require=$(git diff --name-only origin/trunk | grep '^frontend' | head -n 1 | wc -l)" >> "$GITHUB_OUTPUT"
+
+  kc_frontend_checks:
+    name: KC Mandatory Checks
+    needs: kc_ci
+    runs-on: ubuntu-latest
+    if: needs.kc_ci.outputs.require_kc_frontend_checks == '1'
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node_version: "22"
+          cache: "pnpm"
+          cache-dependency-path: "frontend/pnpm-lock.yaml"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check types
+        run: pnpm type-check
+
+      - name: Check formatting
+        run: pnpm format-check

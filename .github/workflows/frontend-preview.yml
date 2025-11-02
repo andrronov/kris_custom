@@ -1,4 +1,4 @@
-name: "[KC/frontend] Build"
+name: "[KC/frontend] Preview Build & Deploy"
 
 on:
   pull_request:
