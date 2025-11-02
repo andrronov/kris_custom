@@ -1,11 +1,10 @@
 name: "KC-CI"
 
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
+  workflow_call:
+    outputs:
+      checks_required:
+        value: ${{ jobs.kc_ci.outputs.require_kc_frontend_checks }}
 
 jobs:
   kc_ci:
