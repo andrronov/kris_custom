@@ -21,7 +21,7 @@ jobs:
         run: echo "require=$(git diff --name-only origin/trunk | grep '^frontend' | head -n 1 | wc -l)" >> "$GITHUB_OUTPUT"
 
   kc_frontend_checks:
-    name: KC Mandatory Checks
+    name: KC Frontend Checks
     needs: kc_ci
     runs-on: ubuntu-latest
     if: needs.kc_ci.outputs.require_kc_frontend_checks == '1'

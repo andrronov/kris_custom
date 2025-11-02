@@ -25,6 +25,7 @@ jobs:
     uses: ./.github/workflows/kc-ci.yml
 
   build:
+    name: Frontend Build
     needs: run_mandatory_checks
     runs-on: ubuntu-latest
     outputs:
