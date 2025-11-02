@@ -5,6 +5,7 @@ on:
     paths:
       - frontend/**
       - .github/workflows/frontend-preview.yml
+      - .github/workflows/kc-ci.yml
     types:
       - opened
       - synchronize
@@ -19,7 +20,12 @@ defaults:
     working-directory: ./frontend
 
 jobs:
+  run_mandatory_checks:
+    name: Run Mandatory Checks
+    uses: ./.github/workflows/kc-ci.yml
+
   build:
+    needs: run_mandatory_checks
     runs-on: ubuntu-latest
     outputs:
       artifact: ${{ steps.build.outputs.artifact }}
