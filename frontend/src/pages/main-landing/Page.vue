@@ -41,5 +41,6 @@ useHead({
     <Comparison :id="anchor.get('why-us')" />
     <Mission />
     <Faq :id="anchor.get('faq')" />
+    <!-- <NailsAesthetic /> -->
   </div>
 </template>
