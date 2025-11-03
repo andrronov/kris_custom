@@ -81,13 +81,6 @@ const openUserbar = () => {
       </div>
       <div class="inline-flex min-w-fit gap-3 ml-6 items-center justify-end">
         <Search />
-        <!-- <Button
-          variant="link"
-          @click="appStore.toggleDrawer"
-          class="text-primary-content"
-        >
-          <Icon :name="ICONS.heartOutline" class="w-8 h-8" />
-        </Button> -->
         <Button
           variant="link"
           @click="openUserbar()"
