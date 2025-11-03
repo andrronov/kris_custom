@@ -2,6 +2,10 @@ name: "[KC/frontend] Preview Build & Deploy"
 
 on:
   pull_request:
+    paths:
+      - frontend/**
+      - .github/workflows/frontend-preview.yml
+      - .github/workflows/kc-ci.yml
     types:
       - opened
       - synchronize
