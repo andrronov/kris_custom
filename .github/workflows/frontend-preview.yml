@@ -1,0 +1,194 @@
+name: "[KC/frontend] Preview Build & Deploy"
+
+on:
+  pull_request:
+    paths:
+      - frontend/**
+      - .github/workflows/frontend-preview.yml
+      - .github/workflows/kc-ci.yml
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+concurrency:
+  group: frontend-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: ./frontend
+
+jobs:
+  run_mandatory_checks:
+    name: Run Mandatory Checks
+    uses: ./.github/workflows/kc-ci.yml
+
+  build:
+    name: Frontend Build
+    needs: run_mandatory_checks
+    runs-on: ubuntu-latest
+    outputs:
+      artifact: ${{ steps.build.outputs.artifact }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: pnpm init
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: "pnpm"
+          cache-dependency-path: "frontend/pnpm-lock.yaml"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: |
+            ./frontend/dist/
+
+  deploy:
+    name: Publish a Preview Deployment
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: pnpm init
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: "pnpm"
+          cache-dependency-path: "frontend/pnpm-lock.yaml"
+
+      - name: Download bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: ./frontend/dist/
+
+      - name: Retrieve deploy-as info
+        id: deploy-as
+        uses: actions/github-script@v7
+        env:
+          INPUT_TITLE: ${{ github.event.pull_request.title }}
+          INPUT_BRANCH: ${{ github.event.pull_request.head.ref }}
+        with:
+          result-encoding: string
+          script: |
+            const pr = core.getInput('title');
+            const branch = core.getInput('branch');
+
+            const optionMatches = /\(deploy-as: (.*?)\)/.exec(pr);
+
+            return optionMatches ? optionMatches[1] : branch;
+
+      - name: Comment Deploy In Progress
+        id: in-progress-comment
+        uses: actions/github-script@v7
+        env:
+          INPUT_NUMBER: ${{ github.event.number }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const issueNumber = core.getInput('number');
+
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+            });
+
+            const commentBody = "## Deploying on Cloudflare Pages\n\n" + ":hourglass: Deployment in progress...";
+
+            const inProgressComment = comments.data.find((comment) => comment.body.includes("Deploying on Cloudflare Pages"));
+
+            if (inProgressComment) {
+              await github.rest.issues.updateComment({
+              issue_number: issueNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: inProgressComment.id,
+              body: commentBody,
+            });
+
+              return inProgressComment.id;
+            }
+
+            const comment = await github.rest.issues.createComment({
+              issue_number: issueNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody,
+            });
+
+            return comment.data.id;
+
+      - name: Deploy on named branch
+        uses: cloudflare/wrangler-action@v3
+        with:
+          workingDirectory: ./frontend
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >
+            pages deploy dist
+            --project-name="${{ secrets.CLOUDFLARE_PROJECT_NAME}}"
+            --branch="${{ steps.deploy-as.outputs.result }}"
+
+      - name: Comment Deploy Failure
+        if: failure()
+        uses: actions/github-script@v7
+        env:
+          INPUT_NUMBER: ${{ github.event.number }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const commitCommentId = ${{ steps.in-progress-comment.outputs.result }};
+            const issueNumber = core.getInput('number');
+
+            await github.rest.issues.updateComment({
+              issue_number: issueNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: commitCommentId,
+              body: "## Deploying on Cloudflare Pages\n\n" + `:x: The deployment failed.`,
+            });
+
+      - name: Comment Deploy Preview Link
+        uses: actions/github-script@v7
+        env:
+          INPUT_NUMBER: ${{ github.event.number }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const cdnHost = "${{ vars.CDN_HOST }}";
+
+            const issueNumber = core.getInput('number');
+
+            const commitCommentId = "${{ steps.in-progress-comment.outputs.result }}";
+            const branch = "${{ steps.deploy-as.outputs.result }}";
+
+            const subdomain = branch.replace(/\//g, '-').replace(/\./g, '-').toLowerCase().slice(0, 28);
+
+            const previewURL = `https://${subdomain}.${cdnHost}`;
+
+            await github.rest.issues.updateComment({
+              issue_number: issueNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: commitCommentId,
+              body: "## Deploying on Cloudflare Pages\n\n" + `:rocket: The PR preview for *${subdomain}* is ready and deployed at ${previewURL}`,
+            });
