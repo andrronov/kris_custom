@@ -106,6 +106,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const issueNumber = core.getInput('number');
+            const commitCommentId = process.env.COMMIT_COMMENT_ID;
 
             const comments = await github.rest.issues.listComments({
               owner: context.repo.owner,
