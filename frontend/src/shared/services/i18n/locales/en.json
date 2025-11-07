@@ -7,6 +7,10 @@
     "why_us": "Why us",
     "how_get_them": "How get"
   },
+  "auth": {
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up"
+  },
   "common": {
     "you": "You",
     "scroll-to-see": "Scroll to see",
@@ -14,6 +18,8 @@
     "buttons": {
       "sign_in": "Sign In",
       "sign_up": "Sign Up",
+      "log_in": "Log In",
+      "log_out": "Log Out",
       "discover": "Discover",
       "shop_now": "Shop Now",
       "learn_more": "Learn More",
@@ -211,6 +217,10 @@
     }
   },
   "user-sidebar": {
-    "sign_in": "Sign in to use coupons, get rewards, special offers and more"
+    "sign_in": "Sign in to use coupons, get rewards, special offers and more",
+    "recently_viewed": "Recently Viewed",
+    "favorites": "Favorites",
+    "no_items": "No items yet <3",
+    "guest": "Guest"
   }
 }

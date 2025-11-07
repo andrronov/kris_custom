@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAppStore } from "@/shared/stores/application";
+import { AuthModal } from "@/features/auth";
 import { Header } from "@/widgets/app-header";
 import { Footer } from "@/widgets/app-footer";
 import { UserSidebar } from "@/widgets/app-sidebar/user-sidebar";
@@ -24,7 +25,7 @@ const { theme } = usePlatform();
     name="sidebar"
     class="bg-base-100 text-base-content relative"
   >
-    <div style="z-index: var(--z-header)" class="sticky top-4 mx-4">
+    <div class="sticky z-[var(--z-header)] top-4 mx-4">
       <Header />
     </div>
     <div class="min-h-screen">
@@ -38,6 +39,7 @@ const { theme } = usePlatform();
       />
     </template>
   </Drawer>
+  <AuthModal />
 </template>
 
 <style>

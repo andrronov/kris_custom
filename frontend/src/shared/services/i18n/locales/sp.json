@@ -7,6 +7,27 @@
     "why_us": "Por qué nosotros",
     "how_get_them": "Cómo conseguirlo"
   },
+  "auth": {
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up"
+  },
+  "common": {
+    "you": "Tú",
+    "scroll-to-see": "Desplázate para ver",
+    "swipe-to-see": "Desliza para ver",
+    "buttons": {
+      "sign_in": "Iniciar Sesión",
+      "sign_up": "Registrarse",
+      "log_in": "Iniciar Sesión",
+      "log_out": "Cerrar Sesión",
+      "discover": "Descubrir",
+      "shop_now": "Comprar Ahora",
+      "learn_more": "Aprender Más",
+      "view_catalog": "Ver el catálogo",
+      "get_your_beauty": "Obtén tu belleza",
+      "get_new_nails": "Obtener uñas nuevas"
+    }
+  },
   "main_landing": {
     "wear": "Usar",
     "art": "Arte",
@@ -193,17 +214,11 @@
       "description": "en tus manos"
     }
   },
-  "common": {
-    "you": "Tú",
-    "scroll-to-see": "Desplázate para ver",
-    "swipe-to-see": "Desliza para ver",
-    "buttons": {
-      "discover": "Descubrir",
-      "shop_now": "Comprar Ahora",
-      "learn_more": "Aprender Más",
-      "view_catalog": "Ver el catálogo",
-      "get_your_beauty": "Obtén tu belleza",
-      "get_new_nails": "Obtener uñas nuevas"
-    }
+  "user-sidebar": {
+    "sign_in": "Sign in to use coupons, get rewards, special offers and more",
+    "recently_viewed": "Recently Viewed",
+    "favorites": "Favorites",
+    "no_items": "No items yet <3",
+    "guest:": "Guest"
   }
 }

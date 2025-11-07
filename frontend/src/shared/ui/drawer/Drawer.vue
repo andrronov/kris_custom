@@ -62,7 +62,7 @@ const onClickOutside = () => {
         @click="onClickOutside()"
       ></label>
       <aside
-        class="flex h-full flex-col overflow-y-auto bg-base-200 px-4 py-4"
+        class="flex h-full flex-col overflow-y-auto bg-base-200 px-3 md:px-4 py-4"
         :class="sidebarClass"
         style="touch-action: pan-y; -ms-touch-action: none"
       >

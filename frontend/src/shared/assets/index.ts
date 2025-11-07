@@ -12,6 +12,7 @@ export const ICONS = {
   up: "material-symbols:keyboard-arrow-up-rounded",
   down: "material-symbols:keyboard-arrow-down-rounded",
   arrowRight: "mdi:arrow-right-thin",
+  chevronRightRounded: "material-symbols:chevron-right-rounded",
   colorPalette: "eva:color-palette-outline",
   cursorClick: "heroicons-outline:cursor-click",
   heartsFace: "fa-regular:grin-hearts",
@@ -24,4 +25,7 @@ export const ICONS = {
   verticalDivider: "fluent:divider-tall-16-filled",
   searchLoop: "material-symbols:search-rounded",
   close: "material-symbols:close-rounded",
+  recentlyViewed: "carbon:recently-viewed",
+  homeRounded: "material-symbols-light:home-rounded",
+  ordersRounded: "material-symbols:orders-outline-rounded",
 } as const;
