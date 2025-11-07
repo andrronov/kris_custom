@@ -15,10 +15,10 @@ jobs:
       require_kc_frontend_checks: ${{ steps.frontend_checks.outputs.require }}
     steps:
       - uses: actions/checkout@v4
-      - id: fetch_trunk
-        run: git fetch origin trunk
+        with:
+          fetch-depth: 0
       - id: frontend_checks
-        run: echo "require=$(git diff --name-only origin/trunk | grep '^frontend' | head -n 1 | wc -l)" >> "$GITHUB_OUTPUT"
+        run: echo "require=$(git diff --name-only origin/${{ github.base_ref }} | grep '^frontend' | head -n 1 | wc -l)" >> "$GITHUB_OUTPUT"
 
   kc_frontend_checks:
     name: KC Frontend Checks
