@@ -2,10 +2,6 @@ name: "[KC/frontend] Preview Build & Deploy"
 
 on:
   pull_request:
-    paths:
-      - frontend/**
-      - .github/workflows/frontend-preview.yml
-      - .github/workflows/kc-ci.yml
     types:
       - opened
       - synchronize
@@ -20,6 +16,10 @@ defaults:
     working-directory: ./frontend
 
 jobs:
+  run_mandatory_checks:
+    name: Run Mandatory Checks
+    uses: ./.github/workflows/kc-ci.yml
+
   build:
     name: Frontend Build
     needs: run_mandatory_checks
