@@ -1,7 +1,11 @@
 name: "KC-CI"
 
 on:
-  workflow_call:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   kc_ci:

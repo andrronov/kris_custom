@@ -1,1 +1,1 @@
-export { default as AuthForm } from "./ui/AuthForm.vue";
+export { default as AuthFor } from "./ui/AuthForm.vue";
