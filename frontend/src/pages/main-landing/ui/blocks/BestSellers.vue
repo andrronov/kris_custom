@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { ProductCard } from "@/entitites/product-card";
+import { ProductCard } from "@/entities/product-card";
 import { Button, Slider } from "@/shared/ui";
 import SectionHeading from "../components/SectionHeading.vue";
 

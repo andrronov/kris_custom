@@ -70,6 +70,7 @@
 
   --z-header: 256;
   --z-drawer: 1024;
+  --z-modal: 2048;
 }
 
 html {

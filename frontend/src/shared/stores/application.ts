@@ -2,7 +2,8 @@ import { useColorMode, useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref, watchEffect, computed } from "vue";
 import { i18n } from "@/shared/services/i18n";
-import type { Language, SidebarType } from "@/shared/types";
+import { useModal } from "@/shared/lib/composables/use-modal";
+import type { Language, SidebarType, AuthModalState } from "@/shared/types";
 
 export const useAppStore = defineStore("app", () => {
   const { system: systemTheme, store: storedTheme } = useColorMode({
@@ -52,6 +53,17 @@ export const useAppStore = defineStore("app", () => {
     }
   });
 
+  const authModalState = ref<AuthModalState>("signup");
+  const {
+    visible: authModalVisible,
+    close: closeAuthModal,
+    open: openAuthModal,
+  } = useModal(false, {
+    onOpen: (state?: AuthModalState) => {
+      authModalState.value = state || "signup";
+    },
+  });
+
   return {
     systemTheme,
     storedTheme,
@@ -64,5 +76,9 @@ export const useAppStore = defineStore("app", () => {
     toggleDrawer,
     lang,
     changeLocale,
+    authModalVisible,
+    closeAuthModal,
+    openAuthModal,
+    authModalState,
   };
 });

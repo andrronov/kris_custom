@@ -11,6 +11,11 @@ export type ComponentBrandColors = "primary" | "secondary" | "accent";
 export type ComponentColor = ComponentBrandColors | "ghost" | ComponentStatus;
 export type ComponentShape = "circle" | "square";
 
+export type ComponentTabVariant = "bordered" | "lifted" | "boxed" | "separated";
+
+export type AuthModalState = "signup" | "signin";
+export type AuthFormState = AuthModalState | "reset";
+
 export enum Keys {
   Space = " ",
   Enter = "Enter",
@@ -44,4 +49,9 @@ export type DiscountCard = {
   description: string;
   image: string;
   link: string;
+};
+
+export type APIError = {
+  code: number;
+  message: string;
 };

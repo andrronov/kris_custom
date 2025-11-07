@@ -1,33 +1,15 @@
 import { Hono } from "hono";
-import { db } from "./db";
-import * as schema from "./db/schemas";
+import user from "./routes/user";
+import product from "./routes/product";
 
 const app = new Hono<{
   Bindings: {
     KC_ASSETS: R2Bucket;
+    RESEND_API_KEY: string;
   };
 }>();
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
-
-app.get("/users", async (c) => {
-  try {
-    const data = await db.select().from(schema.users);
-    return c.json(data);
-  } catch (error) {
-    return c.json({ error }, 500);
-  }
-});
-
-app.get("/products", async (c) => {
-  try {
-    const data = await db.select().from(schema.products);
-    return c.json(data);
-  } catch (error) {
-    return c.json({ error }, 500);
-  }
-});
+app.route("/user", user);
+app.route("/product", product);
 
 export default app;
