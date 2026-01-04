@@ -28,4 +28,7 @@ export const ICONS = {
   recentlyViewed: "carbon:recently-viewed",
   homeRounded: "material-symbols-light:home-rounded",
   ordersRounded: "material-symbols:orders-outline-rounded",
+  eyeOpen: "mdi:eye-outline",
+  eyeClosed: "mdi:eye-off-outline",
+  calendar: "material-symbols:calendar-today-outline",
 } as const;

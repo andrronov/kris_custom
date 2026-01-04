@@ -25,9 +25,15 @@ importers:
       "@vue/eslint-config-typescript":
         specifier: ^14.3.0
         version: 14.5.0(eslint-plugin-vue@9.33.0(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(typescript@5.6.3)
+      "@vuepic/vue-datepicker":
+        specifier: ^12.1.0
+        version: 12.1.0(vue@3.5.13(typescript@5.6.3))
       "@vueuse/core":
         specifier: ^13.0.0
         version: 13.0.0(vue@3.5.13(typescript@5.6.3))
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
       embla-carousel-autoplay:
         specifier: ^8.6.0
         version: 8.6.0(embla-carousel@8.6.0)
@@ -298,6 +304,12 @@ packages:
         integrity: sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==,
       }
     engines: { node: ">=18" }
+
+  "@date-fns/tz@1.4.1":
+    resolution:
+      {
+        integrity: sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA==,
+      }
 
   "@dependents/detective-less@5.0.1":
     resolution:
@@ -837,6 +849,30 @@ packages:
     resolution:
       {
         integrity: sha512-QzkIQUqNq94fv7aV0GY8wKmlFij9CtSQEIV+/0ed33SZGrv1FjUaySO4eHPlSCcH3Y+fH9nnpTaULtqRwwT7sw==,
+      }
+
+  "@floating-ui/core@1.7.3":
+    resolution:
+      {
+        integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==,
+      }
+
+  "@floating-ui/dom@1.7.4":
+    resolution:
+      {
+        integrity: sha512-OOchDgh4F2CchOX94cRVqhvy7b3AFb+/rQXyswmzmGakRfkMgoWVjfnLWkRirfLEfuD4ysVW16eXzwt3jHIzKA==,
+      }
+
+  "@floating-ui/utils@0.2.10":
+    resolution:
+      {
+        integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==,
+      }
+
+  "@floating-ui/vue@1.1.9":
+    resolution:
+      {
+        integrity: sha512-BfNqNW6KA83Nexspgb9DZuz578R7HT8MZw1CfK9I6Ah4QReNWEJsXWHN+SdmOVLNGmTPDi+fDT535Df5PzMLbQ==,
       }
 
   "@humanfs/core@0.19.1":
@@ -1799,10 +1835,27 @@ packages:
       vue:
         optional: true
 
+  "@vuepic/vue-datepicker@12.1.0":
+    resolution:
+      {
+        integrity: sha512-QuWcO+CqIGYFoRNCagp9xUY9sMK/OHUlVIDxBYjw7HjCTWXfuE/r3l3loB00faEtb0Teo3DeBn26hT3tYA5pgg==,
+      }
+    engines: { node: ">=18.12.0" }
+    peerDependencies:
+      vue: ">=3.5.0"
+
   "@vueuse/core@13.0.0":
     resolution:
       {
         integrity: sha512-rkgb4a8/0b234lMGCT29WkCjPfsX0oxrIRR7FDndRoW3FsaC9NBzefXg/9TLhAgwM11f49XnutshM4LzJBrQ5g==,
+      }
+    peerDependencies:
+      vue: ^3.5.0
+
+  "@vueuse/core@14.1.0":
+    resolution:
+      {
+        integrity: sha512-rgBinKs07hAYyPF834mDTigH7BtPqvZ3Pryuzt1SD/lg5wEcWqvwzXXYGEDb2/cP0Sj5zSvHl3WkmMELr5kfWw==,
       }
     peerDependencies:
       vue: ^3.5.0
@@ -1813,10 +1866,24 @@ packages:
         integrity: sha512-TRNksqmvtvqsuHf7bbgH9OSXEV2b6+M3BSN4LR5oxWKykOFT9gV78+C2/0++Pq9KCp9KQ1OQDPvGlWNQpOb2Mw==,
       }
 
+  "@vueuse/metadata@14.1.0":
+    resolution:
+      {
+        integrity: sha512-7hK4g015rWn2PhKcZ99NyT+ZD9sbwm7SGvp7k+k+rKGWnLjS/oQozoIZzWfCewSUeBmnJkIb+CNr7Zc/EyRnnA==,
+      }
+
   "@vueuse/shared@13.0.0":
     resolution:
       {
         integrity: sha512-9MiHhAPw+sqCF/RLo8V6HsjRqEdNEWVpDLm2WBRW2G/kSQjb8X901sozXpSCaeLG0f7TEfMrT4XNaA5m1ez7Dg==,
+      }
+    peerDependencies:
+      vue: ^3.5.0
+
+  "@vueuse/shared@14.1.0":
+    resolution:
+      {
+        integrity: sha512-EcKxtYvn6gx1F8z9J5/rsg3+lTQnvOruQd8fUecW99DCK04BkWD7z5KQ/wTAx+DazyoEE9dJt/zV8OIEQbM6kw==,
       }
     peerDependencies:
       vue: ^3.5.0
@@ -2238,6 +2305,12 @@ packages:
         integrity: sha512-ZYP5VBHshaDAiVZxjbRVcFJpc+4xGgT0bK3vzy1HLN8jTO975HEbuYzZJcHoQEY5K1a0z8YayJkyVETa08eNTg==,
       }
     engines: { node: ">=18" }
+
+  date-fns@4.1.0:
+    resolution:
+      {
+        integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==,
+      }
 
   de-indent@1.0.2:
     resolution:
@@ -4664,6 +4737,20 @@ packages:
         integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==,
       }
 
+  vue-demi@0.14.10:
+    resolution:
+      {
+        integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==,
+      }
+    engines: { node: ">=12" }
+    hasBin: true
+    peerDependencies:
+      "@vue/composition-api": ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      "@vue/composition-api":
+        optional: true
+
   vue-eslint-parser@10.1.1:
     resolution:
       {
@@ -5021,6 +5108,8 @@ snapshots:
 
   "@csstools/css-tokenizer@3.0.4": {}
 
+  "@date-fns/tz@1.4.1": {}
+
   "@dependents/detective-less@5.0.1":
     dependencies:
       gonzales-pe: 4.3.0
@@ -5240,6 +5329,26 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  "@floating-ui/core@1.7.3":
+    dependencies:
+      "@floating-ui/utils": 0.2.10
+
+  "@floating-ui/dom@1.7.4":
+    dependencies:
+      "@floating-ui/core": 1.7.3
+      "@floating-ui/utils": 0.2.10
+
+  "@floating-ui/utils@0.2.10": {}
+
+  "@floating-ui/vue@1.1.9(vue@3.5.13(typescript@5.6.3))":
+    dependencies:
+      "@floating-ui/dom": 1.7.4
+      "@floating-ui/utils": 0.2.10
+      vue-demi: 0.14.10(vue@3.5.13(typescript@5.6.3))
+    transitivePeerDependencies:
+      - "@vue/composition-api"
+      - vue
 
   "@humanfs/core@0.19.1": {}
 
@@ -5830,6 +5939,16 @@ snapshots:
       typescript: 5.6.3
       vue: 3.5.13(typescript@5.6.3)
 
+  "@vuepic/vue-datepicker@12.1.0(vue@3.5.13(typescript@5.6.3))":
+    dependencies:
+      "@date-fns/tz": 1.4.1
+      "@floating-ui/vue": 1.1.9(vue@3.5.13(typescript@5.6.3))
+      "@vueuse/core": 14.1.0(vue@3.5.13(typescript@5.6.3))
+      date-fns: 4.1.0
+      vue: 3.5.13(typescript@5.6.3)
+    transitivePeerDependencies:
+      - "@vue/composition-api"
+
   "@vueuse/core@13.0.0(vue@3.5.13(typescript@5.6.3))":
     dependencies:
       "@types/web-bluetooth": 0.0.21
@@ -5837,9 +5956,22 @@ snapshots:
       "@vueuse/shared": 13.0.0(vue@3.5.13(typescript@5.6.3))
       vue: 3.5.13(typescript@5.6.3)
 
+  "@vueuse/core@14.1.0(vue@3.5.13(typescript@5.6.3))":
+    dependencies:
+      "@types/web-bluetooth": 0.0.21
+      "@vueuse/metadata": 14.1.0
+      "@vueuse/shared": 14.1.0(vue@3.5.13(typescript@5.6.3))
+      vue: 3.5.13(typescript@5.6.3)
+
   "@vueuse/metadata@13.0.0": {}
 
+  "@vueuse/metadata@14.1.0": {}
+
   "@vueuse/shared@13.0.0(vue@3.5.13(typescript@5.6.3))":
+    dependencies:
+      vue: 3.5.13(typescript@5.6.3)
+
+  "@vueuse/shared@14.1.0(vue@3.5.13(typescript@5.6.3))":
     dependencies:
       vue: 3.5.13(typescript@5.6.3)
 
@@ -6057,6 +6189,8 @@ snapshots:
     dependencies:
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
+
+  date-fns@4.1.0: {}
 
   de-indent@1.0.2: {}
 
@@ -7502,6 +7636,10 @@ snapshots:
       yaml: 2.7.0
 
   vscode-uri@3.1.0: {}
+
+  vue-demi@0.14.10(vue@3.5.13(typescript@5.6.3)):
+    dependencies:
+      vue: 3.5.13(typescript@5.6.3)
 
   vue-eslint-parser@10.1.1(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
