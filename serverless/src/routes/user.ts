@@ -15,9 +15,15 @@ app.get("/all", async (c) => {
   }
 });
 
+// TODO: ДОДЕЛАЙ ФИЧУ С ОТПРАВКОЙ ПИСЬМА, ЕГО ВАЛИДАЦИЕЙ И ПРОВЕРКОЙ
+
 app.post("/mail", async (c) => {
   try {
-    const result = await sendTestMail(c, generateNumber());
+    const result = await sendTestMail(
+      c,
+      generateNumber(),
+      "kristy.agalaryan@gmail.com",
+    );
     return c.json(result);
   } catch (error) {
     return c.json({ error }, 500);

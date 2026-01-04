@@ -9,7 +9,14 @@
   },
   "auth": {
     "sign_in": "Sign In",
-    "sign_up": "Sign Up"
+    "sign_up": {
+      "title": "Sign Up",
+      "with": "Sign up with",
+      "name": "Name",
+      "birthday": "Birthday",
+      "email": "Email",
+      "confirm": "Sign up"
+    }
   },
   "common": {
     "you": "You",

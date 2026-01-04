@@ -4,12 +4,13 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-10-15",
   "compatibility_flags": ["nodejs_compat"],
-  // "kv_namespaces": [
-  //   {
-  //     "binding": "MY_KV_NAMESPACE",
-  //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  //   }
-  // ],
+  "kv_namespaces": [
+    {
+      "binding": "KC-KV",
+      "id": "6224872aa8544b00a4993db718d413c2",
+      "preview_id": "kc-kv-dev1",
+    },
+  ],
   "r2_buckets": [
     {
       "binding": "KC_ASSETS",
