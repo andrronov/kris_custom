@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-10-15",
   "compatibility_flags": ["nodejs_compat"],
+<<<<<<< HEAD
   "tsconfig": "tsconfig.json",
   "kv_namespaces": [
     {
@@ -20,6 +21,13 @@
       "binding": "KC_KV_SESSION",
       "id": "0afd4da1eed54d998fe960ae28eb6a39",
       "preview_id": "85145370760d4c1eb54fd96c990493d6",
+=======
+  "kv_namespaces": [
+    {
+      "binding": "KC-KV",
+      "id": "6224872aa8544b00a4993db718d413c2",
+      "preview_id": "kc-kv-dev1",
+>>>>>>> 28bc6647b64e095069a79508175e5be856fc97ef
     },
   ],
   "r2_buckets": [

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
+import { useAppStore } from "@/shared/stores/application";
 import { Input, Button, Icon } from "@/shared/ui";
 import { ICONS } from "@/shared/assets";
 
@@ -13,6 +14,7 @@ const emit = defineEmits<{
 }>();
 
 const { t } = useI18n();
+const appStore = useAppStore();
 const { submitAuth, submitting, formErrors } = useAuth(() => emit("mailSent"));
 
 const useEmail = ref(false);
@@ -47,12 +49,7 @@ const useEmail = ref(false);
         </Button>
         <p class="mt-2 md:mt-4 text-base">
           {{ t("auth.sign_up.have_account") }}&nbsp;
-          <Button
-            @click="emit('switch')"
-            :disabled="submitting"
-            variant="link"
-            class="text-base"
-          >
+          <Button @click="emit('switch')" variant="link" class="text-base">
             {{ t("common.buttons.sign_in") }}
           </Button>
         </p>

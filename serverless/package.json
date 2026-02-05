@@ -20,7 +20,13 @@
     "resend": "^6.4.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@getbrevo/brevo": "^3.0.1",
+=======
+    "@cloudflare/workers-types": "^4.20251014.0",
+    "@getbrevo/brevo": "^3.0.1",
+    "@types/node": "^24.10.0",
+>>>>>>> 28bc6647b64e095069a79508175e5be856fc97ef
     "drizzle-kit": "^0.31.5",
     "tsx": "^4.20.6",
     "wrangler": "^4.59.2"
