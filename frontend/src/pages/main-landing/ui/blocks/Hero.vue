@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import { Image, Button } from "@/shared/ui";
 import { useI18n } from "vue-i18n";
+import { api } from "@/shared/api";
+import { createAsyncProcess } from "@/shared/lib/utils";
+import { useUserStore } from "@/shared/stores/user";
 
 const { t } = useI18n();
+const userStore = useUserStore();
+
+const { run, loading, error } = createAsyncProcess(async () => {
+  const res = await api.getAllUsers();
+  const [data, error] = res;
+  console.log(data, error);
+});
 </script>
 
 <template>
@@ -35,6 +45,8 @@ const { t } = useI18n();
         shadow="success"
         size="lg"
         color="primary"
+        @click="run"
+        :disabled="loading"
       >
         {{ t("common.buttons.shop_now") }}
       </Button>

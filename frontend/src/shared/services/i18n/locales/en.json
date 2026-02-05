@@ -8,18 +8,43 @@
     "how_get_them": "How get"
   },
   "auth": {
-    "sign_in": "Sign In",
+    "sign_in": {
+      "title": "Sign In",
+      "confirm": "Sign in",
+      "no_account": "Don't have an account?"
+    },
     "sign_up": {
       "title": "Sign Up",
       "with": "Sign up with",
       "name": "Name",
       "birthday": "Birthday",
       "email": "Email",
-      "confirm": "Sign up"
-    }
+      "confirm": "Sign up",
+      "have_account": "Have an account?"
+    },
+    "otp": {
+      "title": "One-time password verification",
+      "description": "Enter the code sent to your email",
+      "resend": "You can resend code in {seconds} seconds",
+      "sent_success": "Code sent successfully"
+    },
+    "errors": {
+      "username_required": "Username is required",
+      "username_length": "Username length must be between {min} and {max} characters",
+      "email_required": "Email is required",
+      "email_invalid": "Email is invalid",
+      "otp_required": "OTP is required",
+      "otp_length": "OTP length must be {len} characters",
+      "otp_send_failed": "OTP send failed",
+      "otp_not_found": "OTP not found",
+      "invalid_otp": "Invalid OTP",
+      "internal_server_error": "Internal server error"
+    },
+    "email": "Email"
   },
   "common": {
     "you": "You",
+    "cancel": "Cancel",
     "scroll-to-see": "Scroll to see",
     "swipe-to-see": "Swipe to see",
     "buttons": {
@@ -32,7 +57,10 @@
       "learn_more": "Learn More",
       "view_catalog": "View the catalog",
       "get_your_beauty": "Get your beauty",
-      "get_new_nails": "Get new nails"
+      "get_new_nails": "Get new nails",
+      "confirm": "Confirm",
+      "back": "Back",
+      "resend_code": "Resend code"
     }
   },
   "main_landing": {

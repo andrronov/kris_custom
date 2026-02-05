@@ -3,9 +3,9 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["@cloudflare/workers-types"],
     "strict": true,
     "skipLibCheck": true,
-    "lib": ["ESNext"]
-  }
+    "lib": ["ESNext"],
+  },
+  "include": ["src", "worker-configuration.d.ts"],
 }

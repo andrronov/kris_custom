@@ -4,32 +4,30 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-10-15",
   "compatibility_flags": ["nodejs_compat"],
+  "tsconfig": "tsconfig.json",
   "kv_namespaces": [
     {
-      "binding": "KC-KV",
+      "binding": "KC_KV",
       "id": "6224872aa8544b00a4993db718d413c2",
-      "preview_id": "kc-kv-dev1",
+      "preview_id": "4cd5f93084d54eccbb903313613f6a77",
+    },
+    {
+      "binding": "KC_KV_AUTH",
+      "id": "64837fae052c4cd098a5cd1a6058347f",
+      "preview_id": "1680060c949b475a8010ad29d0d38504",
+    },
+    {
+      "binding": "KC_KV_SESSION",
+      "id": "0afd4da1eed54d998fe960ae28eb6a39",
+      "preview_id": "85145370760d4c1eb54fd96c990493d6",
     },
   ],
   "r2_buckets": [
     {
       "binding": "KC_ASSETS",
       "bucket_name": "kc-assets",
+      "preview_bucket_name": "kc-assets-preview",
       "remote": true,
     },
   ],
-  // "d1_databases": [
-  //   {
-  //     "binding": "MY_DB",
-  //     "database_name": "my-database",
-  //     "database_id": ""
-  //   }
-  // ],
-  // "ai": {
-  //   "binding": "AI"
-  // },
-  // "observability": {
-  //   "enabled": true,
-  //   "head_sampling_rate": 1
-  // }
 }

@@ -53,22 +53,10 @@ watch(formatLocale, () => {
     renderDatepicker.value = true;
   });
 });
-
-const zIndex = computed(() => {
-  return getComputedStyle(document.documentElement).getPropertyValue(
-    xlOrLarger.value ? "--z-datepicker-desktop" : "--z-datepicker-mobile",
-  );
-});
 </script>
 
-<style>
-.dp--menu-wrapper {
-  z-index: v-bind(zIndex);
-}
-</style>
-
 <template>
-  <div class="flex w-full flex-col">
+  <div class="flex w-full flex-col z-[var(--z-datepicker)]">
     <div
       class="flex w-full items-end justify-between"
       :class="{ 'text-base-content/20': disabled }"

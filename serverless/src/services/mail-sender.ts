@@ -1,16 +1,19 @@
 import { Resend } from "resend";
 import type { Context } from "hono";
 
-export const sendTestMail = async (
+export const sendOtpMail = async (
   c: Context,
-  generatedNumber: number,
-  mail: string,
+  payload: {
+    otp: number;
+    email: string;
+    name: string;
+  },
 ) => {
   const resend = new Resend(c.env.RESEND_API_KEY);
 
   const response = await resend.emails.send({
     from: "Kris Customs <auth@support.kris-customs.com>",
-    to: [mail],
+    to: [payload.email],
     subject: "Kris Customs Verification",
     html: `
       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #000000; padding: 20px; border-radius: 30px; overflow: hidden;">
@@ -19,13 +22,13 @@ export const sendTestMail = async (
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #000000; color: #ffffff; font-family: sans-serif;">
               <tr>
                 <td align="center" style="padding: 40px 20px 10px 20px;">
-                  <p style="font-size: 18px; margin: 0;">Welcome to Kris Customs!</p>
+                  <p style="font-size: 18px; margin: 0;">Welcome to Kris Customs, ${payload.name}!</p>
                 </td>
               </tr>
               <tr>
                 <td align="center" style="padding: 10px 20px;">
                   <p style="font-size: 16px; margin: 0;">Your generated number is:</p>
-                  <p style="font-weight: bold; font-size: 32px; margin: 10px 0; color: #ffffff;">${generatedNumber}</p>
+                  <p style="font-weight: bold; font-size: 32px; margin: 10px 0; color: #ffffff;">${payload.otp}</p>
                 </td>
               </tr>
               <tr>
