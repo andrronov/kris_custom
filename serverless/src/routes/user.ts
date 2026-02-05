@@ -22,7 +22,6 @@ app.get("/all", requireAuth, async (c) => {
   }
 });
 
-<<<<<<< HEAD
 app.get("/profile", async (c) => {
   const ctxUser = c.get(CONTEXT_USER);
   const [user, error] = await promiseResolver(
@@ -31,20 +30,6 @@ app.get("/profile", async (c) => {
   if (error) {
     console.log(error);
     return c.json({ data: null, error }, 500);
-=======
-// TODO: ДОДЕЛАЙ ФИЧУ С ОТПРАВКОЙ ПИСЬМА, ЕГО ВАЛИДАЦИЕЙ И ПРОВЕРКОЙ
-
-app.post("/mail", async (c) => {
-  try {
-    const result = await sendTestMail(
-      c,
-      generateNumber(),
-      "kristy.agalaryan@gmail.com",
-    );
-    return c.json(result);
-  } catch (error) {
-    return c.json({ error }, 500);
->>>>>>> 28bc6647b64e095069a79508175e5be856fc97ef
   }
 
   return c.json({ data: user, error: null }, 200);
