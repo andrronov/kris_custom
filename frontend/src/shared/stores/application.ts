@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 import { ref, watchEffect, computed } from "vue";
 import { i18n } from "@/shared/services/i18n";
 import { useModal } from "@/shared/lib/composables/use-modal";
+import { USKV_BINDINGS } from "@/shared/config";
+import { api } from "@/shared/api";
 import type { Language, SidebarType, AuthModalState } from "@/shared/types";
 
 export const useAppStore = defineStore("app", () => {
@@ -19,6 +21,12 @@ export const useAppStore = defineStore("app", () => {
 
   const toggleTheme = () => {
     storedTheme.value = storedTheme.value === "light" ? "dark" : "light";
+
+    api.setKV(
+      USKV_BINDINGS.name.settings,
+      USKV_BINDINGS.key.theme,
+      storedTheme.value,
+    );
   };
 
   const sidebarType = ref<SidebarType>(null);
@@ -41,6 +49,8 @@ export const useAppStore = defineStore("app", () => {
 
   const changeLocale = (value: Language) => {
     lang.value = value;
+
+    api.setKV(USKV_BINDINGS.name.settings, USKV_BINDINGS.key.language, value);
   };
 
   watchEffect(() => {

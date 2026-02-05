@@ -8,11 +8,43 @@
     "how_get_them": "Cómo conseguirlo"
   },
   "auth": {
-    "sign_in": "Sign In",
-    "sign_up": "Sign Up"
+    "sign_in": {
+      "title": "Iniciar Sesión",
+      "confirm": "Iniciar sesión",
+      "no_account": "¿No tienes una cuenta?"
+    },
+    "sign_up": {
+      "title": "Registrarse",
+      "with": "Registrarse con",
+      "name": "Nombre",
+      "birthday": "Fecha de nacimiento",
+      "email": "Correo electrónico",
+      "confirm": "Registrarse",
+      "have_account": "¿Ya tienes una cuenta?"
+    },
+    "otp": {
+      "title": "Verificación de contraseña de un solo uso",
+      "description": "Introduce el código enviado a tu correo electrónico",
+      "resend": "Puedes reenviar el código en {seconds} segundos",
+      "sent_success": "Código enviado exitosamente"
+    },
+    "errors": {
+      "username_required": "El nombre de usuario es obligatorio",
+      "username_length": "La longitud del nombre de usuario debe estar entre {min} y {max} caracteres",
+      "email_required": "El correo electrónico es obligatorio",
+      "email_invalid": "El correo electrónico no es válido",
+      "otp_required": "El OTP es obligatorio",
+      "otp_length": "La longitud del OTP debe ser de {len} caracteres",
+      "otp_send_failed": "Fallo al enviar el OTP",
+      "otp_not_found": "OTP no encontrado",
+      "invalid_otp": "OTP inválido",
+      "internal_server_error": "Error interno del servidor"
+    },
+    "email": "Email"
   },
   "common": {
     "you": "Tú",
+    "cancel": "Cancelar",
     "scroll-to-see": "Desplázate para ver",
     "swipe-to-see": "Desliza para ver",
     "buttons": {
@@ -25,7 +57,10 @@
       "learn_more": "Aprender Más",
       "view_catalog": "Ver el catálogo",
       "get_your_beauty": "Obtén tu belleza",
-      "get_new_nails": "Obtener uñas nuevas"
+      "get_new_nails": "Obtener uñas nuevas",
+      "confirm": "Confirmar",
+      "back": "Atrás",
+      "resend_code": "Reenviar código"
     }
   },
   "main_landing": {
@@ -215,10 +250,10 @@
     }
   },
   "user-sidebar": {
-    "sign_in": "Sign in to use coupons, get rewards, special offers and more",
-    "recently_viewed": "Recently Viewed",
-    "favorites": "Favorites",
-    "no_items": "No items yet <3",
-    "guest:": "Guest"
+    "sign_in": "Inicia sesión para usar cupones, obtener recompensas, ofertas especiales y más",
+    "recently_viewed": "Vistos recientemente",
+    "favorites": "Favoritos",
+    "no_items": "Aún no hay artículos <3",
+    "guest": "Invitado"
   }
 }

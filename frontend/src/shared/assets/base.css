@@ -68,6 +68,7 @@
   --base-300: theme("colors.base-300");
   --alpha: 0.2;
 
+  --z-datepicker: 128;
   --z-header: 256;
   --z-drawer: 1024;
   --z-modal: 2048;

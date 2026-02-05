@@ -31,4 +31,6 @@ export const ICONS = {
   eyeOpen: "mdi:eye-outline",
   eyeClosed: "mdi:eye-off-outline",
   calendar: "material-symbols:calendar-today-outline",
+  email: "material-symbols:mail-rounded",
+  arrowBack: "material-symbols-light:arrow-back-ios-rounded",
 } as const;

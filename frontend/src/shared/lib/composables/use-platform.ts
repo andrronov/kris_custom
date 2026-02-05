@@ -36,7 +36,7 @@ export const usePlatform = () => {
     } as const;
   });
 
-  const mainPlatformLinks = {
+  const mainPlatformLinks = computed(() => ({
     catalog: {
       id: undefined,
       name: t("navigation.catalog"),
@@ -46,11 +46,11 @@ export const usePlatform = () => {
         hash: anchor.prepare("faq"),
       } as RouteLocationRaw<"main-landing">,
     },
-  };
+  }));
 
   const platformRoutes = computed(() => ({
     landing: {
-      primary: [mainPlatformLinks.catalog],
+      primary: [mainPlatformLinks.value.catalog],
       secondary: [
         {
           id: undefined,

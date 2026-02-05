@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted } from "vue";
 import { useAppStore } from "@/shared/stores/application";
 import { AuthModal } from "@/features/auth";
 import { Header } from "@/widgets/app-header";
@@ -16,6 +16,12 @@ const appStore = useAppStore();
 const userStore = useUserStore();
 const cartStore = useCartStore();
 const { theme } = usePlatform();
+
+onMounted(() => {
+  if (userStore.authorized) {
+    userStore.sync();
+  }
+});
 </script>
 
 <template>
