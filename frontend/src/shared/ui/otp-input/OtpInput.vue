@@ -92,7 +92,7 @@ watch(
       maxlength="1"
       pattern="\d*"
       ref="inputs"
-      class="flex w-full items-center justify-center rounded-lg border border-secondary/40 focus:border-secondary bg-base-100 transition-all duration-200 p-2 text-center text-2xl font-medium text-gray-5 outline-none sm:text-4xl"
+      class="flex w-full items-center justify-center rounded-lg border border-secondary/40 focus:border-secondary bg-base-100 transition-all duration-200 px-2 py-3 text-center text-2xl font-medium text-gray-5 outline-none sm:text-4xl"
       :value="digit"
       @input="handleInput(index, ($event.target as HTMLInputElement)?.value)"
       @keydown="handleKeyDown($event)"

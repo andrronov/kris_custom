@@ -63,32 +63,29 @@ export const useAppStore = defineStore("app", () => {
     }
   });
 
-  const authModalState = ref<AuthModalState>("signup");
   const {
     visible: authModalVisible,
     close: closeAuthModal,
     open: openAuthModal,
-  } = useModal(false, {
-    onOpen: (state?: AuthModalState) => {
-      authModalState.value = state || "signup";
-    },
-  });
+  } = useModal(false);
 
   return {
     systemTheme,
     storedTheme,
     toggleTheme,
+
     showDrawer,
     sidebarType,
     openUserbar,
     openCartbar,
     closeDrawer,
     toggleDrawer,
+
     lang,
     changeLocale,
+
     authModalVisible,
     closeAuthModal,
     openAuthModal,
-    authModalState,
   };
 });

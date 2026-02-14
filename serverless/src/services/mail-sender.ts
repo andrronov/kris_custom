@@ -6,7 +6,6 @@ export const sendOtpMail = async (
   payload: {
     otp: number;
     email: string;
-    name: string;
   },
 ) => {
   const resend = new Resend(c.env.RESEND_API_KEY);
@@ -22,7 +21,7 @@ export const sendOtpMail = async (
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #000000; color: #ffffff; font-family: sans-serif;">
               <tr>
                 <td align="center" style="padding: 40px 20px 10px 20px;">
-                  <p style="font-size: 18px; margin: 0;">Welcome to Kris Customs, ${payload.name}!</p>
+                  <p style="font-size: 18px; margin: 0;">Welcome to Kris Customs!</p>
                 </td>
               </tr>
               <tr>

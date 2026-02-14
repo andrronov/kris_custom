@@ -33,4 +33,5 @@ export const ICONS = {
   calendar: "material-symbols:calendar-today-outline",
   email: "material-symbols:mail-rounded",
   arrowBack: "material-symbols-light:arrow-back-ios-rounded",
+  google: "bi:google",
 } as const;

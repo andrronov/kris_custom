@@ -73,6 +73,9 @@ importers:
       vue-router:
         specifier: ^4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.6.3))
+      vue3-google-signin:
+        specifier: ^2.1.1
+        version: 2.1.1(vue@3.5.13(typescript@5.6.3))
     devDependencies:
       "@iconify/vue":
         specifier: ^4.3.0
@@ -4965,6 +4968,14 @@ packages:
     peerDependencies:
       typescript: ">=5.0.0"
 
+  vue3-google-signin@2.1.1:
+    resolution:
+      {
+        integrity: sha512-RwlwyeCv8+PZjK35C/UyJN4/9MH+Fsz4bJDO7IjtmRuOaTMrvmMmI6SP5qkJgD7w9MIKOCj5rYVFMAL7+NCM0A==,
+      }
+    peerDependencies:
+      vue: ^3
+
   vue@3.5.13:
     resolution:
       {
@@ -7949,6 +7960,10 @@ snapshots:
       "@volar/typescript": 2.4.12
       "@vue/language-core": 2.2.8(typescript@5.6.3)
       typescript: 5.6.3
+
+  vue3-google-signin@2.1.1(vue@3.5.13(typescript@5.6.3)):
+    dependencies:
+      vue: 3.5.13(typescript@5.6.3)
 
   vue@3.5.13(typescript@5.6.3):
     dependencies:
