@@ -3,7 +3,7 @@ import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/shared/stores/user";
 import { nothing, getKeys, createAsyncProcess } from "@/shared/lib/utils";
 import { OTP_LEN, USERNAME_LEN } from "@/shared/config";
-import { form, INITIAL_FORM_STATE } from "./state";
+import { form, INITIAL_FORM_STATE, user } from "./state";
 import { api } from "@/shared/api";
 import type { APIError } from "@/shared/types";
 
@@ -31,10 +31,6 @@ export function useAuth(
   };
 
   const formatEmail = (email: string) => email.toLowerCase().trim();
-  const formatUsername = (email: string, username?: string) => {
-    if (!username) return email.split("@")[0];
-    return username.trim();
-  };
 
   const validateEmail = () => {
     const EMAIL_REGEX = new RegExp(
@@ -51,6 +47,8 @@ export function useAuth(
   };
 
   const validateUsername = () => {
+    if (user.value?.name) return true;
+
     if (!form.username) {
       formErrors.value.username = t("auth.errors.username_required");
     } else if (
@@ -68,7 +66,6 @@ export function useAuth(
   };
 
   const validateOTP = () => {
-    console.log(form.otp, form.otp.length);
     if (!form.otp) {
       formErrors.value.otp = t("auth.errors.otp_required");
     } else if (form.otp.length !== OTP_LEN) {
@@ -138,41 +135,59 @@ export function useAuth(
     run: submitAuth,
     loading: submitting,
     error,
-  } = createAsyncProcess(async (resend: boolean = false) => {
-    const formattedEmail = formatEmail(form.email);
-    form.username = formatUsername(formattedEmail, form.username);
-
-    const emailValid = validateEmail();
-    const usernameValid = validateUsername();
-
-    if (!usernameValid || !emailValid) {
-      return;
-    }
-
-    const [data, error] = await api.sendAuthMail(
-      formattedEmail,
-      form.username,
-      resend || false,
-    );
-
-    if (error) {
-      onError();
-      setFormError(error);
-      throw error;
-    }
-
-    onSuccess();
-  });
-
-  const { run: verifyEmail, loading: verifyingEmail } = createAsyncProcess(
-    async () => {
-      if (!validateEmail() || !validateOTP()) {
+  } = createAsyncProcess(
+    async (resend: boolean = false, googleToken?: string) => {
+      if (googleToken) {
+        const [data, error] = await api.googleAuth(googleToken);
+        if (error) {
+          onError();
+          throw error;
+        }
+        userStore.login();
+        onFinish();
         return;
       }
 
       const formattedEmail = formatEmail(form.email);
+      const emailValid = validateEmail();
 
-      const [data, error] = await api.verifyEmail(formattedEmail, form.otp);
+      if (!emailValid) {
+        return;
+      }
+
+      const [data, error] = await api.sendAuthMail(
+        formattedEmail,
+        resend || false,
+      );
+
+      if (error) {
+        onError();
+        setFormError(error);
+        throw error;
+      }
+
+      user.value = data.user;
+      onSuccess();
+    },
+  );
+
+  const { run: verifyEmail, loading: verifyingEmail } = createAsyncProcess(
+    async () => {
+      const formattedEmail = formatEmail(form.email);
+
+      const usernameValid = validateUsername();
+      const emailValid = validateEmail();
+      const otpValid = validateOTP();
+
+      if (!emailValid || !otpValid || !usernameValid) {
+        return;
+      }
+
+      const [data, error] = await api.verifyEmail(
+        formattedEmail,
+        form.otp,
+        user.value?.name || form.username,
+      );
 
       if (error) {
         onError();

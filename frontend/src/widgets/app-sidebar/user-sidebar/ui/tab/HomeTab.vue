@@ -22,7 +22,7 @@ const handleLogin = () => {
       {{ t("user-sidebar.sign_in") }}
     </h3>
     <Button @click="handleLogin" class="w-full" color="secondary" size="lg">
-      {{ t("common.buttons.log_in") }}
+      {{ t("common.buttons.open_user_tab") }}
     </Button>
   </div>
   <TabSection

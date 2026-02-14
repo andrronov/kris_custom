@@ -3,11 +3,11 @@ import { computed, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useCountdown } from "@vueuse/core";
 import { useAppStore } from "@/shared/stores/application";
-import { Button, OtpInput } from "@/shared/ui";
+import { Button, OtpInput, Input } from "@/shared/ui";
 import { OTP_RESEND_COUNTDOWN } from "@/shared/config";
 import { nothing } from "@/shared/lib/utils";
 
-import { form, INITIAL_FORM_STATE } from "../../lib/state";
+import { form, INITIAL_FORM_STATE, user } from "../../lib/state";
 import { useAuth } from "../../lib/use-auth";
 
 const { t } = useI18n();
@@ -48,7 +48,11 @@ watch(otpSent, (is) => {
 <template>
   <div class="w-full flex flex-col items-center gap-2">
     <h3 class="text-xl text-center font-bold">
-      {{ t("auth.otp.title") }}
+      {{
+        user?.name
+          ? t("auth.otp.title.welcome_back", { name: user.name })
+          : t("auth.otp.title.verification")
+      }}
     </h3>
     <p class="text-lg font-medium">
       {{ t("auth.otp.description") }}
@@ -58,6 +62,15 @@ watch(otpSent, (is) => {
       :error-message="formErrors.otp"
       class="w-full my-3 md:my-6"
     />
+    <Input
+      v-if="!user?.name"
+      class="w-full mb-3"
+      v-model="form.username"
+      name="name"
+      :error-message="formErrors.username"
+    >
+      {{ t("auth.sign_up.name") }}
+    </Input>
     <Button
       @click="verifyEmail()"
       :loading="verifyingEmail"

@@ -17,6 +17,7 @@ import type {
   USKV,
   USKVNamespace,
   APIAuthResponse,
+  APIOtpResponse,
 } from "@/shared/types";
 
 class AxiosService {
@@ -173,20 +174,27 @@ class API extends AxiosService {
     });
   }
 
-  async sendAuthMail(email: string, name: string, resend: boolean = false) {
-    return this.request({
-      // to type !
+  async sendAuthMail(email: string, resend: boolean = false) {
+    return this.request<APIOtpResponse>({
       method: "POST",
       url: "/auth/otp",
-      data: { email, name, resend },
+      data: { email, resend },
     });
   }
 
-  async verifyEmail(email: string, code: string) {
+  async googleAuth(access_token: string) {
+    return this.request<APIAuthResponse>({
+      method: "POST",
+      url: "/auth/google",
+      data: { access_token },
+    });
+  }
+
+  async verifyEmail(email: string, code: string, name: string) {
     return this.request<APIAuthResponse>({
       method: "POST",
       url: "/auth/verify",
-      data: { email, code },
+      data: { email, code, name },
     });
   }
 

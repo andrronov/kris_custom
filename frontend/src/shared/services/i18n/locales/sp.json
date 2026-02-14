@@ -40,7 +40,8 @@
       "invalid_otp": "OTP inválido",
       "internal_server_error": "Error interno del servidor"
     },
-    "email": "Email"
+    "email": "Email",
+    "google_login": "Iniciar sesión con Google"
   },
   "common": {
     "you": "Tú",
@@ -52,6 +53,7 @@
       "sign_up": "Registrarse",
       "log_in": "Iniciar Sesión",
       "log_out": "Cerrar Sesión",
+      "open_user_tab": "Abrir pestaña de usuario",
       "discover": "Descubrir",
       "shop_now": "Comprar Ahora",
       "learn_more": "Aprender Más",

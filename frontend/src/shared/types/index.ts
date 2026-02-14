@@ -14,7 +14,7 @@ export type ComponentShape = "circle" | "square";
 
 export type ComponentTabVariant = "bordered" | "lifted" | "boxed" | "separated";
 
-export type AuthModalState = "signup" | "signin";
+export type AuthModalState = "signin";
 export type AuthFormState = AuthModalState | "otp";
 
 export enum Keys {
@@ -69,6 +69,11 @@ export type APIWrapper<T> = {
 export type APIError = {
   code: number;
   message: string;
+};
+
+export type APIOtpResponse = {
+  message: string;
+  user: APIUserResponse | null;
 };
 
 export type APIUserResponse = {

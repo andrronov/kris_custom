@@ -4,10 +4,10 @@ import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { users } from "../db/schemas";
 import { sendOtpMail } from "../services/mail-sender";
+import { handleUserSession } from "../services/auth-helper";
 import { generateNumber, promiseResolver } from "../utils";
 import {
   CF_AUTH_EXP,
-  CF_SESSION_EXP,
   OTP_LENGTH,
   SESSION_COOKIE,
   getKVSessionKey,
@@ -18,16 +18,14 @@ const auth = new Hono<{ Bindings: Env }>();
 type AuthPayload = {
   otp: number;
   email: string;
-  name: string;
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 auth.post("/otp", async (c) => {
   try {
-    const { email, name, resend } = await c.req.json<{
+    const { email, resend } = await c.req.json<{
       email: string;
-      name: string;
       resend: boolean;
     }>();
     if (!email || !EMAIL_REGEX.test(email)) {
@@ -40,26 +38,20 @@ auth.post("/otp", async (c) => {
       );
     }
 
-    const user = await db.query.users.findFirst({
+    const dbUser = await db.query.users.findFirst({
       where: eq(users.email, email),
     });
-
-    if (!user && !name) {
-      return c.json(
-        {
-          data: null,
-          error: "username_required",
-        },
-        400,
-      );
-    }
 
     const existingUser = await c.env.KC_KV_AUTH.get(email);
     if (existingUser) {
       if (!resend)
         return c.json(
           {
-            data: { message: "otp_already_sent", code: "otp" },
+            data: {
+              message: "otp_already_sent",
+              code: "otp",
+              user: dbUser || null,
+            },
             error: null,
           },
           200,
@@ -71,7 +63,6 @@ auth.post("/otp", async (c) => {
     const payload: AuthPayload = {
       otp: generatedOtp,
       email,
-      name: user?.name || name,
     };
     const authData = JSON.stringify(payload);
 
@@ -92,7 +83,7 @@ auth.post("/otp", async (c) => {
 
     return c.json(
       {
-        data: { message: "OTP sent successfully" },
+        data: { message: "OTP sent successfully", user: dbUser || null },
         error: null,
       },
       200,
@@ -109,9 +100,50 @@ auth.post("/otp", async (c) => {
   }
 });
 
+auth.post("/google", async (c) => {
+  const { access_token } = await c.req.json();
+
+  const res = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+    headers: { Authorization: `Bearer ${access_token}` },
+  });
+  const googleUser = await res.json<{
+    sub: string;
+    name: string;
+    given_name: string;
+    family_name: string;
+    picture: string;
+    email: string;
+    email_verified: boolean;
+  }>();
+
+  const [user, error] = await handleUserSession(c, {
+    email: googleUser.email,
+    name: googleUser.name,
+  });
+
+  if (error || !user) {
+    return c.json({ data: null, error: error || "internal_server_error" }, 500);
+  }
+
+  return c.json(
+    {
+      data: {
+        message: "Authenticated successfully",
+        user: { id: user.id, name: user.name, email: user.email },
+      },
+      error: null,
+    },
+    200,
+  );
+});
+
 auth.post("/verify", async (c) => {
   try {
-    const { email, code } = await c.req.json<{ email: string; code: string }>();
+    const { email, code, name } = await c.req.json<{
+      email: string;
+      code: string;
+      name: string;
+    }>();
     if (!email || !EMAIL_REGEX.test(email)) {
       return c.json(
         {
@@ -138,37 +170,14 @@ auth.post("/verify", async (c) => {
       return c.json({ data: null, error: "invalid_otp" }, 400);
     }
 
-    let user = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    });
-    if (!user) {
-      const [newUser] = await db
-        .insert(users)
-        .values({ email, name: data.name })
-        .returning();
-      user = newUser;
+    const [user, error] = await handleUserSession(c, { email, name });
+
+    if (error || !user) {
+      return c.json(
+        { data: null, error: error || "internal_server_error" },
+        500,
+      );
     }
-
-    const sessionId = crypto.randomUUID();
-    const sessionData = JSON.stringify({
-      id: user.id,
-      email: user.email,
-      name: user.name,
-    });
-
-    await c.env.KC_KV_SESSION.put(getKVSessionKey(sessionId), sessionData, {
-      expirationTtl: CF_SESSION_EXP,
-    });
-
-    await c.env.KC_KV_AUTH.delete(email);
-
-    setCookie(c, SESSION_COOKIE, sessionId, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "Lax",
-      maxAge: CF_SESSION_EXP,
-      path: "/",
-    });
 
     return c.json(
       {

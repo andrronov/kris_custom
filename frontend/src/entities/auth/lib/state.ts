@@ -1,4 +1,5 @@
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+import type { APIUserResponse } from "@/shared/types";
 
 export const INITIAL_FORM_STATE = {
   email: "",
@@ -7,3 +8,4 @@ export const INITIAL_FORM_STATE = {
 };
 
 export const form = reactive({ ...INITIAL_FORM_STATE });
+export const user = ref<APIUserResponse | null>(null);

@@ -68,3 +68,5 @@ export const DAY = 24 * HOUR;
 export const EXTERNAL = {
   instagram: "https://www.instagram.com/nailss_by_kris?igsh=dW9rcHdjNHp6bmRu",
 };
+
+export const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string;
