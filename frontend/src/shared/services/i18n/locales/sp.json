@@ -10,12 +10,12 @@
   "auth": {
     "sign_in": {
       "title": "Iniciar Sesión",
+      "with": "Iniciar sesión con",
       "confirm": "Iniciar sesión",
       "no_account": "¿No tienes una cuenta?"
     },
     "sign_up": {
       "title": "Registrarse",
-      "with": "Registrarse con",
       "name": "Nombre",
       "birthday": "Fecha de nacimiento",
       "email": "Correo electrónico",
@@ -23,7 +23,10 @@
       "have_account": "¿Ya tienes una cuenta?"
     },
     "otp": {
-      "title": "Verificación de contraseña de un solo uso",
+      "title": {
+        "verification": "Verificación de contraseña de un solo uso",
+        "welcome_back": "Bienvenido de nuevo, {name}!"
+      },
       "description": "Introduce el código enviado a tu correo electrónico",
       "resend": "Puedes reenviar el código en {seconds} segundos",
       "sent_success": "Código enviado exitosamente"
