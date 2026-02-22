@@ -43,6 +43,10 @@
     @apply text-2xl font-bold;
   }
 
+  .header {
+    @apply bg-primary/75 backdrop-blur-sm rounded-full text-primary-content;
+  }
+
   @screen md {
     .h1 {
       @apply text-6xl;

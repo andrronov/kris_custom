@@ -2,20 +2,15 @@
 import { onMounted } from "vue";
 import { useAppStore } from "@/shared/stores/application";
 import { AuthModal } from "@/features/auth";
-import { Header } from "@/widgets/app-header";
+import { Header, MobileHeaderNav } from "@/widgets/app-header";
 import { Footer } from "@/widgets/app-footer";
 import { UserSidebar } from "@/widgets/app-sidebar/user-sidebar";
 import { CartSidebar } from "@/widgets/app-sidebar/cart-sidebar";
-import { usePlatform } from "@/shared/lib/composables/use-platform";
 import { useUserStore } from "@/shared/stores/user";
-import { useCartStore } from "@/shared/stores/cart";
-import { Drawer, Button } from "@/shared/ui";
-import { whenever } from "@vueuse/core";
+import { Drawer } from "@/shared/ui";
 
 const appStore = useAppStore();
 const userStore = useUserStore();
-const cartStore = useCartStore();
-const { theme } = usePlatform();
 
 onMounted(() => {
   if (userStore.authorized) {
@@ -45,6 +40,7 @@ onMounted(() => {
       />
     </template>
   </Drawer>
+  <MobileHeaderNav />
   <AuthModal />
 </template>
 
