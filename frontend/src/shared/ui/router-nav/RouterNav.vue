@@ -11,7 +11,7 @@ withDefaults(
 
 <template>
   <nav
-    class="flex flex-row flex-nowrap gap-2 overflow-x-auto overflow-y-hidden"
+    class="flex flex-row flex-nowrap gap-2 overflow-y-hidden"
     style="-webkit-overflow-scrolling: touch"
   >
     <div
