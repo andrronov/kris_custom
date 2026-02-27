@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - apps/frontend/**
+      - packages/shared/**
       - .github/workflows/frontend-preview.yml
       - .github/workflows/kc-ci.yml
     types:
@@ -14,10 +15,6 @@ on:
 concurrency:
   group: frontend-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-defaults:
-  run:
-    working-directory: ./frontend
 
 jobs:
   build:
@@ -39,12 +36,13 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
+          cache-dependency-path: "./pnpm-lock.yaml"
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build
-        run: pnpm run build
+        run: pnpm --filter frontend run build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -67,7 +65,7 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
-          cache-dependency-path: "apps/frontend/pnpm-lock.yaml"
+          cache-dependency-path: "./pnpm-lock.yaml"
 
       - name: Download bundle
         uses: actions/download-artifact@v4
@@ -132,10 +130,10 @@ jobs:
 
             return comment.data.id;
 
-      - name: Deploy on named branch
+      - name: Deploy on Claudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          workingDirectory: ./frontend
+          workingDirectory: ./apps/frontend
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: >
