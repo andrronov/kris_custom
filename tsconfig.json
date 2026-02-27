@@ -2,13 +2,13 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/frontend",
+      "path": "./apps/frontend"
     },
     {
-      "path": "./apps/serverless",
+      "path": "./apps/serverless"
     },
     {
-      "path": "./packages/shared",
-    },
-  ],
+      "path": "./packages/shared"
+    }
+  ]
 }
