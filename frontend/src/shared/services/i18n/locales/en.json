@@ -51,6 +51,7 @@
     "cancel": "Cancel",
     "scroll-to-see": "Scroll to see",
     "swipe-to-see": "Swipe to see",
+    "good": "Good",
     "buttons": {
       "sign_in": "Sign In",
       "sign_up": "Sign Up",
@@ -66,6 +67,12 @@
       "confirm": "Confirm",
       "back": "Back",
       "resend_code": "Resend code"
+    },
+    "datetime": {
+      "morning": "morning",
+      "afternoon": "afternoon",
+      "evening": "evening",
+      "night": "night"
     }
   },
   "main_landing": {
@@ -259,6 +266,7 @@
   "user-sidebar": {
     "sign_in": "Sign in to use coupons, get rewards, special offers and more",
     "recently_viewed": "Recently Viewed",
+    "coupons": "Coupons",
     "favorites": "Favorites",
     "no_items": "No items yet <3",
     "guest": "Guest"

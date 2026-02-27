@@ -48,6 +48,30 @@ export const useUserStore = defineStore("user", () => {
     return res;
   });
 
+  const favorites = ref<Set<string>>(new Set());
+
+  const fetchFavorites = async () => {
+    const [data, error] = await api.getKVNamespace(
+      USKV_BINDINGS.name.favorites,
+    );
+    if (!error && data) {
+      favorites.value = new Set(data);
+    }
+  };
+
+  const toggleFavorite = async (productId: string) => {
+    if (favorites.value.has(productId)) {
+      favorites.value.delete(productId);
+    } else {
+      favorites.value.add(productId);
+    }
+
+    await api.setKVNamespace(
+      USKV_BINDINGS.name.favorites,
+      Array.from(favorites.value),
+    );
+  };
+
   const { run: syncSettings, loading: syncingSettings } = createAsyncProcess(
     async () => {
       const [settingsKV] = await api.getKVNamespace(
@@ -67,7 +91,11 @@ export const useUserStore = defineStore("user", () => {
   );
 
   const sync = async () => {
-    await Promise.allSettled([fetchProfile(), syncSettings()]);
+    await Promise.allSettled([
+      fetchProfile(),
+      syncSettings(),
+      fetchFavorites(),
+    ]);
   };
 
   const login = async () => {
@@ -85,6 +113,10 @@ export const useUserStore = defineStore("user", () => {
     user,
     profileFetched,
     authorized,
+
+    favorites,
+    fetchFavorites,
+    toggleFavorite,
 
     syncSettings,
     syncingSettings,

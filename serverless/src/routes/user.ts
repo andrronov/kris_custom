@@ -32,7 +32,7 @@ app.get("/profile", async (c) => {
     return c.json({ data: null, error }, 500);
   }
 
-  return c.json({ data: user, error: null }, 200);
+  return c.json({ data: user[0], error: null }, 200);
 });
 
 app.get("/storage/:category/:key?", requireAuth, async (c) => {

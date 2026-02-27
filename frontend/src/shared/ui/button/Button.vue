@@ -43,7 +43,7 @@ const disabled = computed(() => {
 });
 
 const classes = computed(() => [
-  "btn normal-case no-underline underline-offset-4",
+  "btn normal-case no-underline underline-offset-4 animate-none",
   ((slots.start && !props.loading) || slots.end) && "gap-2",
   [props.shape ? [`btn-${props.shape}`] : "rounded-default"],
   {

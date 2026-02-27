@@ -35,10 +35,15 @@ const openAuthModal = () => {
         </div>
       </template>
       <template v-else>
-        <p>
-          {{ userStore.user }}
+        <p class="text-2xl md:text-3xl font-medium pb-2">
+          {{ userStore.user?.name }}
         </p>
-        <Button @click="userStore.logout">
+        <Button
+          full-width
+          color="secondary"
+          size="lg"
+          @click="userStore.logout"
+        >
           {{ t("common.buttons.log_out") }}
         </Button>
       </template>

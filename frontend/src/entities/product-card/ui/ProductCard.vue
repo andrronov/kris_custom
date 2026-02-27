@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import { useUserStore } from "@/shared/stores/user";
 import { FadingImages } from "@/shared/ui";
 import type { Product } from "@/shared/types";
+
 import LikeProduct from "./LikeProduct.vue";
 import ProductBadge from "./ProductBadge.vue";
 import ProductPrice from "./ProductPrice.vue";
@@ -9,8 +12,10 @@ import ProductPrice from "./ProductPrice.vue";
 const props = withDefaults(
   defineProps<{
     product?: Product;
+    showLike?: boolean;
   }>(),
   {
+    showLike: true,
     product: () => ({
       id: "1",
       name: "Base Beauty",
@@ -19,6 +24,9 @@ const props = withDefaults(
     }),
   },
 );
+
+const userStore = useUserStore();
+const liked = computed(() => userStore.favorites.has(props.product.id));
 </script>
 
 <template>
@@ -26,7 +34,11 @@ const props = withDefaults(
     class="w-full max-w-[265px] min-h-[305px] md:max-w-[295px] md:min-h-[335px] lg:max-w-[395px] lg:min-h-[435px] flex-shrink-0 rounded-3xl relative flex flex-col cursor-pointer overflow-hidden items-center shadow-sm shadow-secondary"
   >
     <ProductBadge />
-    <LikeProduct />
+    <LikeProduct
+      v-if="props.showLike"
+      :liked
+      @toggle="userStore.toggleFavorite(props.product.id)"
+    />
 
     <FadingImages
       class="relative"

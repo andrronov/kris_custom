@@ -57,6 +57,7 @@ export type USKV = {
     theme: BasicColorSchema;
     language: Language;
   };
+  favorites: string[];
 };
 
 export type USKVNamespace = keyof USKV;

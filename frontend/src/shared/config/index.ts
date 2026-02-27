@@ -21,6 +21,7 @@ export const SERVER_URL = DEFINED_API_HOST || SUPPORTED_API_HOSTS.prod;
 export const USKV_BINDINGS = {
   name: {
     settings: "settings",
+    favorites: "favorites",
   },
   key: {
     theme: "theme",
