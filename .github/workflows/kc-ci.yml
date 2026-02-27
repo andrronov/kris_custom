@@ -2,10 +2,7 @@ name: "KC-CI"
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
+    types: [opened, synchronize, reopened]
 
 jobs:
   kc_ci:
@@ -15,36 +12,40 @@ jobs:
       require_kc_frontend_checks: ${{ steps.frontend_checks.outputs.require }}
     steps:
       - uses: actions/checkout@v4
-      - id: fetch_trunk
-        run: git fetch origin trunk
+        with:
+          fetch-depth: 0
+
       - id: frontend_checks
-        run: echo "require=$(git diff --name-only origin/trunk | grep '^frontend' | head -n 1 | wc -l)" >> "$GITHUB_OUTPUT"
+        run: |
+          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/frontend|packages/shared)' | head -n 1 | wc -l)
+          echo "require=$CHANGES" >> "$GITHUB_OUTPUT"
 
   kc_frontend_checks:
     name: KC Frontend Checks
     needs: kc_ci
     runs-on: ubuntu-latest
     if: needs.kc_ci.outputs.require_kc_frontend_checks == '1'
-    defaults:
-      run:
-        working-directory: ./apps/frontend
+
     steps:
       - uses: actions/checkout@v4
-      - name: pnpm init
+
+      - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
-      - uses: actions/setup-node@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: "pnpm"
-          cache-dependency-path: "frontend/pnpm-lock.yaml"
+          cache-dependency-path: "./pnpm-lock.yaml"
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Check types
-        run: pnpm type-check
+        run: pnpm --filter frontend run type-check
 
       - name: Check formatting
-        run: pnpm format-check
+        run: pnpm --filter frontend run format-check
