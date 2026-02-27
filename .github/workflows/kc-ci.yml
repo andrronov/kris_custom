@@ -27,7 +27,7 @@ jobs:
     if: needs.kc_ci.outputs.require_kc_frontend_checks == '1'
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./apps/frontend
     steps:
       - uses: actions/checkout@v4
       - name: pnpm init

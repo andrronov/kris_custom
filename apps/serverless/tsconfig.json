@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": ["ESNext"],
+  },
+  "include": ["src", "worker-configuration.d.ts"],
+  "references": [{ "path": "../../packages/shared" }],
+}

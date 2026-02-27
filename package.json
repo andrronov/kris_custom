@@ -1,0 +1,24 @@
+{
+  "name": "kris-customs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Kris Customs repository",
+  "scripts": {
+    "dev": "pnpm --parallel run dev",
+    "build": "pnpm -r run build",
+    "format-check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "devDependencies": {
+    "typescript": "~5.6.3",
+    "prettier": "3.4.2",
+    "eslint-config-typescript": "^3.0.0",
+    "eslint-plugin-import-x": "^4.6.1",
+    "eslint-plugin-oxlint": "^0.15.6",
+    "eslint-plugin-vue": "^9.32.0"
+  }
+}

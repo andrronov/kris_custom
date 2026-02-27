@@ -3,7 +3,7 @@ name: "[KC/frontend] Preview Build & Deploy"
 on:
   pull_request:
     paths:
-      - frontend/**
+      - apps/frontend/**
       - .github/workflows/frontend-preview.yml
       - .github/workflows/kc-ci.yml
     types:
@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
-          cache-dependency-path: "frontend/pnpm-lock.yaml"
+          cache-dependency-path: "apps/frontend/pnpm-lock.yaml"
 
       - name: Install dependencies
         run: pnpm install
@@ -52,7 +52,7 @@ jobs:
         with:
           name: frontend-dist
           path: |
-            ./frontend/dist/
+            ./apps/frontend/dist/
 
   deploy:
     name: Publish a Preview Deployment
@@ -68,13 +68,13 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
-          cache-dependency-path: "frontend/pnpm-lock.yaml"
+          cache-dependency-path: "apps/frontend/pnpm-lock.yaml"
 
       - name: Download bundle
         uses: actions/download-artifact@v4
         with:
           name: frontend-dist
-          path: ./frontend/dist/
+          path: ./apps/frontend/dist/
 
       - name: Retrieve deploy-as info
         id: deploy-as
