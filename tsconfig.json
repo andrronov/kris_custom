@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/frontend"
+    },
+    {
+      "path": "./apps/serverless"
+    },
+    {
+      "path": "./packages/shared"
+    }
+  ]
+}
