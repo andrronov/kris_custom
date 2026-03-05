@@ -6,17 +6,11 @@ import {
   decimal,
   pgEnum,
 } from "drizzle-orm/pg-core";
+import { orderStatuses } from "../../types";
 import { users, addresses } from "./user";
 import { productVariants } from "./product";
 
-export const orderStatusEnum = pgEnum("order_status", [
-  "pending_payment",
-  "paid",
-  "in_progress",
-  "shipped",
-  "delivered",
-  "cancelled",
-]);
+export const orderStatusEnum = pgEnum("order_status", orderStatuses);
 
 export const orders = pgTable("orders", {
   id: uuid("id").defaultRandom().primaryKey(),

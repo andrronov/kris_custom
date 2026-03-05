@@ -34,4 +34,5 @@ export const ICONS = {
   email: "material-symbols:mail-rounded",
   arrowBack: "material-symbols-light:arrow-back-ios-rounded",
   google: "bi:google",
+  coupon: "mingcute:coupon-line",
 } as const;

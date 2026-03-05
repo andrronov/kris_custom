@@ -1,10 +1,29 @@
 import type { BasicColorSchema } from "@vueuse/core";
-import { SUPPORTED_LANGUAGES } from "@/shared/config";
+import type { Language } from "@kris-customs/shared/types";
 
 export type AppTheme = "dark" | "light";
-export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
 export type Platform = "landing";
+
+export type USKV = {
+  settings: {
+    theme: BasicColorSchema;
+    language: Language;
+  };
+  favorites: string[];
+};
+
+export type USKVNamespace = keyof USKV;
+
+export type APIWrapper<T> = {
+  code: number;
+  error?: string | null;
+  data?: T | null;
+};
+export type APIError = {
+  code: number;
+  message: string;
+};
 
 export type ComponentSize = "lg" | "md" | "sm" | "xs";
 export type ComponentStatus = "info" | "success" | "warning" | "error";
@@ -35,40 +54,11 @@ export enum Keys {
 
 export type SidebarType = "user" | "cart" | null;
 
-export type ProductPrice = number | [number, number];
-export type ProductImage = string | [string, string];
-
-export type Product = {
-  id: string;
-  name: string;
-  price: ProductPrice;
-  decor: ProductImage;
-};
-
 export type DiscountCard = {
   title: string;
   description: string;
   image: string;
   link: string;
-};
-
-export type USKV = {
-  settings: {
-    theme: BasicColorSchema;
-    language: Language;
-  };
-};
-
-export type USKVNamespace = keyof USKV;
-
-export type APIWrapper<T> = {
-  code: number;
-  error?: string | null;
-  data?: T | null;
-};
-export type APIError = {
-  code: number;
-  message: string;
 };
 
 export type APIOtpResponse = {

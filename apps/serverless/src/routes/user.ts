@@ -1,11 +1,11 @@
+import { eq } from "drizzle-orm";
+import * as schema from "@kris-customs/shared/db";
 import { Hono } from "hono";
 import { db } from "../db";
-import * as schema from "../db/schemas";
 import { CONTEXT_USER } from "../config";
 import { requireAuth } from "../middleware";
 import { promiseResolver } from "../utils";
 import type { SessionData } from "../types";
-import { eq } from "drizzle-orm";
 
 type User = typeof CONTEXT_USER;
 const app = new Hono<{ Bindings: Env; Variables: Record<User, SessionData> }>();
@@ -32,7 +32,7 @@ app.get("/profile", async (c) => {
     return c.json({ data: null, error }, 500);
   }
 
-  return c.json({ data: user, error: null }, 200);
+  return c.json({ data: user[0], error: null }, 200);
 });
 
 app.get("/storage/:category/:key?", requireAuth, async (c) => {

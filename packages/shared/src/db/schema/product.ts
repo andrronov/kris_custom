@@ -8,11 +8,12 @@ import {
   primaryKey,
   text,
 } from "drizzle-orm/pg-core";
+import type { LocalizedString } from "../../types";
 
 export const products = pgTable("products", {
   id: uuid("id").defaultRandom().primaryKey(),
-  name: jsonb("name").notNull(),
-  description: jsonb("description"),
+  name: jsonb("name").notNull().$type<LocalizedString>(),
+  description: jsonb("description").$type<LocalizedString>(),
   basePrice: decimal("base_price", { precision: 10, scale: 2 }).notNull(),
   attributes: jsonb("attributes"),
   viewCount: integer("view_count").default(0).notNull(),
@@ -65,5 +66,5 @@ export const productImages = pgTable("product_images", {
     .notNull(),
   imageKey: text("image_key").notNull(),
   displayOrder: integer("display_order").default(0).notNull(),
-  altText: jsonb("alt_text"),
+  altText: jsonb("alt_text").$type<LocalizedString>(),
 });

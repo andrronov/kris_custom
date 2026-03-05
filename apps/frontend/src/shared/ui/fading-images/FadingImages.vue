@@ -1,30 +1,36 @@
 <script setup lang="ts">
 import { ref, useAttrs, onMounted, onBeforeUnmount } from "vue";
+import type { Language, ProductImage } from "@kris-customs/shared/types";
+import { getMediaUrl } from "@/shared/lib/utils";
 import { Image } from "@/shared/ui";
-import type { ProductImage } from "@/shared/types";
 
 type Options = {
   changeInterval?: number;
 };
 
-const props = defineProps<{
-  images: Omit<ProductImage, string>;
+const {
+  images,
+  imgStyles,
+  lang = "en",
+  options,
+} = defineProps<{
+  images: ProductImage[];
   imgStyles?: string;
+  lang?: Language;
   options?: Options;
 }>();
 
 const attrs = useAttrs();
 
-const imageStyles = "z-100 object-cover";
 const isHovering = ref(false);
+const imagesSrc = images.map((img) => getMediaUrl(img.imageKey));
 
 let intervalId: ReturnType<typeof setInterval>;
-
 onMounted(() => {
-  if (props.options?.changeInterval) {
+  if (options?.changeInterval) {
     intervalId = setInterval(
       () => (isHovering.value = !isHovering.value),
-      props.options?.changeInterval,
+      options?.changeInterval,
     );
   }
 });
@@ -32,6 +38,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
   clearInterval(intervalId);
 });
+
+const imageStyles = "z-100 object-cover";
 </script>
 
 <template>
@@ -45,14 +53,16 @@ onBeforeUnmount(() => {
     :class="[imageStyles, imgStyles]"
   >
     <Image
-      :src="images[0]"
+      :src="imagesSrc[0]"
       :class="['image-transition', imageStyles, imgStyles]"
       :style="{ opacity: isHovering ? 0 : 1 }"
+      :alt="images[0].altText?.[lang]"
     />
     <Image
-      :src="images[1]"
+      :src="imagesSrc[1]"
       :class="['image-transition', imgStyles, imageStyles]"
       :style="{ opacity: isHovering ? 1 : 0 }"
+      :alt="images[1].altText?.[lang]"
     />
   </div>
 </template>

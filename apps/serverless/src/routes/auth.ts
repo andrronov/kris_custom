@@ -1,8 +1,8 @@
+import { users } from "@kris-customs/shared/db";
 import { Hono } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { eq } from "drizzle-orm";
 import { db } from "../db";
-import { users } from "../db/schemas";
 import { sendOtpMail } from "../services/mail-sender";
 import { handleUserSession } from "../services/auth-helper";
 import { generateNumber, promiseResolver } from "../utils";

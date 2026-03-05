@@ -51,6 +51,7 @@
     "cancel": "Cancelar",
     "scroll-to-see": "Desplázate para ver",
     "swipe-to-see": "Desliza para ver",
+    "good": "Buenos",
     "buttons": {
       "sign_in": "Iniciar Sesión",
       "sign_up": "Registrarse",
@@ -66,6 +67,12 @@
       "confirm": "Confirmar",
       "back": "Atrás",
       "resend_code": "Reenviar código"
+    },
+    "datetime": {
+      "morning": "dias",
+      "afternoon": "tarde",
+      "evening": "noche",
+      "night": "noche"
     }
   },
   "main_landing": {
@@ -257,6 +264,7 @@
   "user-sidebar": {
     "sign_in": "Inicia sesión para usar cupones, obtener recompensas, ofertas especiales y más",
     "recently_viewed": "Vistos recientemente",
+    "coupons": "Cupones",
     "favorites": "Favoritos",
     "no_items": "Aún no hay artículos <3",
     "guest": "Invitado"

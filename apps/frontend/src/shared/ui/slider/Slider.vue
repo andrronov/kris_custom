@@ -32,11 +32,23 @@ const getDefaultClass = () => "min-w-0 flex-shrink-0 flex-grow-0 basis-full";
 </script>
 
 <template>
-  <div class="overflow-hidden" ref="emblaRef">
-    <div class="flex">
+  <div class="overflow-hidden slider" ref="emblaRef">
+    <div class="flex slider__container">
       <slot :default-class="getDefaultClass()" :current-slide="currentSlide" />
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.slider__container {
+  > :first-child {
+    @apply mr-3;
+  }
+  > :not(:first-child):not(:last-child) {
+    @apply mx-3;
+  }
+  > :last-child {
+    @apply ml-3;
+  }
+}
+</style>

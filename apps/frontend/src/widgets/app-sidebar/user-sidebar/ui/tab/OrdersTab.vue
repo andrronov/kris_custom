@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { Button } from "@/shared/ui";
+import { useUserStore } from "@/shared/stores/user";
+
+const emit = defineEmits<{
+  clickLogin: [];
+}>();
 
 const { t } = useI18n();
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -12,8 +18,18 @@ const { t } = useI18n();
     >
       Orders
     </h3>
-    <Button class="w-full" color="secondary" size="lg">
-      {{ t("common.buttons.log_in") }}
-    </Button>
+    <template v-if="userStore.authorized">
+      <p>You don't have any orders yet</p>
+    </template>
+    <template v-else>
+      <Button
+        class="w-full"
+        color="secondary"
+        size="lg"
+        @click="emit('clickLogin')"
+      >
+        {{ t("common.buttons.log_in") }}
+      </Button>
+    </template>
   </div>
 </template>

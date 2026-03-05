@@ -26,6 +26,7 @@
     "axios": "^1.13.2",
     "axios-retry": "^4.5.0",
     "date-fns": "^4.1.0",
+    "dayjs": "^1.11.19",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-vue": "^8.6.0",
     "pinia": "^3.0.1",

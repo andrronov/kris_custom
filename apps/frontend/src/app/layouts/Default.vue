@@ -22,7 +22,7 @@ onMounted(() => {
 <template>
   <Drawer
     v-model="appStore.showDrawer"
-    sidebar-class="w-80 md:w-[520px]"
+    sidebar-class="w-[340px] md:w-[520px]"
     name="sidebar"
     class="bg-base-100 text-base-content relative"
   >
