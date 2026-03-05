@@ -1,56 +1,73 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import type { ProductWithImages } from "@kris-customs/shared/types";
 import { useUserStore } from "@/shared/stores/user";
+import { useAppStore } from "@/shared/stores/application";
 import { FadingImages } from "@/shared/ui";
-import type { Product } from "@/shared/types";
+
+import type { ProductCardSize } from "../types";
+import { PRODUCT_CARD_CLASSES } from "../data";
 
 import LikeProduct from "./LikeProduct.vue";
 import ProductBadge from "./ProductBadge.vue";
 import ProductPrice from "./ProductPrice.vue";
 
-// зарефакторить - убрать дефолт
-const props = withDefaults(
-  defineProps<{
-    product?: Product;
-    showLike?: boolean;
-  }>(),
-  {
-    showLike: true,
-    product: () => ({
-      id: "1",
-      name: "Base Beauty",
-      price: [49.99, 59.99],
-      decor: ["/images/nails_exp.jpg", "/images/hero.jpg"],
-    }),
-  },
-);
+const {
+  product,
+  showLike = true,
+  size = "base",
+} = defineProps<{
+  product: ProductWithImages;
+  showLike?: boolean;
+  size?: ProductCardSize;
+}>();
 
 const userStore = useUserStore();
-const liked = computed(() => userStore.favorites.has(props.product.id));
+const appStore = useAppStore();
+
+const liked = computed(() => userStore.favorites.has(product.id));
+
+const cardClass = {
+  card: PRODUCT_CARD_CLASSES[size],
+  image: {
+    base: "h-[270px] md:h-[300px] lg:h-[400px] w-full",
+    small: "h-[180px] md:h-[200px] lg:h-[300px] w-full",
+  }[size],
+  params: {
+    base: "h-16",
+    small: "h-16",
+  }[size],
+};
 </script>
 
 <template>
   <div
-    class="w-full max-w-[265px] min-h-[305px] md:max-w-[295px] md:min-h-[335px] lg:max-w-[395px] lg:min-h-[435px] flex-shrink-0 rounded-3xl relative flex flex-col cursor-pointer overflow-hidden items-center shadow-sm shadow-secondary"
+    class="w-full flex-shrink-0 rounded-3xl relative flex flex-col cursor-pointer overflow-hidden items-center shadow-sm shadow-secondary"
+    :class="cardClass.card"
   >
-    <ProductBadge />
+    <!-- <ProductBadge /> -->
     <LikeProduct
-      v-if="props.showLike"
+      v-if="showLike"
       :liked
-      @toggle="userStore.toggleFavorite(props.product.id)"
+      :size
+      @toggle="userStore.toggleFavorite(product.id)"
     />
 
     <FadingImages
       class="relative"
-      :images="product.decor"
-      img-styles="h-[270px] md:h-[300px] lg:h-[400px] w-full"
+      :images="product.productImages"
+      :lang="appStore.lang"
+      :img-styles="cardClass.image"
     />
 
-    <div class="w-full h-16 flex justify-center flex-col items-center">
-      <p class="font-medium text-primary text-lg">
-        {{ product.name }}
+    <div
+      class="w-full flex justify-center flex-col items-center"
+      :class="cardClass.params"
+    >
+      <p class="font-medium text-primary text-base md:text-lg">
+        {{ product.name[appStore.lang] }}
       </p>
-      <ProductPrice :price="product.price" />
+      <ProductPrice :price="product.basePrice" />
     </div>
   </div>
 </template>

@@ -1,11 +1,11 @@
+import { eq } from "drizzle-orm";
+import * as schema from "@kris-customs/shared/db";
 import { Hono } from "hono";
 import { db } from "../db";
-import * as schema from "../db/schemas";
 import { CONTEXT_USER } from "../config";
 import { requireAuth } from "../middleware";
 import { promiseResolver } from "../utils";
 import type { SessionData } from "../types";
-import { eq } from "drizzle-orm";
 
 type User = typeof CONTEXT_USER;
 const app = new Hono<{ Bindings: Env; Variables: Record<User, SessionData> }>();

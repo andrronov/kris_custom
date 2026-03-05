@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 import type { AxiosInstance, AxiosRequestConfig } from "axios";
 import axiosRetry from "axios-retry";
 import { logout } from "@/features/auth";
+import type { ProductWithImages } from "@kris-customs/shared/types";
 import {
   IS_PROD,
   MODE,
@@ -202,6 +203,22 @@ class API extends AxiosService {
     return this.request({
       method: "POST",
       url: "/auth/logout",
+    });
+  }
+
+  async getPopularProducts(limit: number) {
+    return this.request<ProductWithImages[]>({
+      method: "GET",
+      url: `/product/popular`,
+      params: { limit },
+    });
+  }
+
+  async getProductsById(ids: string[]) {
+    return this.request<ProductWithImages[]>({
+      method: "POST",
+      url: `/product/list-by-ids`,
+      data: { ids },
     });
   }
 }

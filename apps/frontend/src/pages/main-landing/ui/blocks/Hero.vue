@@ -10,8 +10,10 @@ const userStore = useUserStore();
 
 const { run, loading, error } = createAsyncProcess(async () => {
   const res = await api.getAllUsers();
+  const aaa = await api.getPopularProducts(6);
+
   const [data, error] = res;
-  console.log(data, error);
+  console.log(aaa, data, error);
 });
 </script>
 

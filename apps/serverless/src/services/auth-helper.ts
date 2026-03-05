@@ -1,7 +1,7 @@
 import { setCookie } from "hono/cookie";
 import { eq } from "drizzle-orm";
+import { users } from "@kris-customs/shared/db";
 import { db } from "../db";
-import { users } from "../db/schemas";
 import { SESSION_COOKIE, CF_SESSION_EXP, getKVSessionKey } from "../config";
 
 export async function handleUserSession(

@@ -4,8 +4,9 @@ import { ref, watchEffect, computed } from "vue";
 import { i18n } from "@/shared/services/i18n";
 import { useModal } from "@/shared/lib/composables/use-modal";
 import { USKV_BINDINGS } from "@/shared/config";
+import type { Language } from "@kris-customs/shared/types";
 import { api } from "@/shared/api";
-import type { Language, SidebarType, AuthModalState } from "@/shared/types";
+import type { SidebarType } from "@/shared/types";
 
 export const useAppStore = defineStore("app", () => {
   const { system: systemTheme, store: storedTheme } = useColorMode({

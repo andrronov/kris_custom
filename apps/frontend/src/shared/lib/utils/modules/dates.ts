@@ -10,14 +10,14 @@ export function getRelativeTime(date: DTime): string {
 function getDayTimeLabel(date: DTime = new Date()): DateTimeLabel {
   const h = dayjs(date).hour();
 
-  if (h > 5 && h < 12) {
+  if (h >= 5 && h < 12) {
     return "morning";
+  } else if (h < 5 || h > 22) {
+    return "night";
   } else if (h < 17) {
     return "afternoon";
-  } else if (h < 22) {
-    return "evening";
   } else {
-    return "night";
+    return "evening";
   }
 }
 

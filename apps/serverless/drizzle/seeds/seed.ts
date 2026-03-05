@@ -4,7 +4,7 @@ import path from "path";
 import csv from "csv-parser";
 import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
-import * as schema from "../src/db/schemas";
+import * as schema from "@kris-customs/shared/db";
 
 if (!process.env.DATABASE_URL) {
   throw new Error("Missing environment variable: DATABASE_URL");

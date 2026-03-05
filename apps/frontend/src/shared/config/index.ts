@@ -1,10 +1,8 @@
-import { objectEntries } from "@/shared/lib/utils";
-
 export const MODE = import.meta.env.MODE;
 export const IS_PROD = import.meta.env.MODE === "production";
 export const IS_DEV = import.meta.env.MODE === "development";
 
-const DEFINED_API_HOST = import.meta.env.VITE_SERVER_URL;
+const DEFINED_API_HOST = import.meta.env.VITE_SERVER_URL as string;
 
 export const PRODUCTION_URL = "https://kris-customs.com/";
 export const BASE_URL = import.meta.env.SSR
@@ -12,11 +10,12 @@ export const BASE_URL = import.meta.env.SSR
   : window.location.origin;
 
 export const SUPPORTED_API_HOSTS = {
-  prod: "https://api.kris-customs.com",
-  dev: "http://localhost:8787/",
+  prod: import.meta.env.VITE_API_PROD as string,
+  dev: import.meta.env.VITE_API_DEV as string,
 } as const;
 
 export const SERVER_URL = DEFINED_API_HOST || SUPPORTED_API_HOSTS.prod;
+export const MEDIA_URL = import.meta.env.VITE_EXTERNAL_ASSETS_URL as string;
 
 export const USKV_BINDINGS = {
   name: {
@@ -31,26 +30,6 @@ export const USKV_BINDINGS = {
 
 export const SUPPORTED_THEMES = ["light", "dark"] as const;
 export const FALLBACK_THEME = "dark";
-
-export const LANGUAGES = {
-  en: {
-    label: "English",
-    icon: "/images/flags/gb.svg",
-  },
-  sp: {
-    label: "Español",
-    icon: "/images/flags/es.svg",
-  },
-} as const;
-export const LANGUAGES_LIST = objectEntries(LANGUAGES).map(
-  ([value, { label, icon }]) => ({
-    value,
-    label,
-    icon,
-  }),
-);
-export const SUPPORTED_LANGUAGES = LANGUAGES_LIST.map(({ value }) => value);
-export const FALLBACK_LANGUAGE = "en";
 
 export const OTP_LEN = 6;
 export const USERNAME_LEN = {

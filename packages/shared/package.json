@@ -11,13 +11,20 @@
       "import": "./src/index.ts",
       "default": "./src/index.ts"
     },
+    "./db": {
+      "types": "./src/db/index.ts",
+      "import": "./src/db/index.ts"
+    },
     "./types": {
       "types": "./src/types/index.ts",
       "import": "./src/types/index.ts"
     },
-    "./constants": {
-      "types": "./src/constants/index.ts",
-      "import": "./src/constants/index.ts"
+    "./config": {
+      "types": "./src/config/index.ts",
+      "import": "./src/config/index.ts"
     }
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.7"
   }
 }

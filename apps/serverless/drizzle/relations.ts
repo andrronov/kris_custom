@@ -6,11 +6,12 @@ import {
   orderItems,
   productVariants,
   products,
+  productImages,
   promotions,
   promotionUsage,
   productCollections,
   collections,
-} from "./schema";
+} from "@kris-customs/shared/db";
 
 export const ordersRelations = relations(orders, ({ one, many }) => ({
   user: one(users, {
@@ -64,6 +65,14 @@ export const productVariantsRelations = relations(
 export const productsRelations = relations(products, ({ many }) => ({
   productVariants: many(productVariants),
   productCollections: many(productCollections),
+  productImages: many(productImages),
+}));
+
+export const productImagesRelations = relations(productImages, ({ one }) => ({
+  product: one(products, {
+    fields: [productImages.productId],
+    references: [products.id],
+  }),
 }));
 
 export const promotionUsageRelations = relations(promotionUsage, ({ one }) => ({

@@ -3,8 +3,10 @@ import {
   useStorage,
   type RemovableRef,
   StorageSerializers,
+  useDebounceFn,
 } from "@vueuse/core";
 import { defineStore } from "pinia";
+import type { ProductWithImages } from "@kris-customs/shared/types";
 import { useAppStore } from "@/shared/stores/application";
 import { api } from "@/shared/api";
 import {
@@ -48,7 +50,16 @@ export const useUserStore = defineStore("user", () => {
     return res;
   });
 
-  const favorites = ref<Set<string>>(new Set());
+  const favorites = useStorage(
+    getStorageKey("user-favorites"),
+    new Set<string>(),
+  );
+  const favoriteProductsMap = ref<Map<string, ProductWithImages>>(new Map());
+  const favoriteProducts = computed(() => {
+    return Array.from(favorites.value)
+      .map((id) => favoriteProductsMap.value.get(id))
+      .filter((product) => isDefined(product));
+  });
 
   const fetchFavorites = async () => {
     const [data, error] = await api.getKVNamespace(
@@ -59,17 +70,38 @@ export const useUserStore = defineStore("user", () => {
     }
   };
 
-  const toggleFavorite = async (productId: string) => {
-    if (favorites.value.has(productId)) {
-      favorites.value.delete(productId);
-    } else {
-      favorites.value.add(productId);
-    }
+  const { run: fetchFavoriteProducts, loading: fetchingFavoriteProducts } =
+    createAsyncProcess(async () => {
+      if (favorites.value.size === 0) return;
 
+      const missing = Array.from(favorites.value).filter(
+        (id) => !favoriteProductsMap.value.has(id),
+      );
+      if (missing.length === 0) return;
+
+      const [data, error] = await api.getProductsById(missing);
+      if (error || !data) return [];
+
+      data.forEach((product) => {
+        favoriteProductsMap.value.set(product.id, product);
+      });
+    });
+
+  const debouncedToggleKv = useDebounceFn(async () => {
     await api.setKVNamespace(
       USKV_BINDINGS.name.favorites,
       Array.from(favorites.value),
     );
+  }, 2000);
+  const toggleFavorite = async (productId: string) => {
+    if (favorites.value.has(productId)) {
+      favorites.value.delete(productId);
+      favoriteProductsMap.value.delete(productId);
+    } else {
+      favorites.value.add(productId);
+    }
+
+    debouncedToggleKv();
   };
 
   const { run: syncSettings, loading: syncingSettings } = createAsyncProcess(
@@ -106,6 +138,8 @@ export const useUserStore = defineStore("user", () => {
   const logout = () => {
     user.value = null;
     profileFetched.value = false;
+    favorites.value.clear();
+    favoriteProductsMap.value.clear();
     api.logout();
   };
 
@@ -115,8 +149,11 @@ export const useUserStore = defineStore("user", () => {
     authorized,
 
     favorites,
+    favoriteProducts,
     fetchFavorites,
     toggleFavorite,
+    fetchFavoriteProducts,
+    fetchingFavoriteProducts,
 
     syncSettings,
     syncingSettings,

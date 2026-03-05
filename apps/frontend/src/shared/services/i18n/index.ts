@@ -1,7 +1,10 @@
 import { computed } from "vue";
 import { createI18n } from "vue-i18n";
-import { SUPPORTED_LANGUAGES, FALLBACK_LANGUAGE } from "@/shared/config";
-import type { Language } from "@/shared/types";
+import {
+  SUPPORTED_LANGUAGES,
+  FALLBACK_LANGUAGE,
+} from "@kris-customs/shared/config";
+import type { Language } from "@kris-customs/shared/types";
 import en from "./locales/en.json";
 import sp from "./locales/sp.json";
 

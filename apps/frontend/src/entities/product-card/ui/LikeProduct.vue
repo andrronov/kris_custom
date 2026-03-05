@@ -2,8 +2,11 @@
 import { Button, Icon } from "@/shared/ui";
 import { ICONS } from "@/shared/assets";
 
+import type { ProductCardSize } from "../types";
+
 const { liked } = defineProps<{
   liked: boolean;
+  size?: ProductCardSize;
 }>();
 
 const emit = defineEmits<{
@@ -17,10 +20,14 @@ const toggle = () => {
 
 <template>
   <Button
-    @click="emit('toggle')"
+    @click="toggle()"
     color="secondary"
     class="absolute right-4 top-3 z-50"
   >
-    <Icon :name="ICONS.likeHeart" class="text-2xl" :filled="liked" />
+    <Icon
+      :name="ICONS.likeHeart"
+      :class="size === 'small' ? 'text-xl' : 'text-2xl'"
+      :filled="liked"
+    />
   </Button>
 </template>

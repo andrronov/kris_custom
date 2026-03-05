@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LANGUAGES_LIST } from "@/shared/config";
+import { LANGUAGES_LIST } from "@kris-customs/shared/config";
 import { useAppStore } from "@/shared/stores/application";
 import { DropdownItem, Image } from "@/shared/ui";
 
@@ -16,7 +16,7 @@ const onChange = (cb: () => void) => {
 </script>
 
 <template>
-  <template v-for="item in LANGUAGES_LIST" :key="item.lang">
+  <template v-for="item in LANGUAGES_LIST" :key="item.value">
     <DropdownItem @click="onChange(() => appStore.changeLocale(item.value))">
       <div class="flex w-full items-center justify-between text-base-content">
         <Image :src="item.icon" class="w-8 h-6" />
