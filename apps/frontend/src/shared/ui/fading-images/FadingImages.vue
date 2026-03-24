@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, useAttrs, onMounted, onBeforeUnmount } from "vue";
-import type { Language, ProductImage } from "@kris-customs/shared/types";
+import type { ProductImage } from "@kris-customs/shared/types";
+import { useLocalize } from "@/shared/lib/composables/use-localize";
 import { getMediaUrl } from "@/shared/lib/utils";
 import { Image } from "@/shared/ui";
 
@@ -8,19 +9,14 @@ type Options = {
   changeInterval?: number;
 };
 
-const {
-  images,
-  imgStyles,
-  lang = "en",
-  options,
-} = defineProps<{
+const { images, imgStyles, options } = defineProps<{
   images: ProductImage[];
   imgStyles?: string;
-  lang?: Language;
   options?: Options;
 }>();
 
 const attrs = useAttrs();
+const { l } = useLocalize();
 
 const isHovering = ref(false);
 const imagesSrc = images.map((img) => getMediaUrl(img.imageKey));
@@ -56,13 +52,13 @@ const imageStyles = "z-100 object-cover";
       :src="imagesSrc[0]"
       :class="['image-transition', imageStyles, imgStyles]"
       :style="{ opacity: isHovering ? 0 : 1 }"
-      :alt="images[0].altText?.[lang]"
+      :alt="l(images[0].altText)"
     />
     <Image
       :src="imagesSrc[1]"
       :class="['image-transition', imgStyles, imageStyles]"
       :style="{ opacity: isHovering ? 1 : 0 }"
-      :alt="images[1].altText?.[lang]"
+      :alt="l(images[1].altText)"
     />
   </div>
 </template>

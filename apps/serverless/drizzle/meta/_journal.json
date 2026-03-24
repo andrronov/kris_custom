@@ -36,6 +36,34 @@
       "when": 1767628588079,
       "tag": "0004_robust_the_professor",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1773354292839,
+      "tag": "0005_curved_cargill",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1773402858931,
+      "tag": "0006_smart_roland_deschain",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1773403335790,
+      "tag": "0007_cultured_ozymandias",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1773406111661,
+      "tag": "0008_faithful_tarantula",
+      "breakpoints": true
     }
   ]
 }

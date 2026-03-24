@@ -60,4 +60,26 @@ app.post("/list-by-ids", async (c) => {
   return c.json({ data: data as ProductWithImages[], error: null }, 200);
 });
 
+app.get("/:slug", async (c) => {
+  const { slug } = c.req.param();
+  console.log(slug);
+
+  try {
+    const data = await db.query.products.findFirst({
+      where: eq(products.slug, slug),
+      with: {
+        productImages: true,
+      },
+    });
+
+    if (!data) {
+      return c.json({ data: null, error: "Product not found" }, 404);
+    }
+
+    return c.json({ data: data as ProductWithImages, error: null }, 200);
+  } catch (error) {
+    return c.json({ data: null, error }, 500);
+  }
+});
+
 export default app;

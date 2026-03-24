@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 import type { ProductWithImages } from "@kris-customs/shared/types";
+import { useLocalize } from "@/shared/lib/composables/use-localize";
 import { useUserStore } from "@/shared/stores/user";
 import { useAppStore } from "@/shared/stores/application";
 import { FadingImages } from "@/shared/ui";
@@ -11,6 +13,9 @@ import { PRODUCT_CARD_CLASSES } from "../data";
 import LikeProduct from "./LikeProduct.vue";
 import ProductBadge from "./ProductBadge.vue";
 import ProductPrice from "./ProductPrice.vue";
+
+const router = useRouter();
+const { l } = useLocalize();
 
 const {
   product,
@@ -38,12 +43,17 @@ const cardClass = {
     small: "h-16",
   }[size],
 };
+
+const navigateTo = (slug: string) => {
+  router.push(`/product/${slug}`);
+};
 </script>
 
 <template>
   <div
     class="w-full flex-shrink-0 rounded-3xl relative flex flex-col cursor-pointer overflow-hidden items-center shadow-sm shadow-secondary"
     :class="cardClass.card"
+    @click="navigateTo(product.slug)"
   >
     <!-- <ProductBadge /> -->
     <LikeProduct
@@ -56,7 +66,6 @@ const cardClass = {
     <FadingImages
       class="relative"
       :images="product.productImages"
-      :lang="appStore.lang"
       :img-styles="cardClass.image"
     />
 
@@ -65,7 +74,7 @@ const cardClass = {
       :class="cardClass.params"
     >
       <p class="font-medium text-primary text-base md:text-lg">
-        {{ product.name[appStore.lang] }}
+        {{ l(product.name) }}
       </p>
       <ProductPrice :price="product.basePrice" />
     </div>

@@ -46,6 +46,13 @@ export const usePlatform = () => {
         hash: anchor.prepare("faq"),
       } as RouteLocationRaw<"main-landing">,
     },
+    home: {
+      id: undefined,
+      name: t("navigation.home"),
+      to: {
+        name: "main-landing",
+      } as RouteLocationRaw<"main-landing">,
+    },
   }));
 
   const platformRoutes = computed(() => ({
@@ -93,6 +100,9 @@ export const usePlatform = () => {
           } as RouteLocationRaw<"main-landing">,
         },
       ],
+    },
+    product: {
+      primary: [mainPlatformLinks.value.home, mainPlatformLinks.value.catalog],
     },
   }));
 

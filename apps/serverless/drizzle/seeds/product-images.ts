@@ -59,9 +59,9 @@ async function seedProductImages() {
 }
 
 async function main() {
-  console.log("🌱 Starting database seed (data only)...");
+  console.log("Starting database seed (data only)...");
   await seedProductImages();
-  console.log("✅ Seeding finished!");
+  console.log("Seeding finished!");
 }
 
 main().catch((err) => {

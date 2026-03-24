@@ -16,6 +16,13 @@ export interface RouteNamedMap {
     { path: string },
     { path: string }
   >;
+
+  product: RouteRecordInfo<
+    "product",
+    "/product/:id",
+    { id: string },
+    { id: string }
+  >;
 }
 
 declare module "vue-router" {

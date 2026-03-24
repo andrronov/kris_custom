@@ -20,7 +20,7 @@ const toggle = () => {
 
 <template>
   <Button
-    @click="toggle()"
+    @click.stop="toggle()"
     color="secondary"
     class="absolute right-4 top-3 z-50"
   >
