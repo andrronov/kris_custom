@@ -6,7 +6,8 @@
     "home": "Inicio",
     "faq": "FAQ",
     "why_us": "Por qué nosotros",
-    "how_get_them": "Cómo conseguirlo"
+    "how_get_them": "Cómo conseguirlo",
+    "main": "Main"
   },
   "auth": {
     "sign_in": {
@@ -67,7 +68,8 @@
       "get_new_nails": "Obtener uñas nuevas",
       "confirm": "Confirmar",
       "back": "Atrás",
-      "resend_code": "Reenviar código"
+      "resend_code": "Reenviar código",
+      "cart": "Añadir al carrito"
     },
     "datetime": {
       "morning": "dias",
@@ -260,6 +262,13 @@
     "nails_aesthetic": {
       "title": "Siente la estética",
       "description": "en tus manos"
+    }
+  },
+  "product": {
+    "choose": {
+      "size": "Talla",
+      "shape": "Forma",
+      "length": "Largo"
     }
   },
   "user-sidebar": {

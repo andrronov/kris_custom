@@ -6,7 +6,8 @@
     "home": "Home",
     "faq": "FAQ",
     "why_us": "Why us",
-    "how_get_them": "How get"
+    "how_get_them": "How get",
+    "main": "Main"
   },
   "auth": {
     "sign_in": {
@@ -67,7 +68,8 @@
       "get_new_nails": "Get new nails",
       "confirm": "Confirm",
       "back": "Back",
-      "resend_code": "Resend code"
+      "resend_code": "Resend code",
+      "cart": "Add to Cart"
     },
     "datetime": {
       "morning": "morning",
@@ -262,6 +264,13 @@
     "nails_aesthetic": {
       "title": "Feel the aesthetic",
       "description": "on your hands"
+    }
+  },
+  "product": {
+    "choose": {
+      "size": "Size",
+      "shape": "Shape",
+      "length": "Length"
     }
   },
   "user-sidebar": {

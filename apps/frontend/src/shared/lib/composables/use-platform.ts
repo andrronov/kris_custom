@@ -103,6 +103,16 @@ export const usePlatform = () => {
     },
     product: {
       primary: [mainPlatformLinks.value.home, mainPlatformLinks.value.catalog],
+      secondary: [
+        {
+          id: undefined,
+          name: t("navigation.main"),
+          to: {
+            name: "product",
+            hash: anchor.prepare("main"),
+          } as RouteLocationRaw<"product">,
+        },
+      ],
     },
   }));
 

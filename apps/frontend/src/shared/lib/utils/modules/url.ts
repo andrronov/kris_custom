@@ -4,6 +4,7 @@ const anchors = [
   "how-get-new-nails",
   "why-us",
   "faq",
+  "main",
 ] as const;
 
 type Anchor = (typeof anchors)[number];

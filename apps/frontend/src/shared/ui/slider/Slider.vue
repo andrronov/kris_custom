@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import { computed } from "vue";
 import emblaCarouselVue from "embla-carousel-vue";
 import AutoPlay from "embla-carousel-autoplay";
@@ -51,9 +51,9 @@ const getDefaultClass = () => "min-w-0 flex-shrink-0 flex-grow-0 basis-full";
     @apply ml-3;
   }
 }
-</style> -->
+</style>
 
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { computed, watch, useSlots, useAttrs } from "vue";
 import emblaCarouselVue from "embla-carousel-vue";
 import AutoPlay from "embla-carousel-autoplay";
@@ -144,4 +144,4 @@ const getDefaultClass = () => "min-w-0 flex-shrink-0 flex-grow-0 basis-full";
 .thumb.active {
   opacity: 1;
 }
-</style>
+</style> -->

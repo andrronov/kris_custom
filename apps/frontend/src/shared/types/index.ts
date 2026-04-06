@@ -32,6 +32,7 @@ export type ComponentColor = ComponentBrandColors | "ghost" | ComponentStatus;
 export type ComponentShape = "circle" | "square";
 
 export type ComponentTabVariant = "bordered" | "lifted" | "boxed" | "separated";
+export type ComponentButtonVariant = "outline" | "link" | "dropdown-item";
 
 export type AuthModalState = "signin";
 export type AuthFormState = AuthModalState | "otp";

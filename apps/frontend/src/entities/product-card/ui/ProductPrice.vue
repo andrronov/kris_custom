@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { useAttrs } from "vue";
 import type { Product } from "@kris-customs/shared/types";
 
 defineProps<{
   price: string | number;
 }>();
+
+const attrs = useAttrs();
 </script>
 
 <template>
-  <p>
+  <p v-bind="attrs">
     <template v-if="typeof price === 'number'"> ${{ price }} </template>
     <template v-else>
       ${{ price }}

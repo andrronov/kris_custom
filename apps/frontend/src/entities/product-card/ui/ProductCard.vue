@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useRouter } from "vue-router";
 import type { ProductWithImages } from "@kris-customs/shared/types";
 import { useLocalize } from "@/shared/lib/composables/use-localize";
-import { useUserStore } from "@/shared/stores/user";
 import { useAppStore } from "@/shared/stores/application";
 import { FadingImages } from "@/shared/ui";
 
@@ -27,10 +25,7 @@ const {
   size?: ProductCardSize;
 }>();
 
-const userStore = useUserStore();
 const appStore = useAppStore();
-
-const liked = computed(() => userStore.favorites.has(product.id));
 
 const cardClass = {
   card: PRODUCT_CARD_CLASSES[size],
@@ -58,9 +53,9 @@ const navigateTo = (slug: string) => {
     <!-- <ProductBadge /> -->
     <LikeProduct
       v-if="showLike"
-      :liked
+      :id="product.id"
       :size
-      @toggle="userStore.toggleFavorite(product.id)"
+      class="absolute right-4 top-3 z-50"
     />
 
     <FadingImages

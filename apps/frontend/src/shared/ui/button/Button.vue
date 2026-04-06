@@ -4,6 +4,7 @@ import type {
   ComponentColor,
   ComponentShape,
   ComponentSize,
+  ComponentButtonVariant,
 } from "@/shared/types";
 
 const props = withDefaults(
@@ -11,7 +12,7 @@ const props = withDefaults(
     href?: string;
     shape?: ComponentShape;
     size?: ComponentSize;
-    variant?: "outline" | "link" | "dropdown-item";
+    variant?: ComponentButtonVariant;
     color?: ComponentColor;
     fullWidth?: boolean;
     animation?: boolean;
