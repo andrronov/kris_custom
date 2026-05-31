@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, shallowRef, computed } from "vue";
+import { ref, shallowRef } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 import type {
@@ -7,12 +7,21 @@ import type {
   ProductImage,
 } from "@kris-customs/shared/types";
 import { createAsyncProcess } from "@/shared/lib/utils";
-import { LikeProduct, ProductPrice } from "@/entities/product-card";
+import { ProductPrice } from "@/entities/product-card";
 import { useLocalize } from "@/shared/lib/composables/use-localize";
 import { MEDIA_URL } from "@/shared/config";
 import { api } from "@/shared/api";
-import { Slider, Image, Radio, Button, Skeleton } from "@/shared/ui";
-
+import { ICONS } from "@/shared/assets";
+import {
+  Slider,
+  Image,
+  Radio,
+  Input,
+  Button,
+  Select,
+  Skeleton,
+  Icon,
+} from "@/shared/ui";
 import Heading from "./ui/Heading.vue";
 
 const route = useRoute();
@@ -49,22 +58,61 @@ const length = ref("");
 const sizes = ["xs", "s", "m", "l", "xl"];
 const shapes = ["stillet", "mindal", "square"];
 const lengths = ["short", "mid", "long"];
+const quantity = ref(1);
+
+const productFeatures = [
+  {
+    icon: ICONS.deliveryTruckSpeed,
+    text: "Free shipping included",
+  },
+  {
+    icon: ICONS.starsFilled,
+    text: "Handmade to order",
+  },
+  {
+    icon: ICONS.alarmComplete,
+    text: "Delivery in 3-5 days",
+  },
+];
+
+const quantityOptions = [
+  { value: 1, label: "1" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+  { value: 5, label: "5" },
+];
 </script>
+
+<!--
+SECTIONS TO ADD:
+    - FAQ
+    - REASONS WHY NAILS (reference: https://ersanails.com/products/candy-blossom)
+    - REVIEWS
+    - ADDITIONAL ITEMS
+    - YOU MAY ALSO LIKE / RECENTLY VIEWED
+-->
 
 <template>
   <section class="mt-10 py-6 pb-16 flex flex-col w-full container" id="main">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
-      <Skeleton v-if="loading" class="w-full lg:hidden h-11" />
+    <div
+      class="grid grid-cols-1 xl:grid-cols-[minmax(650px,_1.25fr)_minmax(300px,_1fr)] gap-4 items-stretch"
+    >
+      <Skeleton v-if="loading" class="w-full xl:hidden h-11" />
       <Heading
         v-else-if="product"
-        class="flex lg:hidden items-center gap-4"
+        class="flex xl:hidden items-center justify-center gap-4"
         :product="product"
       />
-      <Slider #default="{ defaultClass }" class="py-4 slider_container">
+      <Slider
+        #default="{ defaultClass }"
+        controls
+        class="slider_container min-h-full xl:max-h-[770px]"
+      >
         <template v-if="loading">
           <Skeleton
             v-for="s in 2"
-            class="min-h-[380px] lg:min-h-[750px]"
+            class="min-h-[380px] xl:min-h-[750px]"
             :class="defaultClass"
           />
         </template>
@@ -72,7 +120,7 @@ const lengths = ["short", "mid", "long"];
           <Image
             v-for="img in product.productImages"
             :src="getProductImages(img)"
-            class="w-full"
+            class="w-full rounded-xl object-cover h-full"
             :class="defaultClass"
           />
         </template>
@@ -81,7 +129,7 @@ const lengths = ["short", "mid", "long"];
         <Skeleton v-if="loading" class="w-full h-11" />
         <Heading
           v-else-if="product"
-          class="hidden lg:flex items-center gap-4"
+          class="hidden xl:flex items-center gap-4"
           :product="product"
         />
         <Skeleton v-if="loading" class="w-full h-24" />
@@ -89,9 +137,9 @@ const lengths = ["short", "mid", "long"];
           {{ l(product.description) }}
         </p>
         <div
-          class="w-full flex flex-col items-center gap-3 rounded-xl py-2 border-2 border-primary"
+          class="w-full flex flex-col items-center gap-2.5 xl:gap-3.5 rounded-xl py-2 border-2 border-primary"
         >
-          <!-- <span class="text-lg font-medium">
+          <span class="text-lg font-medium">
             {{ t("product.choose.size") }}
           </span>
           <div class="flex flex-wrap justify-center items-center gap-2">
@@ -104,7 +152,7 @@ const lengths = ["short", "mid", "long"];
             >
               {{ option }}
             </Radio>
-          </div> -->
+          </div>
           <span class="text-lg font-medium">
             {{ t("product.choose.shape") }}
           </span>
@@ -133,16 +181,37 @@ const lengths = ["short", "mid", "long"];
               {{ option }}
             </Radio>
           </div>
+          <span class="text-lg font-medium">
+            {{ t("product.choose.quantity") }}
+          </span>
+          <Input v-model="quantity" type="number" controls class="max-w-64" />
           <Skeleton v-if="loading" class="w-52 h-11" />
           <ProductPrice
             v-else-if="product"
             class="text-4xl font-bold text-primary pt-2"
             :price="product.basePrice"
           />
-          <Button class="w-full max-w-72 lg:max-w-96" size="lg" color="primary">
+          <Button
+            class="w-full max-w-72 xl:max-w-[424px]"
+            size="lg"
+            color="primary"
+          >
             {{ t("common.buttons.cart") }}
           </Button>
+          <ul class="flex flex-wrap justify-center items-center gap-2 lg:gap-3">
+            <li
+              class="inline-flex items-center gap-[6px]"
+              v-for="(feature, index) in productFeatures"
+              :key="index"
+            >
+              <Icon :name="feature.icon" class="size-6" />
+              <span class="text-sm lg:text-base">{{ feature.text }}</span>
+            </li>
+          </ul>
         </div>
+        <Button size="md" color="primary" variant="outline" full-width>
+          How to measure nail size?
+        </Button>
       </div>
     </div>
   </section>

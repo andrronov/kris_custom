@@ -15,6 +15,7 @@ export { default as Modal } from "./modal/Modal.vue";
 export { default as OtpInput } from "./otp-input/OtpInput.vue";
 export { default as Radio } from "./radio/Radio.vue";
 export { default as RouterNav } from "./router-nav/RouterNav.vue";
+export { default as Select } from "./select/Select.vue";
 export { default as Skeleton } from "./skeleton/Skeleton.vue";
 export { default as Slider } from "./slider/Slider.vue";
 export { default as Tab } from "./tabs/Tab.vue";

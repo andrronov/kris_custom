@@ -35,4 +35,9 @@ export const ICONS = {
   arrowBack: "material-symbols-light:arrow-back-ios-rounded",
   google: "bi:google",
   coupon: "mingcute:coupon-line",
+  starsFilled: "mage:stars-a-fill",
+  alarmComplete: "material-symbols:alarm-on-outline",
+  check: "material-symbols:check-rounded",
+  minus: "ic:round-minus",
+  plus: "ic:round-plus",
 } as const;

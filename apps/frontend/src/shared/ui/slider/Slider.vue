@@ -4,11 +4,13 @@ import emblaCarouselVue from "embla-carousel-vue";
 import AutoPlay from "embla-carousel-autoplay";
 import type { EmblaOptionsType, EmblaPluginType } from "embla-carousel";
 import type { AutoplayOptionsType } from "embla-carousel-autoplay";
+import { Button } from "@/shared/ui";
 
 import { useSlider } from "./use-slider";
 
 const props = defineProps<{
   options?: EmblaOptionsType;
+  controls?: boolean;
   plugins?: EmblaPluginType[];
   autoPlay?: AutoplayOptionsType;
 }>();
@@ -22,20 +24,45 @@ const plugins = computed(() => {
   return plugins;
 });
 
-const { currentSlide, emblaRef } = useSlider(
-  props.options,
-  emits,
-  plugins.value,
-);
+const {
+  currentSlide,
+  emblaRef,
+  onNextClick,
+  onPrevClick,
+  isNextDisabled,
+  isPrevDisabled,
+} = useSlider(props.options, emits, plugins.value);
 
 const getDefaultClass = () => "min-w-0 flex-shrink-0 flex-grow-0 basis-full";
 </script>
 
 <template>
-  <div class="overflow-hidden slider" ref="emblaRef">
-    <div class="flex slider__container select-none">
+  <div class="overflow-hidden slider relative" ref="emblaRef">
+    <div class="flex h-full slider__container select-none">
       <slot :default-class="getDefaultClass()" :current-slide="currentSlide" />
     </div>
+    <template v-if="controls">
+      <Button
+        variant="dropdown-item"
+        color="secondary"
+        size="sm"
+        class="absolute left-4 top-1/2"
+        @click="onPrevClick"
+        :disabled="isPrevDisabled"
+      >
+        {{ "<" }}
+      </Button>
+      <Button
+        variant="dropdown-item"
+        color="secondary"
+        size="sm"
+        class="absolute right-4 top-1/2"
+        @click="onNextClick"
+        :disabled="isNextDisabled"
+      >
+        {{ ">" }}
+      </Button>
+    </template>
   </div>
 </template>
 

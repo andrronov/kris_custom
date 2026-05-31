@@ -160,7 +160,6 @@ watch(
           <slot name="close" :close="close">
             <template v-if="!$slots.close">
               <Button
-                data-testid="modal-close"
                 size="sm"
                 color="ghost"
                 class="absolute right-2 top-2"

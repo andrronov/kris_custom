@@ -270,7 +270,8 @@
     "choose": {
       "size": "Size",
       "shape": "Shape",
-      "length": "Length"
+      "length": "Length",
+      "quantity": "Quantity"
     }
   },
   "user-sidebar": {

@@ -268,7 +268,8 @@
     "choose": {
       "size": "Talla",
       "shape": "Forma",
-      "length": "Largo"
+      "length": "Largo",
+      "quantity": "Cantidad"
     }
   },
   "user-sidebar": {
