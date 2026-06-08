@@ -272,6 +272,11 @@
       "shape": "Shape",
       "length": "Length",
       "quantity": "Quantity"
+    },
+    "features": {
+      "free_shipping": "Free shipping included",
+      "handmade": "Handmade to order",
+      "delivery": "Delivery in 3-5 days"
     }
   },
   "user-sidebar": {

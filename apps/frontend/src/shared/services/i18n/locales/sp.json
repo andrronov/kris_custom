@@ -270,6 +270,11 @@
       "shape": "Forma",
       "length": "Largo",
       "quantity": "Cantidad"
+    },
+    "features": {
+      "free_shipping": "Envío gratis incluido",
+      "handmade": "Hecho a mano bajo pedido",
+      "delivery": "Entrega en 3-5 días"
     }
   },
   "user-sidebar": {

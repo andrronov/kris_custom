@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, shallowRef } from "vue";
+import { ref, computed, shallowRef } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 import type {
@@ -55,33 +55,26 @@ const getProductImages = (image: ProductImage) => {
 const size = ref("");
 const shape = ref("");
 const length = ref("");
+const quantity = ref(1);
+
 const sizes = ["xs", "s", "m", "l", "xl"];
 const shapes = ["stillet", "mindal", "square"];
 const lengths = ["short", "mid", "long"];
-const quantity = ref(1);
 
-const productFeatures = [
+const productFeatures = computed(() => [
   {
     icon: ICONS.deliveryTruckSpeed,
-    text: "Free shipping included",
+    text: t("product.features.free_shipping"),
   },
   {
     icon: ICONS.starsFilled,
-    text: "Handmade to order",
+    text: t("product.features.handmade"),
   },
   {
     icon: ICONS.alarmComplete,
-    text: "Delivery in 3-5 days",
+    text: t("product.features.delivery"),
   },
-];
-
-const quantityOptions = [
-  { value: 1, label: "1" },
-  { value: 2, label: "2" },
-  { value: 3, label: "3" },
-  { value: 4, label: "4" },
-  { value: 5, label: "5" },
-];
+]);
 </script>
 
 <!--
@@ -184,7 +177,14 @@ SECTIONS TO ADD:
           <span class="text-lg font-medium">
             {{ t("product.choose.quantity") }}
           </span>
-          <Input v-model="quantity" type="number" controls class="max-w-64" />
+          <Input
+            v-model="quantity"
+            type="number"
+            :min="1"
+            :max="10"
+            controls
+            class="max-w-64"
+          />
           <Skeleton v-if="loading" class="w-52 h-11" />
           <ProductPrice
             v-else-if="product"
@@ -198,13 +198,15 @@ SECTIONS TO ADD:
           >
             {{ t("common.buttons.cart") }}
           </Button>
-          <ul class="flex flex-wrap justify-center items-center gap-2 lg:gap-3">
+          <ul
+            class="flex flex-wrap justify-center items-center gap-2 2xl:gap-3"
+          >
             <li
-              class="inline-flex items-center gap-[6px]"
+              class="inline-flex items-center gap-1 2xl:gap-[6px]"
               v-for="(feature, index) in productFeatures"
               :key="index"
             >
-              <Icon :name="feature.icon" class="size-6" />
+              <Icon :name="feature.icon" class="size-5 2xl:size-6" />
               <span class="text-sm lg:text-base">{{ feature.text }}</span>
             </li>
           </ul>

@@ -27,6 +27,6 @@
     "@getbrevo/brevo": "^3.0.1",
     "drizzle-kit": "^0.31.5",
     "tsx": "^4.20.6",
-    "wrangler": "^4.59.2"
+    "wrangler": "^4.95.0"
   }
 }

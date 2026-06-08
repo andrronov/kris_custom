@@ -24,6 +24,8 @@ const props = withDefaults(
     filled?: boolean;
     lazy?: boolean;
     controls?: boolean;
+    max?: number;
+    min?: number;
   }>(),
   {
     placeholder: undefined,
@@ -41,6 +43,8 @@ const props = withDefaults(
     filled: false,
     lazy: false,
     controls: false,
+    max: undefined,
+    min: undefined,
   },
 );
 
@@ -93,7 +97,22 @@ const handleInput = (e: InputEvent | Event) => {
     attrs.type === "number" ? Number(targetValue) : targetValue;
 };
 
+const handleBlur = () => {
+  if (props.max && props.min && attrs.type === "number") {
+    modelValue.value = Math.max(
+      props.min,
+      Math.min(props.max, Number(modelValue.value)),
+    );
+  }
+};
+
 const showControls = computed(() => props.controls && type.value === "number");
+const decrementDisabled = computed(() =>
+  props.min ? Number(modelValue.value) <= props.min : false,
+);
+const incrementDisabled = computed(() =>
+  props.max ? Number(modelValue.value) >= props.max : false,
+);
 
 const incrementValue = () => {
   if (!showControls) return;
@@ -123,6 +142,7 @@ const decrementValue = () => {
     <div class="relative flex items-center">
       <Button
         v-if="showControls"
+        :disabled="decrementDisabled"
         @click="decrementValue"
         class="absolute left-0 top-0 hover:bg-inherit"
         color="ghost"
@@ -133,6 +153,7 @@ const decrementValue = () => {
       </Button>
       <Button
         v-if="showControls"
+        :disabled="incrementDisabled"
         @click="incrementValue"
         class="absolute right-0 top-0 hover:bg-inherit"
         color="ghost"
@@ -169,7 +190,7 @@ const decrementValue = () => {
         ]"
         v-bind="attrs"
         @input="!lazy ? handleInput($event) : nothing"
-        @blur="lazy ? handleInput($event) : nothing"
+        @blur="handleBlur"
         :dimmed="dimmed"
         :filled="filled"
         :type="type"
