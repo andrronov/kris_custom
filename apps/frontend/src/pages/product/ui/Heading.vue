@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ProductWithImages } from "@kris-customs/shared/types";
 import { useLocalize } from "@/shared/lib/composables/use-localize";
-import { LikeProduct } from "@/entities/product-card";
+import { LikeProduct } from "@/entities/product";
 
 defineProps<{
   product: ProductWithImages;

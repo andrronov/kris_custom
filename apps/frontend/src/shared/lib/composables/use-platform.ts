@@ -112,6 +112,22 @@ export const usePlatform = () => {
             hash: anchor.prepare("main"),
           } as RouteLocationRaw<"product">,
         },
+        {
+          id: undefined,
+          name: t("navigation.faq"),
+          to: {
+            name: "product",
+            hash: anchor.prepare("faq"),
+          } as RouteLocationRaw<"product">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.you_may_like"),
+          to: {
+            name: "product",
+            hash: anchor.prepare("you-may-like"),
+          } as RouteLocationRaw<"product">,
+        },
       ],
     },
   }));

@@ -2,9 +2,7 @@
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { Button, Collapsible } from "@/shared/ui";
-import { ICONS } from "@/shared/assets";
-
-import SectionHeading from "../components/SectionHeading.vue";
+import { SectionHeading } from "@/entities/page";
 
 type Qa = {
   question: string;
@@ -13,7 +11,7 @@ type Qa = {
 
 const { t, tm } = useI18n();
 
-const faqItems = computed(() => tm("main_landing.faq.qas") as Qa[]);
+const faqItems = computed(() => tm("common.faq") as Record<string, Qa>);
 </script>
 
 <template>

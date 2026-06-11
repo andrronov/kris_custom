@@ -40,4 +40,5 @@ export const ICONS = {
   check: "material-symbols:check-rounded",
   minus: "ic:round-minus",
   plus: "ic:round-plus",
+  measure: "lsicon:measure-outline",
 } as const;

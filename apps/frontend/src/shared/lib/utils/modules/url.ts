@@ -5,6 +5,7 @@ const anchors = [
   "why-us",
   "faq",
   "main",
+  "you-may-like",
 ] as const;
 
 type Anchor = (typeof anchors)[number];

@@ -4,9 +4,8 @@ import { computed } from "vue";
 import { Slider, Image, Button } from "@/shared/ui";
 
 import type { HowStep } from "./types";
+import { SectionHeading } from "@/entities/page";
 import Steps from "./HowSteps.vue";
-
-import SectionHeading from "../../components/SectionHeading.vue";
 
 const { t, tm } = useI18n();
 
