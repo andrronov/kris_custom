@@ -108,8 +108,44 @@ html[data-theme="dark"] {
   color-scheme: dark;
 }
 
-sp-live-chat {
-  z-index: 1 !important;
+.slider_container {
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+}
+
+@media (min-width: theme("screens.sm")) {
+  .slider_container {
+    padding-left: calc((100vw - theme("screens.sm")) / 2);
+    padding-right: calc((100vw - theme("screens.sm")) / 2);
+  }
+}
+
+@media (min-width: theme("screens.md")) {
+  .slider_container {
+    padding-left: calc((100vw - theme("screens.md")) / 2);
+    padding-right: calc((100vw - theme("screens.md")) / 2);
+  }
+}
+
+@media (min-width: theme("screens.lg")) {
+  .slider_container {
+    padding-left: max(2rem, calc((100vw - theme("screens.lg")) / 2));
+    padding-right: max(2rem, calc((100vw - theme("screens.lg")) / 2));
+  }
+}
+
+@media (min-width: theme("screens.xl")) {
+  .slider_container {
+    padding-left: max(2rem, calc((100vw - theme("screens.xl")) / 2));
+    padding-right: max(2rem, calc((100vw - theme("screens.xl")) / 2));
+  }
+}
+
+@media (min-width: theme("screens.2xl")) {
+  .slider_container {
+    padding-left: calc((100vw - theme("screens.2xl")) / 2);
+    padding-right: calc((100vw - theme("screens.2xl")) / 2);
+  }
 }
 
 .fade-enter-active,

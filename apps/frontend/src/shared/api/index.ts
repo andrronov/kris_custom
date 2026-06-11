@@ -221,6 +221,21 @@ class API extends AxiosService {
       data: { ids },
     });
   }
+
+  async getProductBySlug(slug: string) {
+    return this.request<ProductWithImages>({
+      method: "GET",
+      url: `/product/${slug}`,
+    });
+  }
+
+  async getMayLikeProducts(slug?: string, limit?: number) {
+    return this.request<ProductWithImages[]>({
+      method: "GET",
+      url: `/product/may-like/${slug}`,
+      params: { limit },
+    });
+  }
 }
 
 export const api = new API();

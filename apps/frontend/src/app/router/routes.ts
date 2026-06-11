@@ -31,6 +31,15 @@ const appRoutes: NamedRouteRecord<NamedRoute>[] = [
     },
     component: () => import("@/pages/404/Page.vue"),
   },
+  {
+    path: "/product/:slug",
+    name: "product",
+    meta: {
+      layout: "default",
+      platform: "product",
+    },
+    component: () => import("@/pages/product/Page.vue"),
+  },
 ];
 
 const redirects: RouteRecordRaw[] = [];

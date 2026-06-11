@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { ProductCard, ProductCardSkeleton } from "@/entities/product-card";
+import { ProductCard, ProductCardSkeleton } from "@/entities/product";
 import { useUserStore } from "@/shared/stores/user";
 import { getDayTime } from "@/shared/lib/utils/modules/dates";
 import { Button } from "@/shared/ui";

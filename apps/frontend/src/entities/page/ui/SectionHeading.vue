@@ -10,7 +10,7 @@ withDefaults(
 </script>
 
 <template>
-  <div class="section-heading flex flex-col items-start gap-2 mb-4">
+  <div class="section-heading flex flex-col items-start gap-2 mb-4 container">
     <h2 class="text-3xl md:text-4xl text-primary font-semibold">
       <slot />
     </h2>

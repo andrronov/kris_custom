@@ -2,9 +2,8 @@
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { Button, Icon } from "@/shared/ui";
+import { SectionHeading } from "@/entities/page";
 import { ICONS } from "@/shared/assets";
-
-import SectionHeading from "../components/SectionHeading.vue";
 
 type BodyRow = {
   parameter: string;

@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { desc, eq, inArray } from "drizzle-orm";
+import { desc, eq, inArray, not } from "drizzle-orm";
 import type { Product, ProductWithImages } from "@kris-customs/shared/types";
 import { products, productImages } from "@kris-customs/shared/db";
 import { promiseResolver } from "../utils";
@@ -58,6 +58,51 @@ app.post("/list-by-ids", async (c) => {
   }
 
   return c.json({ data: data as ProductWithImages[], error: null }, 200);
+});
+
+app.get("/:slug", async (c) => {
+  const { slug } = c.req.param();
+  console.log(slug);
+
+  try {
+    const data = await db.query.products.findFirst({
+      where: eq(products.slug, slug),
+      with: {
+        productImages: true,
+      },
+    });
+
+    if (!data) {
+      return c.json({ data: null, error: "Product not found" }, 404);
+    }
+
+    return c.json({ data: data as ProductWithImages, error: null }, 200);
+  } catch (error) {
+    return c.json({ data: null, error }, 500);
+  }
+});
+
+app.get("/may-like/:slug", async (c) => {
+  const { slug } = c.req.param();
+  const limit = c.req.param("limit") ?? "6";
+
+  try {
+    const mayLikeProducts = await db.query.products.findMany({
+      // TODO: update later
+      where: not(eq(products.slug, slug)),
+      limit: Number(limit),
+      with: {
+        productImages: true,
+      },
+    });
+
+    return c.json(
+      { data: mayLikeProducts as ProductWithImages[], error: null },
+      200,
+    );
+  } catch (error) {
+    return c.json({ data: null, error }, 500);
+  }
 });
 
 export default app;

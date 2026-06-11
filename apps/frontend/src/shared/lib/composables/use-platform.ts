@@ -46,6 +46,13 @@ export const usePlatform = () => {
         hash: anchor.prepare("faq"),
       } as RouteLocationRaw<"main-landing">,
     },
+    home: {
+      id: undefined,
+      name: t("navigation.home"),
+      to: {
+        name: "main-landing",
+      } as RouteLocationRaw<"main-landing">,
+    },
   }));
 
   const platformRoutes = computed(() => ({
@@ -91,6 +98,35 @@ export const usePlatform = () => {
             name: "main-landing",
             hash: anchor.prepare("faq"),
           } as RouteLocationRaw<"main-landing">,
+        },
+      ],
+    },
+    product: {
+      primary: [mainPlatformLinks.value.home, mainPlatformLinks.value.catalog],
+      secondary: [
+        {
+          id: undefined,
+          name: t("navigation.main"),
+          to: {
+            name: "product",
+            hash: anchor.prepare("main"),
+          } as RouteLocationRaw<"product">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.faq"),
+          to: {
+            name: "product",
+            hash: anchor.prepare("faq"),
+          } as RouteLocationRaw<"product">,
+        },
+        {
+          id: undefined,
+          name: t("navigation.you_may_like"),
+          to: {
+            name: "product",
+            hash: anchor.prepare("you-may-like"),
+          } as RouteLocationRaw<"product">,
         },
       ],
     },

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { watch, onMounted, onBeforeUnmount } from "vue";
+import { useRoute } from "vue-router";
 import { setScrollLock, nothing } from "@/shared/lib/utils";
 import { Keys } from "@/shared/types";
 
@@ -14,11 +15,8 @@ const emit = defineEmits<{
   blur: [];
 }>();
 
+const route = useRoute();
 const open = defineModel<boolean>({ required: true });
-
-watch(open, (value) => {
-  setScrollLock(value);
-});
 
 const close = (cb = nothing) => {
   open.value = false;
@@ -39,6 +37,14 @@ onBeforeUnmount(() => document.removeEventListener("keydown", handleKeydown));
 const onClickOutside = () => {
   emit("blur");
 };
+
+watch(open, (value) => {
+  setScrollLock(value);
+});
+
+watch(route, () => {
+  close();
+});
 </script>
 
 <template>

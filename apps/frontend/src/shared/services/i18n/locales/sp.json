@@ -3,9 +3,11 @@
     "discounts": "Descuentos",
     "best_sellers": "Más vendidos",
     "catalog": "Catálogo",
+    "home": "Inicio",
     "faq": "FAQ",
     "why_us": "Por qué nosotros",
-    "how_get_them": "Cómo conseguirlo"
+    "how_get_them": "Cómo conseguirlo",
+    "main": "Main"
   },
   "auth": {
     "sign_in": {
@@ -66,13 +68,60 @@
       "get_new_nails": "Obtener uñas nuevas",
       "confirm": "Confirmar",
       "back": "Atrás",
-      "resend_code": "Reenviar código"
+      "resend_code": "Reenviar código",
+      "cart": "Añadir al carrito"
     },
     "datetime": {
       "morning": "dias",
       "afternoon": "tarde",
       "evening": "noche",
       "night": "noche"
+    },
+    "faq": {
+      "how_long_last": {
+        "question": "✨ ¿Cuánto duran las uñas postizas?",
+        "answer": "¡Depende de cómo las apliques! Con las pegatinas duran alrededor de 1–2 días (perfectas para un evento 💃). Con pegamento, pueden durar hasta 1–2 semanas si las cuidas bien 💕"
+      },
+      "what_comes_in_set": {
+        "question": "✨ ¿Qué incluye el set?",
+        "answer": "Cada set incluye: \n - 10 uñas (según tu talla) \n - Pegamento para uñas + pegatinas adhesivas \n - Mini lima y palito para cutículas \n - Todo lo que necesitas para una manicura perfecta en casa ✨"
+      },
+      "how_to_apply": {
+        "question": "✨ ¿Cómo se aplican y se quitan? ¿Es difícil?",
+        "answer": "¡Para nada! 🥰 La aplicación toma solo unos minutos: prepara tus uñas, aplica el pegamento o las pegatinas y presiona. Quitarlas también es fácil — solo remójalas en agua tibia con un poco de aceite, y se deslizarán suavemente 💧🌸"
+      },
+      "can_customize": {
+        "question": "✨ ¿Puedo personalizar el tamaño o la forma?",
+        "answer": "¡Claro que sí! 💅 Puedes elegir el largo (corto/medio/largo) y la forma (coffin, almendra, cuadrada, stiletto). Si quieres algo más especial, solo mándame un mensaje 💖"
+      },
+      "can_reuse": {
+        "question": "✨ ¿Puedo reutilizarlas?",
+        "answer": "¡Definitivamente! Si las quitas con cuidado y limpias el pegamento, puedes usarlas varias veces 🫶 Perfectas para conservar tus diseños favoritos."
+      },
+      "are_safe": {
+        "question": "✨ ¿Son seguras para mis uñas naturales?",
+        "answer": "Sí 💕 Las uñas postizas son mucho más suaves que las acrílicas o de gel. Mientras las retires correctamente, tus uñas naturales se mantendrán sanas y fuertes 🌿✨"
+      },
+      "shipping_time": {
+        "question": "✨ ¿Cuánto tarda el envío?",
+        "answer": "El envío normalmente tarda entre 3 y 7 días hábiles (EE. UU.). Siempre preparo y envío los pedidos lo más rápido posible 📦💌"
+      },
+      "custom_designs": {
+        "question": "✨ ¿Aceptas pedidos de diseños personalizados?",
+        "answer": "¡Sí!! 🎨 Me encanta crear sets personalizados. Si tienes fotos de inspiración, colores o temas, cuéntame y crearé algo único solo para ti 💖"
+      },
+      "glue_recommendation": {
+        "question": "✨ ¿Qué pegamento recomiendas?",
+        "answer": "Incluyo pegamento en cada set 💕 Pero si quieres una sujeción extra fuerte, recomiendo Kiss Nail Glue o Nailene — ¡son increíbles para una duración prolongada!"
+      },
+      "different_nail_lengths": {
+        "question": "✨ ¿Haces diferentes largos de uñas?",
+        "answer": "Sí ✨ Cortas, medianas, largas y extra largas — puedes elegir el largo que mejor se adapte a tu estilo 🔥"
+      },
+      "nail_doesnt_fit": {
+        "question": "✨ ¿Y si una uña no me queda perfectamente?",
+        "answer": "¡No te preocupes! Los sets vienen con tamaños adicionales, así que siempre encontrarás el adecuado. También puedes limar un poco los bordes para un ajuste perfecto 💕"
+      }
     }
   },
   "main_landing": {
@@ -208,58 +257,34 @@
       }
     },
     "faq": {
-      "title": "Preguntas & Respuestas",
-      "qas": [
-        {
-          "question": "✨ ¿Cuánto duran las uñas postizas?",
-          "answer": "¡Depende de cómo las apliques! Con las pegatinas duran alrededor de 1–2 días (perfectas para un evento 💃). Con pegamento, pueden durar hasta 1–2 semanas si las cuidas bien 💕"
-        },
-        {
-          "question": "✨ ¿Qué incluye el set?",
-          "answer": "Cada set incluye: \n - 10 uñas (según tu talla) \n - Pegamento para uñas + pegatinas adhesivas \n - Mini lima y palito para cutículas \n - Todo lo que necesitas para una manicura perfecta en casa ✨"
-        },
-        {
-          "question": "✨ ¿Cómo se aplican y se quitan? ¿Es difícil?",
-          "answer": "¡Para nada! 🥰 La aplicación toma solo unos minutos: prepara tus uñas, aplica el pegamento o las pegatinas y presiona. Quitarlas también es fácil — solo remójalas en agua tibia con un poco de aceite, y se deslizarán suavemente 💧🌸"
-        },
-        {
-          "question": "✨ ¿Puedo personalizar el tamaño o la forma?",
-          "answer": "¡Claro que sí! 💅 Puedes elegir el largo (corto/medio/largo) y la forma (coffin, almendra, cuadrada, stiletto). Si quieres algo más especial, solo mándame un mensaje 💖"
-        },
-        {
-          "question": "✨ ¿Puedo reutilizarlas?",
-          "answer": "¡Definitivamente! Si las quitas con cuidado y limpias el pegamento, puedes usarlas varias veces 🫶 Perfectas para conservar tus diseños favoritos."
-        },
-        {
-          "question": "✨ ¿Son seguras para mis uñas naturales?",
-          "answer": "Sí 💕 Las uñas postizas son mucho más suaves que las acrílicas o de gel. Mientras las retires correctamente, tus uñas naturales se mantendrán sanas y fuertes 🌿✨"
-        },
-        {
-          "question": "✨ ¿Cuánto tarda el envío?",
-          "answer": "El envío normalmente tarda entre 3 y 7 días hábiles (EE. UU.). Siempre preparo y envío los pedidos lo más rápido posible 📦💌"
-        },
-        {
-          "question": "✨ ¿Aceptas pedidos de diseños personalizados?",
-          "answer": "¡Sí!! 🎨 Me encanta crear sets personalizados. Si tienes fotos de inspiración, colores o temas, cuéntame y crearé algo único solo para ti 💖"
-        },
-        {
-          "question": "✨ ¿Qué pegamento recomiendas?",
-          "answer": "Incluyo pegamento en cada set 💕 Pero si quieres una sujeción extra fuerte, recomiendo Kiss Nail Glue o Nailene — ¡son increíbles para una duración prolongada!"
-        },
-        {
-          "question": "✨ ¿Haces diferentes largos de uñas?",
-          "answer": "Sí ✨ Cortas, medianas, largas y extra largas — puedes elegir el largo que mejor se adapte a tu estilo 🔥"
-        },
-        {
-          "question": "✨ ¿Y si una uña no me queda perfectamente?",
-          "answer": "¡No te preocupes! Los sets vienen con tamaños adicionales, así que siempre encontrarás el adecuado. También puedes limar un poco los bordes para un ajuste perfecto 💕"
-        }
-      ]
+      "title": "Preguntas & Respuestas"
     },
     "nails_aesthetic": {
       "title": "Siente la estética",
       "description": "en tus manos"
     }
+  },
+  "product": {
+    "choose": {
+      "size": "Talla",
+      "shape": "Forma",
+      "length": "Largo",
+      "quantity": "Cantidad"
+    },
+    "features": {
+      "free_shipping": "Envío gratis incluido",
+      "handmade": "Hecho a mano bajo pedido",
+      "delivery": "Entrega en 3-5 días"
+    },
+    "faq": {
+      "title": "Preguntas & Respuestas"
+    },
+    "may_like": {
+      "title": "También te puede interesar"
+    },
+    "size_chart": "Tabla de tallas",
+    "set_includes": "El set incluye",
+    "not_found": "Producto no encontrado :c"
   },
   "user-sidebar": {
     "sign_in": "Inicia sesión para usar cupones, obtener recompensas, ofertas especiales y más",

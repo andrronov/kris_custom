@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, useAttrs, ref } from "vue";
+import { computed, useAttrs, ref, useSlots } from "vue";
 import { ICONS } from "@/shared/assets";
 import { nothing } from "@/shared/lib/utils";
 import type { ComponentColor, ComponentSize } from "@/shared/types";
 import Icon from "../icon/Icon.vue";
+import Button from "../button/Button.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -22,6 +23,9 @@ const props = withDefaults(
     dimmed?: boolean;
     filled?: boolean;
     lazy?: boolean;
+    controls?: boolean;
+    max?: number;
+    min?: number;
   }>(),
   {
     placeholder: undefined,
@@ -38,6 +42,9 @@ const props = withDefaults(
     dimmed: false,
     filled: false,
     lazy: false,
+    controls: false,
+    max: undefined,
+    min: undefined,
   },
 );
 
@@ -89,6 +96,32 @@ const handleInput = (e: InputEvent | Event) => {
   modelValue.value =
     attrs.type === "number" ? Number(targetValue) : targetValue;
 };
+
+const handleBlur = () => {
+  if (props.max && props.min && attrs.type === "number") {
+    modelValue.value = Math.max(
+      props.min,
+      Math.min(props.max, Number(modelValue.value)),
+    );
+  }
+};
+
+const showControls = computed(() => props.controls && type.value === "number");
+const decrementDisabled = computed(() =>
+  props.min ? Number(modelValue.value) <= props.min : false,
+);
+const incrementDisabled = computed(() =>
+  props.max ? Number(modelValue.value) >= props.max : false,
+);
+
+const incrementValue = () => {
+  if (!showControls) return;
+  modelValue.value = Number(modelValue.value) + 1;
+};
+const decrementValue = () => {
+  if (!showControls) return;
+  modelValue.value = Number(modelValue.value) - 1;
+};
 </script>
 
 <template>
@@ -99,7 +132,7 @@ const handleInput = (e: InputEvent | Event) => {
     }"
   >
     <div class="flex items-end justify-between font-normal">
-      <span data-testid="ui/input-label" class="text-base-content/90">
+      <span class="text-base-content/90">
         <slot></slot>
       </span>
       <span class="text-sm text-base-content/50">
@@ -107,6 +140,28 @@ const handleInput = (e: InputEvent | Event) => {
       </span>
     </div>
     <div class="relative flex items-center">
+      <Button
+        v-if="showControls"
+        :disabled="decrementDisabled"
+        @click="decrementValue"
+        class="absolute left-0 top-0 hover:bg-inherit"
+        color="ghost"
+        data-slot="decrement"
+        :size
+      >
+        <Icon :name="ICONS.minus" />
+      </Button>
+      <Button
+        v-if="showControls"
+        :disabled="incrementDisabled"
+        @click="incrementValue"
+        class="absolute right-0 top-0 hover:bg-inherit"
+        color="ghost"
+        data-slot="increment"
+        :size
+      >
+        <Icon :name="ICONS.plus" />
+      </Button>
       <span
         class="absolute inset-y-0 left-0 flex items-center pl-2"
         :class="[
@@ -129,13 +184,13 @@ const handleInput = (e: InputEvent | Event) => {
           [
             {
               'pl-10': $slots.prefix || type === 'search',
+              'px-[50px]': showControls,
             },
           ],
         ]"
         v-bind="attrs"
         @input="!lazy ? handleInput($event) : nothing"
-        @blur="lazy ? handleInput($event) : nothing"
-        data-testid="ui/input"
+        @blur="handleBlur"
         :dimmed="dimmed"
         :filled="filled"
         :type="type"
@@ -144,7 +199,6 @@ const handleInput = (e: InputEvent | Event) => {
         :inputmode="type === 'number' ? 'decimal' : undefined"
       />
       <button
-        data-testid="hide-password-button"
         v-if="!hideEye && isPassword"
         @click="togglePasswordVisibility()"
         class="-ml-8 cursor-pointer"
@@ -163,11 +217,7 @@ const handleInput = (e: InputEvent | Event) => {
     >
       {{ `${modelValue.length} / ${maxlength}` }}
     </span>
-    <span
-      v-if="errorMessage"
-      class="text-xs font-medium text-error"
-      data-testid="error-message"
-    >
+    <span v-if="errorMessage" class="text-xs font-medium text-error">
       {{ errorMessage }}
     </span>
   </label>
