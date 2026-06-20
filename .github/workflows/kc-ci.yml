@@ -50,8 +50,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # - name: Build all packages
-      #   run: pnpm -r build
+      - name: Build all packages
+        run: pnpm -r build
 
       - name: Check types
         run: pnpm --filter frontend run type-check
@@ -83,8 +83,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # - name: Build all packages
-      #   run: pnpm -r build
+      - name: Build all packages
+        run: pnpm -r build
 
       - name: Check types
         run: pnpm --filter serverless run type-check
