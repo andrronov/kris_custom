@@ -12,7 +12,7 @@ jobs:
       require_kc_frontend_checks: ${{ steps.frontend_checks.outputs.require }}
       require_kc_serverless_checks: ${{ steps.serverless_checks.outputs.require }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -33,7 +33,7 @@ jobs:
     if: needs.kc_ci.outputs.require_kc_frontend_checks == '1'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
           cache-dependency-path: "./pnpm-lock.yaml"
 
@@ -63,7 +63,7 @@ jobs:
     if: needs.kc_ci.outputs.require_kc_serverless_checks == '1'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -73,7 +73,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
           cache-dependency-path: "./pnpm-lock.yaml"
 
