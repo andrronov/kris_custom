@@ -130,7 +130,7 @@ jobs:
             return comment.data.id;
 
       - name: Deploy on Cloudflare Pages
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@v3
         with:
           workingDirectory: ./apps/frontend
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
