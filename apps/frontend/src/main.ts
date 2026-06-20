@@ -1,5 +1,4 @@
 import "@/shared/assets/base.css";
-
 import { createPinia } from "pinia";
 import { createHead } from "@unhead/vue";
 import { i18n } from "@/shared/services/i18n";
