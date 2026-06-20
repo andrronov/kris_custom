@@ -11,7 +11,7 @@
     "db:seed": "tsx ./drizzle/seed.ts",
     "format-check": "prettier --check .",
     "format": "prettier --write .",
-    "type-check": "tsc --build"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@kris-customs/shared": "workspace:*",

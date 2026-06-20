@@ -19,14 +19,13 @@ concurrency:
 jobs:
   build:
     name: Frontend Build
-    needs: run_mandatory_checks
     runs-on: ubuntu-latest
     outputs:
       artifact: ${{ steps.build.outputs.artifact }}
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: pnpm init
         uses: pnpm/action-setup@v4
@@ -34,7 +33,7 @@ jobs:
           version: 10
       - uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
           cache-dependency-path: "./pnpm-lock.yaml"
 
@@ -56,14 +55,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: pnpm init
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 10
       - uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
           cache-dependency-path: "./pnpm-lock.yaml"
 
@@ -130,9 +129,10 @@ jobs:
 
             return comment.data.id;
 
-      - name: Deploy on Claudflare Pages
+      - name: Deploy on Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
+          packageManager: pnpm
           workingDirectory: ./apps/frontend
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

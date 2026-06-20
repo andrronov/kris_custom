@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "pnpm --parallel run dev",
     "build": "pnpm -r run build",
+    "build:shared": "pnpm --filter shared run build",
     "format-check": "prettier --check .",
     "format": "prettier --write ."
   },

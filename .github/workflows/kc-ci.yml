@@ -10,14 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       require_kc_frontend_checks: ${{ steps.frontend_checks.outputs.require }}
+      require_kc_serverless_checks: ${{ steps.serverless_checks.outputs.require }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - id: frontend_checks
         run: |
-          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/frontend|packages/shared)' | head -n 1 | wc -l)
+          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/frontend|packages/shared|.github/workflows)' | head -n 1 | wc -l)
+          echo "require=$CHANGES" >> "$GITHUB_OUTPUT"
+
+      - id: serverless_checks
+        run: |
+          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/serverless|packages/shared|.github/workflows)' | head -n 1 | wc -l)
           echo "require=$CHANGES" >> "$GITHUB_OUTPUT"
 
   kc_frontend_checks:
@@ -27,7 +33,7 @@ jobs:
     if: needs.kc_ci.outputs.require_kc_frontend_checks == '1'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -37,15 +43,51 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
           cache-dependency-path: "./pnpm-lock.yaml"
 
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build shared package
+        run: pnpm --filter shared run build
+
       - name: Check types
         run: pnpm --filter frontend run type-check
 
       - name: Check formatting
         run: pnpm --filter frontend run format-check
+
+  kc_serverless_checks:
+    name: KC Serverless Checks
+    needs: kc_ci
+    runs-on: ubuntu-latest
+    if: needs.kc_ci.outputs.require_kc_serverless_checks == '1'
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+          cache-dependency-path: "./pnpm-lock.yaml"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build shared package
+        run: pnpm --filter shared run build
+
+      - name: Check types
+        run: pnpm --filter serverless run type-check
+
+      - name: Check formatting
+        run: pnpm --filter serverless run format-check

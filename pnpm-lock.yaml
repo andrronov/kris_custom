@@ -189,6 +189,10 @@ importers:
       drizzle-orm:
         specifier: ^0.44.7
         version: 0.44.7(@neondatabase/serverless@1.0.2)(@types/pg@8.16.0)
+    devDependencies:
+      typescript:
+        specifier: ~5.6.3
+        version: 5.6.3
 
 packages:
   "@alloc/quick-lru@5.2.0":
