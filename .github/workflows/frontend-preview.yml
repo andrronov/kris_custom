@@ -19,6 +19,7 @@ concurrency:
 jobs:
   build:
     name: Frontend Build
+    needs: run_mandatory_checks
     runs-on: ubuntu-latest
     outputs:
       artifact: ${{ steps.build.outputs.artifact }}
