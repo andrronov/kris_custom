@@ -19,7 +19,6 @@ concurrency:
 jobs:
   build:
     name: Frontend Build
-    needs: run_mandatory_checks
     runs-on: ubuntu-latest
     outputs:
       artifact: ${{ steps.build.outputs.artifact }}
@@ -130,7 +129,7 @@ jobs:
 
             return comment.data.id;
 
-      - name: Deploy on Claudflare Pages
+      - name: Deploy on Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           workingDirectory: ./apps/frontend

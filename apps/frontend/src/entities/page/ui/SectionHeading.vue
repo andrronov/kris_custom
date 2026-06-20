@@ -1,12 +1,7 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    mobileOnly?: boolean;
-  }>(),
-  {
-    mobileOnly: false,
-  },
-);
+const { mobileOnly = false } = defineProps<{
+  mobileOnly?: boolean;
+}>();
 </script>
 
 <template>
