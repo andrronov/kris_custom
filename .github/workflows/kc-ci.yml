@@ -18,12 +18,12 @@ jobs:
 
       - id: frontend_checks
         run: |
-          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/frontend|packages/shared)' | head -n 1 | wc -l)
+          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/frontend|packages/shared|.github/workflows)' | head -n 1 | wc -l)
           echo "require=$CHANGES" >> "$GITHUB_OUTPUT"
 
       - id: serverless_checks
         run: |
-          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/serverless|packages/shared)' | head -n 1 | wc -l)
+          CHANGES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^(apps/serverless|packages/shared|.github/workflows)' | head -n 1 | wc -l)
           echo "require=$CHANGES" >> "$GITHUB_OUTPUT"
 
   kc_frontend_checks:
