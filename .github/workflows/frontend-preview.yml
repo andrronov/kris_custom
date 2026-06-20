@@ -132,6 +132,7 @@ jobs:
       - name: Deploy on Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
+          packageManager: pnpm
           workingDirectory: ./apps/frontend
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
