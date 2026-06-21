@@ -62,6 +62,7 @@ const navigateTo = (slug: string) => {
       class="relative"
       :images="product.productImages"
       :img-styles="cardClass.image"
+      :options="{ changeInterval: 4500 }"
     />
 
     <div

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { reactive, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import type {
   ProductImage,
@@ -31,18 +31,21 @@ defineProps<{
 const { t } = useI18n();
 const { l } = useLocalize();
 
+const INITIAL_OPTIONS = {
+  size: "",
+  shape: "",
+  length: "",
+  quantity: 1,
+};
+const options = reactive(INITIAL_OPTIONS);
+
+const sizes = ["xs", "s", "m", "l", "xl"];
+const shapes = ["stilletos", "coffin", "square", "almond"];
+const lengths = ["short", "mid", "long"];
+
 const getProductImages = (image: ProductImage) => {
   return `${MEDIA_URL}/${image.imageKey}`;
 };
-
-const size = ref("");
-const shape = ref("");
-const length = ref("");
-const quantity = ref(1);
-
-const sizes = ["xs", "s", "m", "l", "xl"];
-const shapes = ["stillet", "mindal", "square"];
-const lengths = ["short", "mid", "long"];
 
 const productFeatures = computed(() => [
   {
@@ -124,7 +127,7 @@ const productFeatures = computed(() => [
               <Radio
                 v-for="option in sizes"
                 :key="option"
-                v-model="size"
+                v-model="options.size"
                 :value="option"
                 class="min-w-20"
               >
@@ -138,7 +141,7 @@ const productFeatures = computed(() => [
               <Radio
                 v-for="option in shapes"
                 :key="option"
-                v-model="shape"
+                v-model="options.shape"
                 :value="option"
                 class="min-w-20"
               >
@@ -152,7 +155,7 @@ const productFeatures = computed(() => [
               <Radio
                 v-for="option in lengths"
                 :key="option"
-                v-model="length"
+                v-model="options.length"
                 :value="option"
                 class="min-w-20"
               >
@@ -163,7 +166,7 @@ const productFeatures = computed(() => [
               {{ t("product.choose.quantity") }}
             </span>
             <Input
-              v-model="quantity"
+              v-model="options.quantity"
               type="number"
               :min="1"
               :max="10"
