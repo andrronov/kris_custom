@@ -18,14 +18,14 @@ const { images, imgStyles, options } = defineProps<{
 
 const attrs = useAttrs();
 const { l } = useLocalize();
-const { isMobile } = useDevice();
+const { isMobileOrTablet } = useDevice();
 
 const isHovering = ref(false);
 const imagesSrc = images.map((img) => getMediaUrl(img.imageKey));
 
 let intervalId: ReturnType<typeof setInterval>;
 onMounted(() => {
-  if (options?.changeInterval && isMobile) {
+  if (options?.changeInterval && isMobileOrTablet) {
     intervalId = setInterval(
       () => (isHovering.value = !isHovering.value),
       options?.changeInterval,

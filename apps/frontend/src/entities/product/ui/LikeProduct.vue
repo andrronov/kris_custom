@@ -32,7 +32,7 @@ const toggle = () => {
   <Button @click.stop="toggle()" :color="color" :variant="variant">
     <Icon
       :name="ICONS.likeHeart"
-      :class="size === 'small' ? 'text-xl' : 'text-2xl'"
+      :class="size === 'small' ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'"
       :filled="liked"
     />
   </Button>

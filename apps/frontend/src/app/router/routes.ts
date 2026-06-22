@@ -23,6 +23,15 @@ const appRoutes: NamedRouteRecord<NamedRoute>[] = [
     component: () => import("@/pages/main-landing/Page.vue"),
   },
   {
+    path: "/catalog",
+    name: "catalog",
+    meta: {
+      layout: "default",
+      platform: "catalog",
+    },
+    component: () => import("@/pages/catalog/Page.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
     meta: {

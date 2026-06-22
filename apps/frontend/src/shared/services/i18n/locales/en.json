@@ -70,13 +70,25 @@
       "confirm": "Confirm",
       "back": "Back",
       "resend_code": "Resend code",
-      "cart": "Add to Cart"
+      "cart": "Add to Cart",
+      "show_filters": "Show filters",
+      "hide_filters": "Hide filters",
+      "sort_by": "Sort by"
     },
     "datetime": {
       "morning": "morning",
       "afternoon": "afternoon",
       "evening": "evening",
       "night": "night"
+    },
+    "sort": {
+      "name_asc": "Name (A-Z)",
+      "name_desc": "Name (Z-A)",
+      "price_asc": "Price (low to high)",
+      "price_desc": "Price (high to low)",
+      "date_asc": "Date (old to new)",
+      "date_desc": "Date (new to old)",
+      "best_selling": "Best-selling"
     },
     "faq": {
       "how_long_last": {
@@ -288,6 +300,9 @@
     "size_chart": "Size chart",
     "set_includes": "Set includes",
     "not_found": "Product not found :c"
+  },
+  "catalog": {
+    "title": "Catalog"
   },
   "user-sidebar": {
     "sign_in": "Sign in to use coupons, get rewards, special offers and more",

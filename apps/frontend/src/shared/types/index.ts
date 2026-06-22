@@ -3,7 +3,7 @@ import type { Language } from "@kris-customs/shared/types";
 
 export type AppTheme = "dark" | "light";
 
-export type Platform = "landing" | "product";
+export type Platform = "landing" | "product" | "catalog";
 
 export type USKV = {
   settings: {
