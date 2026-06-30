@@ -9,8 +9,6 @@ import {
   productImages,
   promotions,
   promotionUsage,
-  productCollections,
-  collections,
 } from "@kris-customs/shared/db";
 
 export const ordersRelations = relations(orders, ({ one, many }) => ({
@@ -64,7 +62,6 @@ export const productVariantsRelations = relations(
 
 export const productsRelations = relations(products, ({ many }) => ({
   productVariants: many(productVariants),
-  productCollections: many(productCollections),
   productImages: many(productImages),
 }));
 
@@ -92,22 +89,4 @@ export const promotionUsageRelations = relations(promotionUsage, ({ one }) => ({
 
 export const promotionsRelations = relations(promotions, ({ many }) => ({
   promotionUsages: many(promotionUsage),
-}));
-
-export const productCollectionsRelations = relations(
-  productCollections,
-  ({ one }) => ({
-    product: one(products, {
-      fields: [productCollections.productId],
-      references: [products.id],
-    }),
-    collection: one(collections, {
-      fields: [productCollections.collectionId],
-      references: [collections.id],
-    }),
-  }),
-);
-
-export const collectionsRelations = relations(collections, ({ many }) => ({
-  productCollections: many(productCollections),
 }));

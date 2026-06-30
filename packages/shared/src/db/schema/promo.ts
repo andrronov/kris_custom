@@ -11,9 +11,9 @@ import {
 } from "drizzle-orm/pg-core";
 import { users } from "./user";
 import { orders } from "./order";
-import { promotionTypes } from "../../types";
+import { PROMOTION_TYPES } from "../../types";
 
-export const promotionTypeEnum = pgEnum("promotion_type", promotionTypes);
+export const promotionTypeEnum = pgEnum("promotion_type", PROMOTION_TYPES);
 
 export const promotions = pgTable("promotions", {
   id: uuid("id").defaultRandom().primaryKey(),

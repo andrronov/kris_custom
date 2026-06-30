@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useBreakpoints } from "@/shared/lib/composables/use-breakpoints";
 import { Drawer } from "@/shared/ui";
+import FilterMenu from "./FilterMenu.vue";
 
 const { lgAndSmaller } = useBreakpoints();
 
@@ -15,7 +16,7 @@ const show = defineModel<boolean>({ required: true });
     align="drawer-start"
   >
     <template #content>
-      <span>sidebar</span>
+      <FilterMenu />
     </template>
   </Drawer>
 </template>
