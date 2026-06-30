@@ -6,7 +6,6 @@ import { useAppStore } from "@/shared/stores/application";
 import { FadingImages } from "@/shared/ui";
 
 import type { ProductCardSize } from "../types";
-import { PRODUCT_CARD_CLASSES } from "../data";
 
 import LikeProduct from "./LikeProduct.vue";
 import ProductBadge from "./ProductBadge.vue";
@@ -28,14 +27,10 @@ const {
 const appStore = useAppStore();
 
 const cardClass = {
-  card: PRODUCT_CARD_CLASSES[size],
-  image: {
-    base: "h-[270px] md:h-[300px] lg:h-[400px] w-full",
-    small: "h-[180px] md:h-[200px] lg:h-[300px] w-full",
-  }[size],
+  image: "aspect-square w-full object-cover",
   params: {
-    base: "h-16",
-    small: "h-16",
+    base: "h-auto min-h-[64px] py-2",
+    small: "h-auto min-h-[32px] py-2",
   }[size],
 };
 
@@ -46,29 +41,30 @@ const navigateTo = (slug: string) => {
 
 <template>
   <div
-    class="w-full flex-shrink-0 rounded-3xl relative flex flex-col cursor-pointer overflow-hidden items-center shadow-sm shadow-secondary"
-    :class="cardClass.card"
+    class="w-full h-full flex flex-col relative rounded-3xl overflow-hidden cursor-pointer items-center shadow-sm shadow-secondary"
     @click="navigateTo(product.slug)"
   >
-    <!-- <ProductBadge /> -->
     <LikeProduct
       v-if="showLike"
       :id="product.id"
-      :size
+      :size="size"
       class="absolute right-4 top-3 z-50"
     />
 
     <FadingImages
-      class="relative"
+      class="relative w-full aspect-square"
       :images="product.productImages"
       :img-styles="cardClass.image"
+      :options="{ changeInterval: 4500 }"
     />
 
     <div
-      class="w-full flex justify-center flex-col items-center"
+      class="w-full flex flex-col justify-center items-center flex-grow"
       :class="cardClass.params"
     >
-      <p class="font-medium text-primary text-base md:text-lg">
+      <p
+        class="font-medium text-primary text-sm md:text-base lg:text-lg text-center px-2"
+      >
         {{ l(product.name) }}
       </p>
       <ProductPrice :price="product.basePrice" />

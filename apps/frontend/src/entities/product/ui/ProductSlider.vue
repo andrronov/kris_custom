@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Slider } from "@/shared/ui";
 import type { ProductWithImages } from "@kris-customs/shared/types";
-import { ProductCardSkeleton, ProductCard } from "../index";
+import {
+  ProductCardSkeleton,
+  ProductCard,
+  PRODUCT_CARD_CLASSES,
+} from "../index";
 
 defineProps<{
   loading: boolean;
@@ -19,7 +23,7 @@ defineProps<{
         size="base"
         v-for="product in products"
         :key="product.id"
-        :class="defaultClass"
+        :class="[defaultClass, PRODUCT_CARD_CLASSES.base]"
         :product
       />
     </template>

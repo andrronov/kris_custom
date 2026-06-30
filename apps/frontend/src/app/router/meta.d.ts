@@ -10,6 +10,13 @@ export interface RouteNamedMap {
     Record<never, never>
   >;
 
+  catalog: RouteRecordInfo<
+    "catalog",
+    "/catalog",
+    Record<never, never>,
+    Record<never, never>
+  >;
+
   "404": RouteRecordInfo<
     "404",
     "/:path(.*)",
