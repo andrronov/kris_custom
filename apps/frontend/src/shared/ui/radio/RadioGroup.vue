@@ -32,7 +32,6 @@ const modelValue = defineModel<string>({ required: true });
       :value="option.value"
       :disabled="option.disabled"
       :color="option.color"
-      class="md:px-4"
     >
       {{ option.label }}
     </Radio>

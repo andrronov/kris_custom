@@ -55,6 +55,8 @@
     "scroll-to-see": "Scroll to see",
     "swipe-to-see": "Swipe to see",
     "good": "Good",
+    "min": "Min",
+    "max": "Max",
     "buttons": {
       "sign_in": "Sign In",
       "sign_up": "Sign Up",
@@ -312,6 +314,27 @@
       "shape": "Shape",
       "length": "Length",
       "quantity": "Quantity"
+    },
+    "shapes": {
+      "stilettos": "Stilettos",
+      "coffin": "Coffin",
+      "square": "Square",
+      "almond": "Almond"
+    },
+    "lengths": {
+      "short": "Short",
+      "medium": "Medium",
+      "long": "Long"
+    },
+    "sizes": {
+      "xxs": "XXS",
+      "xs": "XS",
+      "s": "S",
+      "m": "M",
+      "l": "L",
+      "xl": "XL",
+      "xxl": "XXL",
+      "xxxl": "XXXL"
     },
     "features": {
       "free_shipping": "Free shipping included",

@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { RadioGroup } from "@/shared/ui";
+import {
+  PRODUCT_COLORS,
+  PRODUCT_FINISHES,
+  PRODUCT_STYLES,
+} from "@kris-customs/shared/config";
+import { RadioGroup, Input, Checkbox } from "@/shared/ui";
 
 import { useCatalogFilter } from "../lib/use-catalog-filter";
 import type { ProductAvailability, CatalogFilters } from "../types";
@@ -44,9 +49,52 @@ const itemTitles = computed(
         v-model="filters.availability"
       />
     </FilterMenuItem>
-    <FilterMenuItem :title="itemTitles.price"> </FilterMenuItem>
-    <FilterMenuItem :title="itemTitles.colors"> </FilterMenuItem>
-    <FilterMenuItem :title="itemTitles.finish"> </FilterMenuItem>
-    <FilterMenuItem :title="itemTitles.styles"> </FilterMenuItem>
+    <FilterMenuItem :title="itemTitles.price">
+      <Input v-model="filters.price[0]" type="number">
+        {{ t("common.min") }}:
+      </Input>
+      <Input v-model="filters.price[1]" type="number">
+        {{ t("common.max") }}:
+      </Input>
+    </FilterMenuItem>
+    <FilterMenuItem
+      :title="itemTitles.colors"
+      class="flex flex-col flex-wrap gap-1"
+    >
+      <Checkbox
+        v-for="color in PRODUCT_COLORS"
+        :key="color"
+        v-model="filters.colors"
+        :value="color"
+      >
+        {{ t(`common.colors.${color}`) }}
+      </Checkbox>
+    </FilterMenuItem>
+    <FilterMenuItem
+      :title="itemTitles.styles"
+      class="flex flex-col flex-wrap gap-1"
+    >
+      <Checkbox
+        v-for="style in PRODUCT_STYLES"
+        :key="style"
+        v-model="filters.styles"
+        :value="style"
+      >
+        {{ t(`common.styles.${style}`) }}
+      </Checkbox>
+    </FilterMenuItem>
+    <FilterMenuItem
+      :title="itemTitles.finish"
+      class="flex flex-col flex-wrap gap-1"
+    >
+      <Checkbox
+        v-for="finish in PRODUCT_FINISHES"
+        :key="finish"
+        v-model="filters.finish"
+        :value="finish"
+      >
+        {{ t(`common.finishes.${finish}`) }}
+      </Checkbox>
+    </FilterMenuItem>
   </div>
 </template>

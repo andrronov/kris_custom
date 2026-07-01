@@ -11,7 +11,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { users } from "./user";
 import { orders } from "./order";
-import { PROMOTION_TYPES } from "../../types";
+import { PROMOTION_TYPES } from "../../config";
 
 export const promotionTypeEnum = pgEnum("promotion_type", PROMOTION_TYPES);
 

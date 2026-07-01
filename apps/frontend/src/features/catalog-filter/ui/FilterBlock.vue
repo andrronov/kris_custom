@@ -10,7 +10,7 @@ const show = defineModel<boolean>({ required: true });
 <template>
   <div
     v-show="show && lgOrLarger"
-    class="sticky top-[144px] flex flex-col w-64 bg-base-200"
+    class="sticky top-[144px] flex flex-col w-64 bg-base-200 h-full max-h-[calc(100vh-234px)] overflow-y-auto rounded-xl"
   >
     <FilterMenu />
   </div>

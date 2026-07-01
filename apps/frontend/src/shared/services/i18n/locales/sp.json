@@ -54,6 +54,8 @@
     "scroll-to-see": "Desplázate para ver",
     "swipe-to-see": "Desliza para ver",
     "good": "Buenos",
+    "min": "Mín",
+    "max": "Máx",
     "buttons": {
       "sign_in": "Iniciar Sesión",
       "sign_up": "Registrarse",
@@ -90,30 +92,30 @@
       "best_selling": "Más vendidos"
     },
     "colors": {
-      "pink": "Pink",
+      "pink": "Rosa",
       "nude": "Nude",
-      "blue": "Blue",
-      "white": "White",
-      "black": "Black",
-      "red": "Red",
-      "purple": "Purple",
-      "green": "Green",
-      "clear": "Clear"
+      "blue": "Azul",
+      "white": "Blanco",
+      "black": "Negro",
+      "red": "Rojo",
+      "purple": "Morado",
+      "green": "Verde",
+      "clear": "Transparente"
     },
     "finishes": {
-      "glossy": "Glossy",
-      "matte": "Matte",
-      "chrome": "Chrome",
-      "velvet": "Velvet",
-      "glitter": "Glitter"
+      "glossy": "Brillante",
+      "matte": "Mate",
+      "chrome": "Cromo",
+      "velvet": "Terciopelo",
+      "glitter": "Brillantina"
     },
     "styles": {
-      "minimalist": "Minimalist",
+      "minimalist": "Minimalista",
       "y2k": "Y2K",
       "anime": "Anime",
-      "goth": "Goth",
-      "cute": "Cute",
-      "elegant": "Elegant",
+      "goth": "Gótico",
+      "cute": "Lindo",
+      "elegant": "Elegante",
       "3d": "3D"
     },
     "faq": {
@@ -309,6 +311,27 @@
       "shape": "Forma",
       "length": "Largo",
       "quantity": "Cantidad"
+    },
+    "shapes": {
+      "stilettos": "Stilettos",
+      "coffin": "Coffin",
+      "square": "Cuadrada",
+      "almond": "Almendra"
+    },
+    "lengths": {
+      "short": "Corto",
+      "medium": "Mediano",
+      "long": "Largo"
+    },
+    "sizes": {
+      "xxs": "XXS",
+      "xs": "XS",
+      "s": "S",
+      "m": "M",
+      "l": "L",
+      "xl": "XL",
+      "xxl": "XXL",
+      "xxxl": "XXXL"
     },
     "features": {
       "free_shipping": "Envío gratis incluido",

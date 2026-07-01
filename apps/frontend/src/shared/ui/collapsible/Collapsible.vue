@@ -24,21 +24,18 @@ const [showPanel, togglePanel] = useToggle(openInitially);
 const VARIANT = {
   outline: {
     button:
-      "bg-base-300 border-2 border-transparent p-4 hover:bg-base-200 hover:border-secondary",
+      "rounded-full bg-base-300 border-2 border-transparent p-4 hover:bg-base-200 hover:border-secondary",
     padding: "1.5rem",
-    wrapper: "rounded-full bg-base-100",
   },
   clean: {
     button: "p-2 hover:bg-base-300",
     padding: "1rem 0",
-    wrapper: "bg-base-200",
   },
 } satisfies Record<
   Variant,
   {
     button: string;
     padding: string;
-    wrapper: string;
   }
 >;
 
@@ -68,7 +65,7 @@ const sizeClass = computed(() => SIZE[size]);
 </script>
 
 <template>
-  <div class="rounded-full text-base-content" :class="variantClass.wrapper">
+  <div class="bg-inherit text-base-content">
     <button
       class="flex w-full items-center justify-between gap-2 text-left font-medium shadow-sm transition-all duration-150"
       :class="[sizeClass.title, variantClass.button]"

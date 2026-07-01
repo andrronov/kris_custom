@@ -16,7 +16,7 @@ const props = withDefaults(
   },
 );
 
-const modelValue = defineModel<boolean>({ required: true });
+const modelValue = defineModel<boolean | unknown[]>({ required: true });
 
 const attrs = useAttrs();
 

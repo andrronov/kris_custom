@@ -6,7 +6,7 @@ import {
   decimal,
   pgEnum,
 } from "drizzle-orm/pg-core";
-import { ORDER_STATUSES } from "../../types";
+import { ORDER_STATUSES } from "../../config";
 import { users, addresses } from "./user";
 import { productVariants } from "./product";
 
