@@ -41,6 +41,7 @@ const navigateTo = (slug: string) => {
 
 <template>
   <div
+    id="product-card"
     class="w-full h-full flex flex-col relative rounded-3xl overflow-hidden cursor-pointer items-center shadow-sm shadow-secondary"
     @click="navigateTo(product.slug)"
   >

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { shallowRef, onMounted } from "vue";
-import type { ProductWithImages } from "@kris-customs/shared/types";
 import {
   FilterButton,
   useCatalogFilter,
@@ -10,6 +9,7 @@ import {
 import { SortDropdown, useCatalogSort } from "@/features/catalog-sort";
 import { api } from "@/shared/api";
 import { createAsyncProcess } from "@/shared/lib/utils";
+import type { ProductWithImages } from "@kris-customs/shared/types";
 
 import CatalogProducts from "./CatalogProducts.vue";
 
