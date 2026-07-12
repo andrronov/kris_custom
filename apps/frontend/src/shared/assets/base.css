@@ -158,6 +158,16 @@ html[data-theme="dark"] {
   opacity: 0;
 }
 
+.collapse-enter-from,
+.collapse-leave-to {
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  opacity: 0;
+}
+
 .dotty-loading::after {
   display: inline-block;
   animation: dotty steps(1, end) 1s infinite;

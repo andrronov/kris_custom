@@ -8,10 +8,12 @@ const {
   name,
   align = "drawer-end",
   sidebarClass,
+  closeOnRoute = true,
 } = defineProps<{
   name: string;
   align?: "drawer-start" | "drawer-end";
   sidebarClass?: string;
+  closeOnRoute?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -48,7 +50,9 @@ watch(open, (value) => {
 });
 
 watch(route, () => {
-  close();
+  if (closeOnRoute) {
+    close();
+  }
 });
 </script>
 

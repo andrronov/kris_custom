@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useBreakpoints } from "@/shared/lib/composables/use-breakpoints";
+
 import FilterMenu from "./FilterMenu.vue";
+import FilterClearButton from "./FilterClearButton.vue";
 
 const { lgOrLarger } = useBreakpoints();
 const show = defineModel<boolean>({ required: true });
@@ -12,6 +14,7 @@ const show = defineModel<boolean>({ required: true });
       v-show="show && lgOrLarger"
       class="sticky top-[144px] flex flex-col w-64 shrink-0 bg-base-200 h-full max-h-[calc(100vh-234px)] overflow-y-auto rounded-xl"
     >
+      <FilterClearButton class="top-0" />
       <FilterMenu />
     </div>
   </Transition>

@@ -74,7 +74,8 @@
       "cart": "Añadir al carrito",
       "show_filters": "Mostrar filtros",
       "hide_filters": "Ocultar filtros",
-      "sort_by": "Ordenar por"
+      "sort_by": "Ordenar por",
+      "clear": "Borrar"
     },
     "datetime": {
       "morning": "dias",

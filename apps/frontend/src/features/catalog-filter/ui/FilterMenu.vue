@@ -13,7 +13,7 @@ import type { ProductAvailability, CatalogFilters } from "../types";
 import FilterMenuItem from "./FilterMenuItem.vue";
 
 const { t } = useI18n();
-const { filters } = useCatalogFilter();
+const { filters, dirtyFilters, clearFilters } = useCatalogFilter();
 
 const availabilityOptions = computed(
   () =>
@@ -37,28 +37,56 @@ const itemTitles = computed(
       styles: t("catalog.filter.style.title"),
     }) satisfies Record<keyof CatalogFilters, string>,
 );
+
+const updateMinPrice = (val: number) => {
+  const currentMax = filters.price[1];
+  filters.price = [val, currentMax];
+};
+
+const updateMaxPrice = (val: number) => {
+  const currentMin = filters.price[0];
+  filters.price = [currentMin, val];
+};
 </script>
 
 <template>
-  <div class="flex flex-col w-full gap-2">
-    <FilterMenuItem :title="itemTitles.availability">
+  <div class="relative flex flex-col w-full gap-2">
+    <FilterMenuItem
+      :title="itemTitles.availability"
+      :dirty="dirtyFilters.includes('availability')"
+      :clear="() => clearFilters.availability()"
+    >
       <RadioGroup
+        v-model="filters.availability"
         class="flex flex-col gap-1.5"
         group-name="availability"
         :options="availabilityOptions"
-        v-model="filters.availability"
       />
     </FilterMenuItem>
-    <FilterMenuItem :title="itemTitles.price">
-      <Input v-model="filters.price[0]" type="number">
+    <FilterMenuItem
+      :title="itemTitles.price"
+      :dirty="dirtyFilters.includes('price')"
+      :clear="() => clearFilters.price()"
+    >
+      <Input
+        v-model="filters.price[0]"
+        @change="updateMinPrice(Number($event.target.value))"
+        type="number"
+      >
         {{ t("common.min") }}:
       </Input>
-      <Input v-model="filters.price[1]" type="number">
+      <Input
+        v-model="filters.price[1]"
+        @change="updateMaxPrice(Number($event.target.value))"
+        type="number"
+      >
         {{ t("common.max") }}:
       </Input>
     </FilterMenuItem>
     <FilterMenuItem
       :title="itemTitles.colors"
+      :dirty="dirtyFilters.includes('colors')"
+      :clear="() => clearFilters.colors()"
       class="flex flex-col flex-wrap gap-1"
     >
       <Checkbox
@@ -72,6 +100,8 @@ const itemTitles = computed(
     </FilterMenuItem>
     <FilterMenuItem
       :title="itemTitles.styles"
+      :dirty="dirtyFilters.includes('styles')"
+      :clear="() => clearFilters.styles()"
       class="flex flex-col flex-wrap gap-1"
     >
       <Checkbox
@@ -85,6 +115,8 @@ const itemTitles = computed(
     </FilterMenuItem>
     <FilterMenuItem
       :title="itemTitles.finish"
+      :dirty="dirtyFilters.includes('finish')"
+      :clear="() => clearFilters.finish()"
       class="flex flex-col flex-wrap gap-1"
     >
       <Checkbox
