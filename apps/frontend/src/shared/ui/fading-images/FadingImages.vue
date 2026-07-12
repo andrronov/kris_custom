@@ -2,6 +2,7 @@
 import { ref, useAttrs, onMounted, onBeforeUnmount } from "vue";
 import type { ProductImage } from "@kris-customs/shared/types";
 import { useLocalize } from "@/shared/lib/composables/use-localize";
+import { useDevice } from "@/shared/lib/composables/use-device";
 import { getMediaUrl } from "@/shared/lib/utils";
 import { Image } from "@/shared/ui";
 
@@ -17,13 +18,14 @@ const { images, imgStyles, options } = defineProps<{
 
 const attrs = useAttrs();
 const { l } = useLocalize();
+const { isMobileOrTablet } = useDevice();
 
 const isHovering = ref(false);
 const imagesSrc = images.map((img) => getMediaUrl(img.imageKey));
 
 let intervalId: ReturnType<typeof setInterval>;
 onMounted(() => {
-  if (options?.changeInterval) {
+  if (options?.changeInterval && isMobileOrTablet) {
     intervalId = setInterval(
       () => (isHovering.value = !isHovering.value),
       options?.changeInterval,
@@ -42,9 +44,6 @@ const imageStyles = "z-100 object-cover";
   <div
     @mouseenter="isHovering = true"
     @mouseleave="isHovering = false"
-    @touchstart="isHovering = true"
-    @touchend="isHovering = false"
-    @touchcancel="isHovering = false"
     v-bind="attrs"
     :class="[imageStyles, imgStyles]"
   >

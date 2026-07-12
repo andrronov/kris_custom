@@ -38,3 +38,69 @@ export const LANGUAGES_LIST = objectEntries(LANGUAGES).map(
 );
 export const SUPPORTED_LANGUAGES = LANGUAGES_LIST.map(({ value }) => value);
 export const FALLBACK_LANGUAGE = "en";
+
+export const PRODUCT_SIZES = [
+  "xxs",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "xxl",
+  "xxxl",
+] as const;
+
+export const PRODUCT_SHAPES = [
+  "stilettos",
+  "coffin",
+  "square",
+  "almond",
+] as const;
+
+export const PRODUCT_LENGTHS = ["short", "medium", "long"] as const;
+
+export const PRODUCT_COLORS = [
+  "pink",
+  "blue",
+  "black",
+  "white",
+  "red",
+  "nude",
+  "purple",
+  "green",
+  "clear",
+] as const;
+
+export const PRODUCT_FINISHES = [
+  "glossy",
+  "matte",
+  "chrome",
+  "velvet",
+  "glitter",
+] as const;
+
+export const PRODUCT_STYLES = [
+  "minimalist",
+  "y2k",
+  "anime",
+  "goth",
+  "cute",
+  "elegant",
+  "3d",
+] as const;
+
+export const ORDER_STATUSES = [
+  "pending_payment",
+  "paid",
+  "in_progress",
+  "shipped",
+  "delivered",
+  "cancelled",
+] as const;
+
+export const PROMOTION_TYPES = [
+  "PERCENTAGE",
+  "FIXED_AMOUNT",
+  "BUY_X_GET_Y",
+  "FIRST_PURCHASE",
+] as const;

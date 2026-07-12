@@ -4,9 +4,16 @@ import { useRoute } from "vue-router";
 import { setScrollLock, nothing } from "@/shared/lib/utils";
 import { Keys } from "@/shared/types";
 
-defineProps<{
+const {
+  name,
+  align = "drawer-end",
+  sidebarClass,
+  closeOnRoute = true,
+} = defineProps<{
   name: string;
+  align?: "drawer-start" | "drawer-end";
   sidebarClass?: string;
+  closeOnRoute?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -43,12 +50,14 @@ watch(open, (value) => {
 });
 
 watch(route, () => {
-  close();
+  if (closeOnRoute) {
+    close();
+  }
 });
 </script>
 
 <template>
-  <div class="drawer-end">
+  <div :class="align">
     <input :id="name" type="checkbox" class="drawer-toggle" v-model="open" />
     <div class="drawer-content">
       <slot></slot>

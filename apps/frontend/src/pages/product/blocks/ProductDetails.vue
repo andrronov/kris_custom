@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { reactive, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import type {
   ProductImage,
   ProductWithImages,
 } from "@kris-customs/shared/types";
+import {
+  PRODUCT_SIZES,
+  PRODUCT_SHAPES,
+  PRODUCT_LENGTHS,
+} from "@kris-customs/shared/config";
 import { ProductPrice } from "@/entities/product";
 import { useLocalize } from "@/shared/lib/composables/use-localize";
 import { ICONS } from "@/shared/assets";
@@ -13,6 +18,7 @@ import {
   Slider,
   Image,
   Radio,
+  RadioGroup,
   Input,
   Button,
   Skeleton,
@@ -22,6 +28,7 @@ import {
 import Heading from "../ui/Heading.vue";
 import MeasureModal from "../ui/MeasureModal.vue";
 import ContentModal from "../ui/ContentModal.vue";
+import ProductDetailsOption from "../ui/ProductDetailsOption.vue";
 
 defineProps<{
   product: ProductWithImages | null;
@@ -31,18 +38,30 @@ defineProps<{
 const { t } = useI18n();
 const { l } = useLocalize();
 
+const INITIAL_OPTIONS = {
+  size: "",
+  shape: "",
+  length: "",
+  quantity: 1,
+};
+const options = reactive(INITIAL_OPTIONS);
+
+const sanitizeOptions = (options: readonly string[], key: string) => {
+  return options.map((option) => ({
+    label: t(`product.${key}.${option}`),
+    value: option,
+  }));
+};
+
+const productOptions = computed(() => ({
+  size: sanitizeOptions(PRODUCT_SIZES, "sizes"),
+  shape: sanitizeOptions(PRODUCT_SHAPES, "shapes"),
+  length: sanitizeOptions(PRODUCT_LENGTHS, "lengths"),
+}));
+
 const getProductImages = (image: ProductImage) => {
   return `${MEDIA_URL}/${image.imageKey}`;
 };
-
-const size = ref("");
-const shape = ref("");
-const length = ref("");
-const quantity = ref(1);
-
-const sizes = ["xs", "s", "m", "l", "xl"];
-const shapes = ["stillet", "mindal", "square"];
-const lengths = ["short", "mid", "long"];
 
 const productFeatures = computed(() => [
   {
@@ -110,66 +129,45 @@ const productFeatures = computed(() => [
           <div
             class="w-full flex flex-col items-center gap-2.5 xl:gap-3.5 rounded-xl py-2 border-2 border-primary"
           >
-            <div
-              class="flex flex-col items-center justify-center gap-2 relative"
-            >
-              <span class="text-lg font-medium">
-                {{ t("product.choose.size") }}
-              </span>
-              <MeasureModal
-                class="md:absolute -top-[2px] left-full md:ml-5 w-max !uppercase"
+            <ProductDetailsOption :title="t('product.choose.size')">
+              <template #additional>
+                <MeasureModal
+                  class="md:absolute -top-[2px] left-full md:ml-5 w-max !uppercase"
+                />
+              </template>
+              <RadioGroup
+                v-model="options.size"
+                :options="productOptions.size"
+                group-name="product-size"
+                class="flex flex-wrap justify-center items-center gap-2 [&>*]:min-w-20 lg:[&>*]:min-w-24"
               />
-            </div>
-            <div class="flex flex-wrap justify-center items-center gap-2">
-              <Radio
-                v-for="option in sizes"
-                :key="option"
-                v-model="size"
-                :value="option"
-                class="min-w-20"
-              >
-                {{ option }}
-              </Radio>
-            </div>
-            <span class="text-lg font-medium">
-              {{ t("product.choose.shape") }}
-            </span>
-            <div class="flex items-center gap-2">
-              <Radio
-                v-for="option in shapes"
-                :key="option"
-                v-model="shape"
-                :value="option"
-                class="min-w-20"
-              >
-                {{ option }}
-              </Radio>
-            </div>
-            <span class="text-lg font-medium">
-              {{ t("product.choose.length") }}
-            </span>
-            <div class="flex items-center gap-2">
-              <Radio
-                v-for="option in lengths"
-                :key="option"
-                v-model="length"
-                :value="option"
-                class="min-w-20"
-              >
-                {{ option }}
-              </Radio>
-            </div>
-            <span class="text-lg font-medium">
-              {{ t("product.choose.quantity") }}
-            </span>
-            <Input
-              v-model="quantity"
-              type="number"
-              :min="1"
-              :max="10"
-              controls
-              class="max-w-64"
-            />
+            </ProductDetailsOption>
+            <ProductDetailsOption :title="t('product.choose.shape')">
+              <RadioGroup
+                v-model="options.shape"
+                :options="productOptions.shape"
+                group-name="product-shape"
+                class="flex flex-wrap justify-center items-center gap-2 [&>*]:min-w-20"
+              />
+            </ProductDetailsOption>
+            <ProductDetailsOption :title="t('product.choose.length')">
+              <RadioGroup
+                v-model="options.length"
+                :options="productOptions.length"
+                group-name="product-length"
+                class="flex flex-wrap justify-center items-center gap-2 [&>*]:min-w-20"
+              />
+            </ProductDetailsOption>
+            <ProductDetailsOption :title="t('product.choose.quantity')">
+              <Input
+                v-model="options.quantity"
+                type="number"
+                :min="1"
+                :max="10"
+                controls
+                class="max-w-64"
+              />
+            </ProductDetailsOption>
 
             <Skeleton v-if="loading" class="w-52 h-11" />
             <ProductPrice

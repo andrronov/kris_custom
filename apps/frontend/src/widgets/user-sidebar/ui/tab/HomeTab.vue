@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { ProductCard, ProductCardSkeleton } from "@/entities/product";
+import {
+  ProductCard,
+  ProductCardSkeleton,
+  PRODUCT_CARD_CLASSES,
+} from "@/entities/product";
 import { useUserStore } from "@/shared/stores/user";
 import { getDayTime } from "@/shared/lib/utils/modules/dates";
 import { Button } from "@/shared/ui";
@@ -68,6 +72,7 @@ const timeLabel = computed(() => t(`common.datetime.${getDayTime().label}`));
           v-for="product in userStore.favoriteProducts"
           :key="product.id"
           :product="product"
+          :class="PRODUCT_CARD_CLASSES.small"
           size="small"
         />
       </template>

@@ -41,4 +41,6 @@ export const ICONS = {
   minus: "ic:round-minus",
   plus: "ic:round-plus",
   measure: "lsicon:measure-outline",
+  filter: "akar-icons:filter",
+  sort: "material-symbols:sort-rounded",
 } as const;

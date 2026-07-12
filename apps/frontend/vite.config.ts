@@ -1,4 +1,5 @@
 import vue from "@vitejs/plugin-vue";
+import vueDevTools from "vite-plugin-vue-devtools";
 import { defineConfig } from "vite";
 import { fileURLToPath, URL } from "node:url";
 
@@ -7,7 +8,7 @@ const resolve = (path: string) => {
 };
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
       "@": resolve("./src"),

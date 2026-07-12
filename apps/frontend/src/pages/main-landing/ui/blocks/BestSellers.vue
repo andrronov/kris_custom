@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from "vue";
+import { useRouter } from "vue-router";
 import type { ProductWithImages } from "@kris-customs/shared/types";
 import { useI18n } from "vue-i18n";
 import { ProductSlider } from "@/entities/product";
@@ -9,6 +10,7 @@ import { SectionHeading } from "@/entities/page";
 import { createAsyncProcess } from "@/shared/lib/utils";
 
 const { t } = useI18n();
+const router = useRouter();
 
 const products = shallowRef<ProductWithImages[]>([]);
 const { run: getProducts, loading } = createAsyncProcess(async () => {
@@ -32,7 +34,12 @@ getProducts();
 
     <ProductSlider :loading :products />
 
-    <Button color="primary" variant="outline" class="self-center mt-4">
+    <Button
+      @click="router.push({ name: 'catalog' })"
+      color="primary"
+      variant="outline"
+      class="self-center mt-4"
+    >
       {{ t("common.buttons.view_catalog") }}
     </Button>
   </section>

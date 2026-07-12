@@ -64,6 +64,13 @@
       "when": 1773406111661,
       "tag": "0008_faithful_tarantula",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1782846083136,
+      "tag": "0009_greedy_mole_man",
+      "breakpoints": true
     }
   ]
 }

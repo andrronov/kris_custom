@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, type Component } from "vue";
-import { whenever } from "@vueuse/core";
+import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { LanguageDropdown, ThemeSwitcher } from "@/features/settings";
-import { UserSidebar } from "@/widgets/app-sidebar/user-sidebar";
-import { Button, Icon, Tabs, Tab } from "@/shared/ui";
+import { Button, Icon } from "@/shared/ui";
 import { nothing } from "@/shared/lib/utils";
 import { ICONS } from "@/shared/assets";
-import { useUserStore } from "@/shared/stores/user";
 
 import UserTabs from "./UserTabs.vue";
 import HomeTab from "./tab/HomeTab.vue";

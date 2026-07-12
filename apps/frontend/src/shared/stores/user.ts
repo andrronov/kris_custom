@@ -133,6 +133,7 @@ export const useUserStore = defineStore("user", () => {
   const login = async () => {
     await fetchProfile();
     await syncSettings();
+    await fetchFavorites();
   };
 
   const logout = () => {

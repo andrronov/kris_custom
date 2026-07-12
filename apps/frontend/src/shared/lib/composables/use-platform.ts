@@ -41,10 +41,8 @@ export const usePlatform = () => {
       id: undefined,
       name: t("navigation.catalog"),
       to: {
-        // TODO: change to catalog link
-        name: "main-landing",
-        hash: anchor.prepare("faq"),
-      } as RouteLocationRaw<"main-landing">,
+        name: "catalog",
+      } as RouteLocationRaw<"catalog">,
     },
     home: {
       id: undefined,
@@ -100,6 +98,10 @@ export const usePlatform = () => {
           } as RouteLocationRaw<"main-landing">,
         },
       ],
+    },
+    catalog: {
+      primary: [mainPlatformLinks.value.home],
+      secondary: [],
     },
     product: {
       primary: [mainPlatformLinks.value.home, mainPlatformLinks.value.catalog],

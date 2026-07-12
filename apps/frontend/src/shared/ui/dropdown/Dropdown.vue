@@ -90,10 +90,10 @@ watchThrottled(
   <div :class="classes" ref="dropdown">
     <label @click="toggleDropdown()">
       <slot name="toggler" :disabled="disabled">
-        <div class="m-auto flex h-full items-center gap-2 hover:cursor-pointer">
-          <span class="py-2 text-sm font-semibold">
-            <slot name="toggler-content" />
-          </span>
+        <div
+          class="m-auto flex h-full items-center gap-2 hover:cursor-pointer font-semibold text-sm"
+        >
+          <slot name="toggler-content" />
         </div>
       </slot>
     </label>

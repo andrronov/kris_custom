@@ -4,8 +4,8 @@ import { useAppStore } from "@/shared/stores/application";
 import { AuthModal } from "@/features/auth";
 import { Header, MobileHeaderNav } from "@/widgets/app-header";
 import { Footer } from "@/widgets/app-footer";
-import { UserSidebar } from "@/widgets/app-sidebar/user-sidebar";
-import { CartSidebar } from "@/widgets/app-sidebar/cart-sidebar";
+import { UserSidebar } from "@/widgets/user-sidebar";
+import { CartSidebar } from "@/widgets/cart-sidebar";
 import { useUserStore } from "@/shared/stores/user";
 import { Drawer } from "@/shared/ui";
 

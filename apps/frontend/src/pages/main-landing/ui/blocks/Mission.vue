@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { Slider, Image, Button } from "@/shared/ui";
 
 const { t } = useI18n();
+const router = useRouter();
 </script>
 
 <template>
@@ -36,7 +38,12 @@ const { t } = useI18n();
         ]"
       />
     </Slider>
-    <Button class="mx-auto" color="primary" variant="outline">
+    <Button
+      @click="router.push({ name: 'catalog' })"
+      class="mx-auto"
+      color="primary"
+      variant="outline"
+    >
       {{ t("common.buttons.get_your_beauty") }}
     </Button>
   </section>

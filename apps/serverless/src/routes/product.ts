@@ -84,7 +84,7 @@ app.get("/:slug", async (c) => {
 
 app.get("/may-like/:slug", async (c) => {
   const { slug } = c.req.param();
-  const limit = c.req.param("limit") ?? "6";
+  const limit = c.req.query("limit") ?? "6";
 
   try {
     const mayLikeProducts = await db.query.products.findMany({

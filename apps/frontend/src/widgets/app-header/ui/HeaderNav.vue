@@ -33,6 +33,10 @@ const { currentPlatformRoutes } = usePlatform();
           </Link>
         </template>
         <Icon
+          v-if="
+            currentPlatformRoutes.primary.length &&
+            currentPlatformRoutes.secondary.length
+          "
           :name="ICONS.verticalDivider"
           class="w-10 h-full text-secondary -mx-5"
         />
